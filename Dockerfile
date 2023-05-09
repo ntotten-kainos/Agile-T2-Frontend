@@ -12,7 +12,7 @@ ARG API_URL
 
 ENV API_URL ${API_URL}
 
-RUN npm install
+RUN npm install --production
 
 COPY --chown=node:node . .
 
