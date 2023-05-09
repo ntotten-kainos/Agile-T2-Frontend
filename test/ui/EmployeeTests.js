@@ -7,7 +7,7 @@ const chai = require('chai');
 describe('Employee test', async () => {
 
 
-    it('test case should work', async () => {
+    it('Create new employee', async () => {
         var driver = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.chrome()).
             build();
