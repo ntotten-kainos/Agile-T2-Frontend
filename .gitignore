@@ -1,12 +1,12 @@
-# Node.js ignores
-node_modules/
-
-# Prototype ignores - per-user
-.tmp/
-.env
-migrate.log
+# ignore tracking usage data config - we want a different one for each user
 usage-data-config.json
-
-# General ignores
+# ignore extension SCSS because it's dynamically generated
+lib/extensions/_extensions.scss
+.env
+.sass-cache
 .DS_Store
-.idea
+.start.pid
+.port.tmp
+public
+node_modules/*
+.tmuxp.*

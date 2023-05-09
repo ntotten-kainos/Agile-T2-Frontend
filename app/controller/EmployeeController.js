@@ -1,14 +1,8 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
+const express = require('express')
+const router = express.Router()
 
-const govukPrototypeKit = require('govuk-prototype-kit')
-const router = govukPrototypeKit.requests.setupRouter()
-
-// Add your routes here
-const EmployeeService = require('./service/EmployeeService');
-const EmployeeValidator = require('./validator/EmployeeValidator');
+const EmployeeService = require('../service/EmployeeService');
+const EmployeeValidator = require('../validator/EmployeeValidator');
 
 router.get('/', async (req, res) => {     
     res.render('employee-home') 
@@ -57,3 +51,5 @@ router.post('/insert-employee', async (req, res) => {
         res.render('employee-form', req.body)
     }
 });
+
+module.exports = router

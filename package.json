@@ -2,11 +2,20 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "test": "mocha test/unit/**/*.js",
+    "test-ui": "mocha --timeout 10000 test/ui/**/*.js"
   },
   "dependencies": {
     "@govuk-prototype-kit/common-templates": "^1.1.1",
     "govuk-frontend": "^4.6.0",
     "govuk-prototype-kit": "^13.6.2"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^1.21.4",
+    "chai": "^4.3.7",
+    "chromedriver": "^113.0.0",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.9.0"
   }
 }
