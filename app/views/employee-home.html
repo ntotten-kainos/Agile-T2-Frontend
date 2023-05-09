@@ -1,0 +1,16 @@
+{% extends "layouts/main.html" %} 
+{% block pageTitle %} 
+  Employees Home
+{% endblock %} 
+ 
+{% block content %}
+
+<form action="/employees">
+  <button class="govuk-button" id="view-employees-button">View all employees</button>
+</form>
+
+<form action="/insert-employee">
+  <button class="govuk-button" id="add-employee-button">Add new employee</button>
+</form>
+
+{% endblock %}

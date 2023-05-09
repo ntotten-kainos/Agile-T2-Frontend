@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %} 
+{% block pageTitle %} 
+  List of Employees 
+{% endblock %} 
+ 
+{% block content %}
+
+<h2>List of Employees</h2>
+
+{% if employees and employees.length > 0 %} 
+{% set employeerows = [] %} 
+{% for employee in employees %}
+{% set employeerows = (employeerows.push([{ text: employee.fname }, {text: employee.lname }, {text: employee.email}, 
+                    {text: employee.salary}, {text: employee.viewUrl | safe}]), employeerows) %} 
+{% endfor %} 
+{{govukTable({ 
+    head: [ { text: "Forename" },{ text: "Surname" },{ text: "Email" }, 
+            { text: "Salary" }, { text: "" }], 
+    rows: employeerows }) 
+}} 
+{% else %}
+There are no employees. 
+{% endif %}
+
+{{ govukButton({
+  text: "Add new employee",
+  href: "/insert-employee"
+}) }}
+
+{% endblock %}

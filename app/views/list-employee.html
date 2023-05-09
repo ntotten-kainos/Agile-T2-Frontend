@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %} 
+{% block pageTitle %} 
+  List of Employees 
+{% endblock %} 
+ 
+{% block content %}
+
+{{ govukButton({
+  text: "View all employees",
+  href: "/employees"
+}) }}
+
+{% if employee %} 
+<h2 id="name">{{ employee.fname }} {{ employee.lname }}</h2>
+{% set employeerows = [] %} 
+{% set employeerows = (employeerows.push([{ text: employee.fname }, {text: employee.lname }, {text: employee.email}, 
+                    {text: employee.salary}]), employeerows) %} 
+{{govukTable({ 
+    head: [ { text: "Forename" },{ text: "Surname" },{ text: "Email" }, 
+            { text: "Salary" }], 
+    rows: employeerows }) 
+}} 
+{% else %}
+Employee does not exist 
+{% endif %}
+
+{% endblock %}
