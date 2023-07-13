@@ -38,9 +38,15 @@ describe('EmployeeService', function () {
 
         mock.onGet(EmployeeService.URL).reply(500);
 
-        var error = await EmployeeService.getEmployees()
+        var error;
+
+        try {
+          await EmployeeService.getEmployees()
+        } catch (e) {
+          var error = e.message
+        }
         
-        expect(error.message).to.equal('Could not get employees')
+        expect(error).to.equal('Could not get employees')
       })
 
     /*
