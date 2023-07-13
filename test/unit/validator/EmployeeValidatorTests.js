@@ -18,7 +18,7 @@ describe('EmployeeValidator', function () {
             country: "country",
             phoneNo: "01234567890",
             bankNo: "12345678",
-            nin: "nin"
+            nin: "12345678"
         }
 
         expect(EmployeeValidator.validateEmployee(employee)).to.be.null
@@ -38,7 +38,7 @@ describe('EmployeeValidator', function () {
             country: "country",
             phoneNo: "01234567890",
             bankNo: "12345678",
-            nin: "nin"
+            nin: "12345678"
         }
 
         expect(EmployeeValidator.validateEmployee(employee)).to.equal("Salary must be a number")

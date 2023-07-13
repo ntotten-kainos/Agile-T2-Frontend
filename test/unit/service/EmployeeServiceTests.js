@@ -74,7 +74,7 @@ describe('EmployeeService', function () {
 
     When the id parameter is null
 
-    Expect the dao not to be called
+    Expect a "Invalid ID" error should be returned and axios not invoked
 
     This should fail, make code changes to make this test pass
      */
@@ -86,7 +86,7 @@ describe('EmployeeService', function () {
 
     When axios returns with a 400 error
 
-    Expect a "User does not exist" error to be returned
+    Expect a "Employee does not exist" error to be returned
 
     This should fail, make code changes to make this test pass
      */

@@ -11,9 +11,9 @@ module.exports.createEmployee = async function (employee) {
 }
 
 module.exports.getEmployee = async function (id) {
-    const response = await axios.get(this.URL + id)
+        const response = await axios.get(this.URL + id)
 
-    return response.data
+        return response.data
 }
 
 module.exports.getEmployees = async function () {
@@ -22,6 +22,6 @@ module.exports.getEmployees = async function () {
 
         return response.data
     } catch (e) {
-        return new Error('Could not get employees')
+        throw new Error('Could not get employees')
     }
 }

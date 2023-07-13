@@ -5,6 +5,10 @@
  
 {% block content %}
 
+{% if errormessage %} 
+    <div class="govuk-error-message" id="view-employee-error">{{ errormessage }}</div> 
+{% endif %}
+
 {{ govukButton({
   text: "View all employees",
   href: "/employees"

@@ -16,7 +16,7 @@
       <h1 class="govuk-heading-xl">Add an employee</h1>
 
         {% if errormessage %} 
-            <div class="govuk-error-message">{{ errormessage }}</div> 
+            <div class="govuk-error-message" id="create-employee-error">{{ errormessage }}</div> 
         {% endif %}
 
       <form class="form" action="/insert-employee" method="post">

@@ -22,7 +22,7 @@ router.get('/employees', async (req, res) => {
 
 
         for (let i = 0; i < data.length; i++) {
-            data[i].viewUrl = `<a href='employees/${data[i].employeeId}'>View</a>`
+            data[i].viewUrl = `<a href='employees/${data[i].employeeId}' id='view_employee_${i}'>View</a>`
         }
     } catch (e) {
         console.error(e);
