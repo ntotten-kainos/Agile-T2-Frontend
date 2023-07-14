@@ -19,7 +19,7 @@ router.get('/employees', async (req, res) => {
             data[i].viewUrl = `<a href='employees/${data[i].employeeId}'>View</a>`
         }
     } catch (e) {
-        console.error(e);
+        res.locals.errormessage = e.message
     }
     
     res.render('list-employees', { employees: data } ) 

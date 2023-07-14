@@ -7,6 +7,10 @@
 
 <h2>List of Employees</h2>
 
+{% if errormessage %} 
+    <div class="govuk-error-message" id="view-employees-error">{{ errormessage }}</div> 
+{% endif %}
+
 {% if employees and employees.length > 0 %} 
 {% set employeerows = [] %} 
 {% for employee in employees %}
