@@ -3,6 +3,8 @@ const expect = chai.expect;
 const EmployeeValidator = require('../../../app/validator/EmployeeValidator');
 
 describe('EmployeeValidator', function () {
+  const employeeValidator = new EmployeeValidator()
+
     describe('validateEmployee', function () {
       it('should return null when no errors', () => {
         let employee = {
@@ -21,7 +23,7 @@ describe('EmployeeValidator', function () {
             nin: "12345678"
         }
 
-        expect(EmployeeValidator.validateEmployee(employee)).to.be.null
+        expect(employeeValidator.validateEmployee(employee)).to.be.null
       })
 
       it('should return error when salary not a number', () => {
@@ -41,7 +43,7 @@ describe('EmployeeValidator', function () {
             nin: "12345678"
         }
 
-        expect(EmployeeValidator.validateEmployee(employee)).to.equal("Salary must be a number")
+        expect(employeeValidator.validateEmployee(employee)).to.equal("Salary must be a number")
       })
 
     /*
