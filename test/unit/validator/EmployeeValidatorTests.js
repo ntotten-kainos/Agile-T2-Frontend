@@ -75,7 +75,7 @@ describe('EmployeeValidator', function () {
 
     Write a unit test for the validateEmployee method
 
-    When the first name than 50 characters
+    When the first name is more than 50 characters
 
     Expect error to be returned
 
@@ -87,7 +87,7 @@ describe('EmployeeValidator', function () {
 
     Write a unit test for the validateEmployee method
 
-    When the last name than 50 characters
+    When the last name is more than 50 characters
 
     Expect error to be returned
 
