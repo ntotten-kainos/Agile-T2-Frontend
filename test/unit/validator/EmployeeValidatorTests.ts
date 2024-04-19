@@ -1,14 +1,12 @@
-var chai = require('chai');  
-const expect = chai.expect;
-const EmployeeValidator = require('../../../app/validator/EmployeeValidator');
+import { assert, expect } from 'chai';
+import { validateEmployeeRequest } from '../../../src/validators/EmployeeValidator';
+import { EmployeeRequest } from '../../../src/models/EmployeeRequest'
 
 describe('EmployeeValidator', function () {
-  const employeeValidator = new EmployeeValidator()
-
-    describe('validateEmployee', function () {
-      it('should return null when no errors', () => {
-        let employee = {
-            salary: "30000",
+    describe('validateEmployeeRequest', function () {
+      it('should not throw exception when errors', () => {
+        const employeeRequest: EmployeeRequest = {
+            salary: 30000,
             fname: "Mocha",
             lname: "Chai",
             email: "test@email.com",
@@ -23,12 +21,16 @@ describe('EmployeeValidator', function () {
             nin: "12345678"
         }
 
-        expect(employeeValidator.validateEmployee(employee)).to.be.null
+        try {
+          validateEmployeeRequest(employeeRequest);
+        } catch (e) {
+          assert.fail("Expected no error message");
+        } 
       })
 
-      it('should return error when salary not a number', () => {
-        let employee = {
-            salary: "not a number",
+      it('should return error when salary too low', () => {
+        const employeeRequest: EmployeeRequest = {
+            salary: 10000,
             fname: "Mocha",
             lname: "Chai",
             email: "test@email.com",
@@ -43,7 +45,14 @@ describe('EmployeeValidator', function () {
             nin: "12345678"
         }
 
-        expect(employeeValidator.validateEmployee(employee)).to.equal("Salary must be a number")
+        try {
+          validateEmployeeRequest(employeeRequest);
+        } catch (e) {
+          expect(e.message).to.equal("Salary must be at least £20,000");
+          return;
+        }
+
+        assert.fail("Expected error message");
       })
 
     /*
@@ -116,18 +125,6 @@ describe('EmployeeValidator', function () {
     Expect error to be returned
 
     This should fail, make code changes to make this test pass
-     */
-
-    /*
-    Unit Test Exercise 7
-
-    Write a unit test for the validateEmployee method
-
-    When the salary is less than 20000
-
-    Expect error to be returned
-
-    This should pass without code changes
      */
     })
   })

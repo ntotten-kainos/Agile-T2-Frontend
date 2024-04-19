@@ -12,22 +12,26 @@ export const createEmployee = async function (employee: EmployeeRequest): Promis
     try {
         validateEmployeeRequest(employee);
 
-        const response: AxiosResponse = await axios.post(URL, employee)
+        const response: AxiosResponse = await axios.post(URL, employee);
 
-        return response.data
+        return response.data;
     } catch (e) {
-        throw new Error(e.message)
+        throw new Error(e.message);
     }    
 }
 
 export const getSingleEmployee = async function (id: string): Promise<EmployeeResponse> {
     const response: AxiosResponse = await axios.get(URL + id);
 
-    return response.data
+    return response.data;
 }
 
 export const getAllEmployees = async function (): Promise<EmployeeResponse[]> {
-    const response: AxiosResponse = await axios.get(URL);
+    try {
+        const response: AxiosResponse = await axios.get(URL);
     
-    return response.data
+        return response.data;
+    } catch (e) {
+        throw new Error("Could not get employees");
+    }
 }

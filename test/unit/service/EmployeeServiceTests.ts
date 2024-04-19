@@ -1,10 +1,11 @@
-var axios = require('axios');
-var MockAdapter = require('axios-mock-adapter');
-var chai = require('chai');  
-const expect = chai.expect;
-const EmployeeService = require('../../../app/service/EmployeeService');
-const employee = {
-    salary: "30000",
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import { expect } from 'chai';
+import { getAllEmployees, URL } from '../../../src/services/EmployeeService';
+import { EmployeeRequest } from "../../../src/models/EmployeeRequest";
+
+const employeeRequest: EmployeeRequest = {
+    salary: 30000,
     fname: "Mocha",
     lname: "Chai",
     email: "test@email.com",
@@ -19,34 +20,30 @@ const employee = {
     nin: "nin"
 }
 
+const mock = new MockAdapter(axios);
+
 describe('EmployeeService', function () {
-    describe('getEmployees', function () {
+    describe('getAllEmployees', function () {
       it('should return employees from response', async () => {
-        var mock = new MockAdapter(axios);
+        const data = [employeeRequest];
 
-        const data = [employee];
+        mock.onGet(URL).reply(200, data);
 
-        mock.onGet(EmployeeService.URL).reply(200, data);
+        const results = await getAllEmployees();
 
-        var results = await EmployeeService.getEmployees();
-
-        expect(results[0]).to.deep.equal(employee)
+        expect(results[0]).to.deep.equal(employeeRequest)
       })
 
       it('should throw exception when 500 error returned from axios', async () => {
-        var mock = new MockAdapter(axios);
-
-        mock.onGet(EmployeeService.URL).reply(500);
-
-        var error;
+        mock.onGet(URL).reply(500);
 
         try {
-          await EmployeeService.getEmployees()
+          await getAllEmployees();
         } catch (e) {
-          var error = e.message
+          expect(e.message).to.equal('Could not get employees');
+          return;
         }
         
-        expect(error).to.equal('Could not get employees')
       })
 
     /*
