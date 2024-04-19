@@ -1,0 +1,15 @@
+export type EmployeeRequest = {
+    salary: number,
+    fname: string,
+    lname: string,
+    email: string,
+    address: string,
+    address2: string,
+    city: string,
+    county: string,
+    postalCode: string,
+    country: string,
+    phoneNo: string,
+    bankNo: string,
+    nin: string,
+};

@@ -8,7 +8,7 @@ describe('Employee test', async () => {
 
 
     it('Create new employee', async () => {
-        var driver = new webdriver.Builder().
+        const driver = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.chrome()).
             build();
 

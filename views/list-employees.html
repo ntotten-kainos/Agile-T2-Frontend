@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <title>Employee Example - GOV.UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="manifest" href="/assets/manifest.json">
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <!-- component HTML -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    {% if errormessage %} 
+    <div class="govuk-error-message" id="view-employees-error">{{ errormessage }}</div> 
+    {% endif %}
+
+    {% if employees and employees.length > 0 %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Employees</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Email</th>
+          <th scope="col" class="govuk-table__header">Salary</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for employee in employees %}
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header"><a href="employees/{{employee.employeeId}}">{{employee.fname}} {{employee.lname}}</a></th>
+          <td class="govuk-table__cell">{{employee.email}}</td>
+          <td class="govuk-table__cell">{{employee.salary}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+    {% else %}
+    There are no employees. 
+    {% endif %}
+
+    <form action="/insert-employee">
+      <button class="govuk-button" id="add-employee-button">Add new employee</button>
+    </form>
+  </body>
+</html>

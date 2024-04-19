@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+  <head>
+    <title>Employee Example - GOV.UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="manifest" href="/assets/manifest.json">
+    <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+    <!-- component HTML -->
+    <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
+    <script type="module">
+      import { initAll } from '/javascripts/govuk-frontend.min.js'
+      initAll()
+    </script>
+
+    {% if errormessage %} 
+    <div class="govuk-error-message" id="view-employees-error">{{ errormessage }}</div> 
+    {% endif %}
+
+    {% if employee %}
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">Employees</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Name</th>
+          <th scope="col" class="govuk-table__header">Email</th>
+          <th scope="col" class="govuk-table__header">Address Line 1</th>
+          <th scope="col" class="govuk-table__header">Address Line 2</th>
+          <th scope="col" class="govuk-table__header">City</th>
+          <th scope="col" class="govuk-table__header">County</th>
+          <th scope="col" class="govuk-table__header">Post Code</th>
+          <th scope="col" class="govuk-table__header">Country</th>
+          <th scope="col" class="govuk-table__header">Phone Number</th>
+          <th scope="col" class="govuk-table__header">Bank Number</th>
+          <th scope="col" class="govuk-table__header">National Insurance Number</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">{{employee.fname}} {{employee.lname}}</th>
+          <td class="govuk-table__cell">{{employee.email}}</td>
+          <td class="govuk-table__cell">{{employee.salary}}</td>
+          <td class="govuk-table__cell">{{employee.address}}</td>
+          <td class="govuk-table__cell">{{employee.address2}}</td>
+          <td class="govuk-table__cell">{{employee.city}}</td>
+          <td class="govuk-table__cell">{{employee.county}}</td>
+          <td class="govuk-table__cell">{{employee.postalCode}}</td>
+          <td class="govuk-table__cell">{{employee.country}}</td>
+          <td class="govuk-table__cell">{{employee.phoneNo}}</td>
+          <td class="govuk-table__cell">{{employee.bankNo}}</td>
+          <td class="govuk-table__cell">{{employee.nin}}</td>
+        </tr>
+    </tbody>
+  </table>
+    {% else %}
+    Employee does not exist 
+    {% endif %}
+
+    <form action="/employees">
+      <button class="govuk-button" id="view-employees-button">View all employees</button>
+    </form>
+  </body>
+</html>
