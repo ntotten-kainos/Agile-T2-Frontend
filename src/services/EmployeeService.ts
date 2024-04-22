@@ -7,7 +7,6 @@ axios.defaults.baseURL = process.env.API_URL;
 
 export const URL: string = "/hr/employee/";
 
-
 export const createEmployee = async function (employee: EmployeeRequest): Promise<number> {
     try {
         validateEmployeeRequest(employee);

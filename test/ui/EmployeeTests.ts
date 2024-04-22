@@ -1,18 +1,17 @@
 /* eslint-env mocha */
 /* global browser */
-const webdriver = require('selenium-webdriver');
+import webdriver from 'selenium-webdriver';
 
-const chai = require('chai');  
+import { expect } from 'chai';
 
 describe('Employee test', async () => {
-
-
-    it('Create new employee', async () => {
+    it('Should create new employee', async () => {
         const driver = new webdriver.Builder().
             withCapabilities(webdriver.Capabilities.chrome()).
             build();
 
-        await driver.get(process.env.UI_TEST_URL);
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:8080/'
+        await driver.get(url);
 
         await driver.findElement(webdriver.By.id('add-employee-button')).click();
 
@@ -29,13 +28,13 @@ describe('Employee test', async () => {
         await driver.findElement(webdriver.By.id('bankNo')).sendKeys('12345678');
         await driver.findElement(webdriver.By.id('nin')).sendKeys('AA1A11AA');
         await driver.findElement(webdriver.By.id('salary')).sendKeys('30000');
-        await driver.findElement(webdriver.By.id('submit')).click('#submit');
+        await driver.findElement(webdriver.By.id('submit')).click();
    
-        await driver.findElement(webdriver.By.id('name')).getText().then(function(value) {
-            chai.assert.equal(value, 'UI Tests');
-        });
+        const name = await driver.findElement(webdriver.By.id('name')).getText();
 
         await driver.quit();
+
+        expect(name).to.equal('UI Tests');        
     });
     /*
     UI Test Exercise 1

@@ -4,7 +4,7 @@
     "serve": "govuk-prototype-kit serve",
     "start": "tsc && node dist/app.js",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
-    "test-ui": "mocha --timeout 10000 test/ui/**/*.ts"
+    "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
   },
   "dependencies": {
     "@types/chai": "^4.3.14",
@@ -18,9 +18,10 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.7",
     "@types/nunjucks": "^3.2.6",
+    "@types/selenium-webdriver": "^4.1.22",
     "axios-mock-adapter": "^1.21.4",
     "chai": "^4.3.7",
-    "chromedriver": "^113.0.0",
+    "chromedriver": "^123.0.4",
     "mocha": "^10.2.0",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",

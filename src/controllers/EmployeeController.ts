@@ -14,7 +14,6 @@ export const getEmployees = async (req: express.Request, res: express.Response):
     }
 };
 
-
 export const getEmployee = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
         res.render('list-employee', { employee: await getSingleEmployee(req.params.id) });
