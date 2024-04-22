@@ -49,7 +49,7 @@ describe('EmployeeService', function () {
     /*
     Mocking Exercise 1
 
-    Write a unit test for the getEmployee method
+    Write a unit test for the getSingleEmployee method
 
     When axios returns with a 500 error
 
@@ -61,7 +61,7 @@ describe('EmployeeService', function () {
     /*
     Mocking Exercise 2
 
-    Write a unit test for the getEmployee method
+    Write a unit test for the getSingleEmployee method
 
     When axios returns an employee
 
@@ -73,11 +73,11 @@ describe('EmployeeService', function () {
     /*
     Mocking Exercise 3
 
-    Write a unit test for the getEmployee method
+    Write a unit test for the getSingleEmployee method
 
     When the id parameter is null
 
-    Expect a "Invalid ID" error should be returned and axios not invoked
+    Expect an "Invalid ID" error to be returned and axios not invoked
 
     This should fail, make code changes to make this test pass
      */
@@ -85,7 +85,7 @@ describe('EmployeeService', function () {
     /*
     Mocking Exercise 4
 
-    Write a unit test for the getEmployee method
+    Write a unit test for the getSingleEmployee method
 
     When axios returns with a 400 error
 
