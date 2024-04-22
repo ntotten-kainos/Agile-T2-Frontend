@@ -10,7 +10,7 @@ describe('Employee test', async () => {
             withCapabilities(webdriver.Capabilities.chrome()).
             build();
 
-        const url: string = process.env.UI_TEST_URL || 'http://localhost:8080/'
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/'
         await driver.get(url);
 
         await driver.findElement(webdriver.By.id('add-employee-button')).click();

@@ -3,7 +3,7 @@ import { validateEmployeeRequest } from "../validators/EmployeeValidator"
 import { EmployeeRequest } from "../models/EmployeeRequest"
 import { EmployeeResponse } from "../models/EmployeeResponse"
 
-axios.defaults.baseURL = process.env.API_URL;
+axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
 export const URL: string = "/hr/employee/";
 
