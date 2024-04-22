@@ -44,36 +44,22 @@ describe('Employee test', async () => {
     Try to create an employee with a salary of £10,000
 
     Expect 'Salary must be at least £20,000' error to be displayed
-
-    This should pass without code changes
     */
 
     /*
     UI Test Exercise 2
 
-    Write an UI test for the add employee flow
-
-    Try to create an employee with a salary of ABC
-
-    Expect 'Salary must be a number' error to be displayed
-
-    This should pass without code changes
-    */
-
-    /*
-    UI Test Exercise 3
-
     Write an UI test for view employee workflow
 
     Navigate from the homepage to the employee list
 
-    Select view on an employee
+    Click on an employee name
 
     Expect the name on the view employee page to match the name from the link you've clicked
     */
 
     /*
-    UI Test Exercise 4
+    UI Test Exercise 3
 
     Write an UI test for view employee workflow
 
