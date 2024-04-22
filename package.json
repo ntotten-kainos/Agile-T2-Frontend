@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "dev": "govuk-prototype-kit dev",
-    "serve": "govuk-prototype-kit serve",
     "start": "tsc && node dist/app.js",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
