@@ -2,9 +2,10 @@ import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
 import { getAllEmployees, URL } from '../../../src/services/EmployeeService';
-import { EmployeeRequest } from "../../../src/models/EmployeeRequest";
+import { EmployeeResponse } from "../../../src/models/EmployeeResponse";
 
-const employeeRequest: EmployeeRequest = {
+const employeeResponse: EmployeeResponse = {
+    employeeId: 1,
     salary: 30000,
     fname: "Mocha",
     lname: "Chai",
@@ -25,13 +26,13 @@ const mock = new MockAdapter(axios);
 describe('EmployeeService', function () {
     describe('getAllEmployees', function () {
       it('should return employees from response', async () => {
-        const data = [employeeRequest];
+        const data = [employeeResponse];
 
         mock.onGet(URL).reply(200, data);
 
         const results = await getAllEmployees();
 
-        expect(results[0]).to.deep.equal(employeeRequest)
+        expect(results[0]).to.deep.equal(employeeResponse);
       })
 
       it('should throw exception when 500 error returned from axios', async () => {
@@ -43,7 +44,6 @@ describe('EmployeeService', function () {
           expect(e.message).to.equal('Could not get employees');
           return;
         }
-        
       })
 
     /*

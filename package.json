@@ -17,12 +17,14 @@
     "@types/node": "^20.12.7",
     "@types/nunjucks": "^3.2.6",
     "@types/selenium-webdriver": "^4.1.22",
+    "@types/sinon": "^17.0.3",
     "axios-mock-adapter": "^1.21.4",
     "chai": "^4.3.7",
     "chromedriver": "^123.0.4",
     "mocha": "^10.2.0",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
+    "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
