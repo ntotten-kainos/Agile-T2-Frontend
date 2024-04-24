@@ -54,5 +54,73 @@ describe('EmployeeContoller', function () {
         expect(res.render.calledWith('list-employees')).to.be.true;
         expect(res.locals.errormessage).to.equal(errorMessage);
       });
+
+    /*
+    Additional Exercise 1
+
+    Write a unit test for the getEmployee method
+
+    When service returns employee
+
+    Expect a employee view to be rendered with employee object
+
+    This should pass without code changes
+     */
+
+    /*
+    Additional Exercise 2
+
+    Write a unit test for the getEmployee method
+
+    When service returns error
+
+    Expect a employee view to be rendered with error message
+
+    This should pass without code changes
+     */
+
+    /*
+    Additional Exercise 3
+
+    Write a unit test for the postEmployeeForm method
+
+    When service returns id
+
+    Expect a redirect to employee/:id url
+
+    This should pass without code changes
+     */
+
+    /*
+    Additional Exercise 4
+
+    Write a unit test for the postEmployeeForm method
+
+    When service returns error
+
+    Expect a employee form view to be rendered with error message
+
+    This should pass without code changes
+     */
+
+    /*
+    Additional Exercise 5
+
+    Write a unit test for the getIndex method
+
+    Expect a employee home view to be rendered
+
+    This should pass without code changes
+     */
+
+    /*
+    Additional Exercise 6
+
+    Write a unit test for the getEmployeeForm method
+
+    Expect a employee form view to be rendered
+
+    This should pass without code changes
+     */
     });
 });
