@@ -1,0 +1,8 @@
+{
+    "urls": [
+        "http://localhost:3000",
+        "http://localhost:3000/employees",
+        "http://localhost:3000/employees/1",
+        "http://localhost:3000/insert-employee"
+    ]
+}

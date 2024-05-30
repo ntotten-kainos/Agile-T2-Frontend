@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
   <head>
-    <title>Employee Example - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <link rel="manifest" href="/assets/manifest.json">
     <link rel="stylesheet" href="/stylesheets/govuk-frontend.min.css">
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Eo_circle_green_blank.svg/1024px-Eo_circle_green_blank.svg.png">
   </head>
   <body class="govuk-template__body">
     <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
@@ -14,6 +14,11 @@
       import { initAll } from '/javascripts/govuk-frontend.min.js'
       initAll()
     </script>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <img src="https://www.kainos.com/globalassets/images/5_logos/kainos_logo.png?mode=crop&width=200" />
+
 
     {% if errormessage %} 
     <div class="govuk-error-message" id="view-employees-error">{{ errormessage }}</div> 
@@ -46,5 +51,6 @@
     <form action="/insert-employee">
       <button class="govuk-button" id="add-employee-button">Add new employee</button>
     </form>
+    </div></div>
   </body>
 </html>

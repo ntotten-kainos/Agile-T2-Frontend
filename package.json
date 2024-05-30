@@ -20,7 +20,7 @@
     "@types/sinon": "^17.0.3",
     "axios-mock-adapter": "^1.21.4",
     "chai": "^4.3.7",
-    "chromedriver": "^123.0.4",
+    "chromedriver": "^125.0.2",
     "mocha": "^10.2.0",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
