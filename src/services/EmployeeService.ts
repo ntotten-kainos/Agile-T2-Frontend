@@ -16,6 +16,12 @@ export const createEmployee = async function (employee: EmployeeRequest): Promis
 
         return response.data;
     } catch (e) {
+        if (e.response.status == 400) {
+            throw new Error("Invalid Data");
+        }
+        if (e.response.status == 500) {
+            throw new Error("Could not create employee");
+        }
         throw new Error(e.message);
     }    
 }

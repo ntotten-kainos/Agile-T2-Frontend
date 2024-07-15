@@ -1,7 +1,8 @@
+import { EmployeeRequest } from './../../../src/models/EmployeeRequest';
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
-import { getAllEmployees, getSingleEmployee, URL } from '../../../src/services/EmployeeService';
+import { createEmployee, getAllEmployees, getSingleEmployee, URL } from '../../../src/services/EmployeeService';
 import { EmployeeResponse } from "../../../src/models/EmployeeResponse";
 
 const employeeResponse: EmployeeResponse = {
@@ -47,17 +48,17 @@ describe('EmployeeService', function () {
       })
     })
 
-    /*
-    Mocking Exercise 1
+      /*
+      Mocking Exercise 1
 
-    Write a unit test for the getSingleEmployee method
+      Write a unit test for the getSingleEmployee method
 
-    When axios returns with a 500 error
+      When axios returns with a 500 error
 
-    Expect a "Failed to get employee" error to be returned
+      Expect a "Failed to get employee" error to be returned
 
-    This should fail, make code changes to make this test pass
-     */
+      This should fail, make code changes to make this test pass
+      */
     describe('getSingleEmployee', function () {
       
       it('should throw exception when 500 error returned from axios', async () => {
@@ -70,96 +71,166 @@ describe('EmployeeService', function () {
         }
       })
     
-    /*
-    Mocking Exercise 2
+      /*
+      Mocking Exercise 2
 
-    Write a unit test for the getSingleEmployee method
+      Write a unit test for the getSingleEmployee method
 
-    When axios returns an employee
+      When axios returns an employee
 
-    Expect the employee to be returned
+      Expect the employee to be returned
 
-    This should pass without code changes
-     */
-    it('should return employee from response', async () => {
-      mock.onGet(URL + '1').reply(200, employeeResponse);
-      const returnData = await getSingleEmployee('1');
-      expect(returnData).to.deep.equals(employeeResponse);
-    })
+      This should pass without code changes
+      */
+      it('should return employee from response', async () => {
+        mock.onGet(URL + '1').reply(200, employeeResponse);
+        const returnData = await getSingleEmployee('1');
+        expect(returnData).to.deep.equals(employeeResponse);
+      })
 
-    /*
-    Mocking Exercise 3
+      /*
+      Mocking Exercise 3
 
-    Write a unit test for the getSingleEmployee method
+      Write a unit test for the getSingleEmployee method
 
-    When the id parameter is null
+      When the id parameter is null
 
-    Expect an "Invalid ID" error to be returned and axios not invoked
+      Expect an "Invalid ID" error to be returned and axios not invoked
 
-    This should fail, make code changes to make this test pass
-     */
-    it('should return "Invalid ID" from response', async () => {
+      This should fail, make code changes to make this test pass
+      */
+      it('should return "Invalid ID" from response', async () => {
+          try {
+            await getSingleEmployee('');
+          } catch (e) {
+            expect(e.message).to.equal('Invalid ID');
+            return;
+          }
+      })
+
+      /*
+      Mocking Exercise 4
+
+      Write a unit test for the getSingleEmployee method
+
+      When axios returns with a 400 error
+
+      Expect a "Employee does not exist" error to be returned
+
+      This should fail, make code changes to make this test pass
+      */
+      it('should return "Employee does not exist" from response', async () => {
+        mock.onGet(URL + '5').reply(400);
         try {
-          await getSingleEmployee('');
-        } catch (e) {
-          expect(e.message).to.equal('Invalid ID');
-          return;
+          await getSingleEmployee('5');
+        } catch(e) {
+          expect(e.message).to.equal('Employee does not exist');
         }
+      })
     })
 
-    /*
-    Mocking Exercise 4
+    describe('createEmployee', function () {
+      /*
+      Mocking Exercise 5
 
-    Write a unit test for the getSingleEmployee method
+      Write a unit test for the createEmployee method
 
-    When axios returns with a 400 error
+      When the axios returns an id
 
-    Expect a "Employee does not exist" error to be returned
+      Expect the id to be returned
 
-    This should fail, make code changes to make this test pass
-     */
-    it('should return "Employee does not exist" from response', async () => {
-      mock.onGet(URL + '5').reply(400);
-      try {
-        await getSingleEmployee('5');
-      } catch(e) {
-        expect(e.message).to.equal('Employee does not exist');
-      }
+      This should pass without code changes
+      */
+      it('should return id from response', async () => {
+        const employeeReq: EmployeeRequest = {
+          salary: 30000,
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "AB123456C"
+        }
+        const id: number = 1;
+        mock.onPost(URL, employeeReq).reply(200, id);
+        const returnData = await createEmployee(employeeReq);
+        expect(returnData).equals(id);
+      })
+      /*
+      Mocking Exercise 6
+
+      Write a unit test for the createEmployee method
+
+      When axios returns with a 400 error
+
+      Expect a "Invalid data" error to be returned
+
+      This should fail, make code changes to make this test pass
+      */
+      it('should return "Invalid Data" when axios returns 400', async () => {
+        const employeeReq: EmployeeRequest = {
+          salary: 30000,
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "AB123456C"
+        }
+        const id: number = 1;
+        mock.onPost(URL, employeeReq).reply(400, id);
+        try {
+          const returnData = await createEmployee(employeeReq);  
+        } catch(e) {
+          expect(e.message).to.equal("Invalid Data");
+        }  
+      })
+      /*
+      Mocking Exercise 7
+
+      Write a unit test for the createEmployee method
+
+      When axios returns with a 500 error
+
+      Expect a "Could not create employee" error to be returned
+
+      This should fail, make code changes to make this test pass
+      */
+      it('should return "Could not create employee" when axios returns 500', async () => {
+        const employeeReq: EmployeeRequest = {
+          salary: 30000,
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "AB123456C"
+        }
+        const id: number = 1;
+        mock.onPost(URL, employeeReq).reply(500, id);
+        try {
+          const returnData = await createEmployee(employeeReq);  
+        } catch(e) {
+          expect(e.message).to.equal("Could not create employee");
+        }  
+      })
     })
-  })
-    /*
-    Mocking Exercise 5
-
-    Write a unit test for the createEmployee method
-
-    When the axios returns an id
-
-    Expect the id to be returned
-
-    This should pass without code changes
-     */
-
-    /*
-    Mocking Exercise 6
-
-    Write a unit test for the createEmployee method
-
-    When axios returns with a 400 error
-
-    Expect a "Invalid data" error to be returned
-
-    This should fail, make code changes to make this test pass
-     */
-
-     /*
-    Mocking Exercise 7
-
-    Write a unit test for the createEmployee method
-
-    When axios returns with a 500 error
-
-    Expect a "Could not create employee" error to be returned
-
-    This should fail, make code changes to make this test pass
-     */
   })
