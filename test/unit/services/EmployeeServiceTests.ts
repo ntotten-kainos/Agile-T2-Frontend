@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
-import { getAllEmployees, URL } from '../../../src/services/EmployeeService';
+import { getAllEmployees, getSingleEmployee, URL } from '../../../src/services/EmployeeService';
 import { EmployeeResponse } from "../../../src/models/EmployeeResponse";
 
 const employeeResponse: EmployeeResponse = {
@@ -45,6 +45,7 @@ describe('EmployeeService', function () {
           return;
         }
       })
+    })
 
     /*
     Mocking Exercise 1
@@ -57,7 +58,18 @@ describe('EmployeeService', function () {
 
     This should fail, make code changes to make this test pass
      */
-
+    describe('getSingleEmployee', function () {
+      
+      it('should throw exception when 500 error returned from axios', async () => {
+        mock.onGet(URL + '1').reply(500);
+        try {
+          await getSingleEmployee('1');
+        } catch (e) {
+          expect(e.message).to.equal('Failed to get employee');
+          return;
+        }
+      })
+    
     /*
     Mocking Exercise 2
 
@@ -69,6 +81,11 @@ describe('EmployeeService', function () {
 
     This should pass without code changes
      */
+    it('should return employee from response', async () => {
+      mock.onGet(URL + '1').reply(200, employeeResponse);
+      const returnData = await getSingleEmployee('1');
+      expect(returnData).to.deep.equals(employeeResponse);
+    })
 
     /*
     Mocking Exercise 3
@@ -81,6 +98,14 @@ describe('EmployeeService', function () {
 
     This should fail, make code changes to make this test pass
      */
+    it('should return "Invalid ID" from response', async () => {
+        try {
+          await getSingleEmployee('');
+        } catch (e) {
+          expect(e.message).to.equal('Invalid ID');
+          return;
+        }
+    })
 
     /*
     Mocking Exercise 4
@@ -93,7 +118,15 @@ describe('EmployeeService', function () {
 
     This should fail, make code changes to make this test pass
      */
-
+    it('should return "Employee does not exist" from response', async () => {
+      mock.onGet(URL + '5').reply(400);
+      try {
+        await getSingleEmployee('5');
+      } catch(e) {
+        expect(e.message).to.equal('Employee does not exist');
+      }
+    })
+  })
     /*
     Mocking Exercise 5
 
@@ -129,5 +162,4 @@ describe('EmployeeService', function () {
 
     This should fail, make code changes to make this test pass
      */
-    })
   })
