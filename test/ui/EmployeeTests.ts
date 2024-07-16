@@ -3,6 +3,7 @@
 import webdriver from 'selenium-webdriver';
 
 import { expect } from 'chai';
+import e from 'express';
 
 describe('Employee test', async () => {
     it('Should create new employee', async () => {
@@ -111,6 +112,7 @@ describe('Employee test', async () => {
         // Verify it matches the selected name
         expect(empName).to.equal('UI Tests');        
     });
+
     /*
     UI Test Exercise 3
 
@@ -120,5 +122,19 @@ describe('Employee test', async () => {
 
     Expect 'Employee does not exist' error to be displayed
     */
+    it('Should display selected employee', async () => {
+        const driver = new webdriver.Builder().
+            withCapabilities(webdriver.Capabilities.chrome()).
+            build();
 
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/'
+        await driver.get(url);
+        await driver.get(url + 'employees/9999999');
+
+        const error = await driver.findElement(webdriver.By.id('emp-not-exist')).getText();
+
+        await driver.quit();
+        
+        expect(error).to.equal('Employee does not exist');        
+    });
   })

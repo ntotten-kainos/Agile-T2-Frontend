@@ -3,6 +3,7 @@ import { validateEmployeeRequest } from "../validators/EmployeeValidator"
 import { EmployeeRequest } from "../models/EmployeeRequest"
 import { EmployeeResponse } from "../models/EmployeeResponse"
 import e from "express";
+import { error } from "console";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
@@ -27,6 +28,7 @@ export const createEmployee = async function (employee: EmployeeRequest): Promis
                 const errString: string = "Could not create employee";
                 throw new Error(errString);
             }
+            throw new Error(e.message);
         }
     }    
 }
