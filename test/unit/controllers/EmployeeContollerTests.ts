@@ -174,6 +174,22 @@ describe('EmployeeContoller', function () {
 
       This should pass without code changes
       */
+      it('Should render employee form with appropriate error', async () => {
+        const errorMessage: string = "Error Message"
+        // When service returns error
+        sinon.stub(EmployeeService, 'createEmployee').rejects(new Error(errorMessage));
+
+
+        const req = {  };
+        const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+        // Call postEmployeeForm
+        await EmployeeController.postEmployeeForm(req as any, res as any);
+
+        // Then expect to be redirected to employee/:id
+        expect(res.render.calledWith('employee-form')).to.be.true;  
+        expect(res.locals.errormessage).to.equal(errorMessage);
+      });
     });
     
     describe('getIndex', function () {
@@ -187,5 +203,11 @@ describe('EmployeeContoller', function () {
 
       This should pass without code changes
       */
+      it('Should render employee-home', async () => {
+        const req = {  };
+        const res = { render: sinon.spy(), locals: { errormessage: '' } };
+        await EmployeeController.getIndex(req as any, res as any);
+        expect(res.render.calledWith('employee-home')).to.be.true;
+      })
     });
 });
