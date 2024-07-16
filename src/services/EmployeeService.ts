@@ -16,13 +16,18 @@ export const createEmployee = async function (employee: EmployeeRequest): Promis
 
         return response.data;
     } catch (e) {
-        if (e.response.status == 400) {
-            throw new Error("Invalid Data");
+        if(e.response == undefined) {
+            throw new Error(e.message)
+        } else {
+            if (e.response.status == 400) {
+                const errString: string = "Invalid Data";
+                throw new Error(errString);
+            }
+            if (e.response.status == 500) {
+                const errString: string = "Could not create employee";
+                throw new Error(errString);
+            }
         }
-        if (e.response.status == 500) {
-            throw new Error("Could not create employee");
-        }
-        throw new Error(e.message);
     }    
 }
 
@@ -43,7 +48,6 @@ export const getSingleEmployee = async function (id: string): Promise<EmployeeRe
         }
         throw new Error(error.message);
     }
-    
 }
 
 export const getAllEmployees = async function (): Promise<EmployeeResponse[]> {

@@ -26,7 +26,7 @@ describe('Employee test', async () => {
         await driver.findElement(webdriver.By.id('country')).sendKeys('Norn Iron');
         await driver.findElement(webdriver.By.id('phoneNo')).sendKeys('01234567890');
         await driver.findElement(webdriver.By.id('bankNo')).sendKeys('12345678');
-        await driver.findElement(webdriver.By.id('nin')).sendKeys('AA1A11AA');
+        await driver.findElement(webdriver.By.id('nin')).sendKeys('AA111111A');
         await driver.findElement(webdriver.By.id('salary')).sendKeys('30000');
         await driver.findElement(webdriver.By.id('submit')).click();
    
@@ -36,6 +36,7 @@ describe('Employee test', async () => {
 
         expect(name).to.equal('UI Tests');        
     });
+    
     /*
     UI Test Exercise 1
 
@@ -45,6 +46,37 @@ describe('Employee test', async () => {
 
     Expect 'Salary must be at least £20,000' error to be displayed
     */
+    it('Should throw error when salary too low', async () => {
+        const driver = new webdriver.Builder().
+            withCapabilities(webdriver.Capabilities.chrome()).
+            build();
+
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/'
+        await driver.get(url);
+
+        await driver.findElement(webdriver.By.id('add-employee-button')).click();
+
+        await driver.findElement(webdriver.By.id('fname')).sendKeys('UI');
+        await driver.findElement(webdriver.By.id('lname')).sendKeys('Tests');
+        await driver.findElement(webdriver.By.id('email')).sendKeys('testemail@email.com');
+        await driver.findElement(webdriver.By.id('address')).sendKeys('1 Home Street');
+        await driver.findElement(webdriver.By.id('address2')).sendKeys('Home Lane');
+        await driver.findElement(webdriver.By.id('city')).sendKeys('Belfast');
+        await driver.findElement(webdriver.By.id('county')).sendKeys('Antrim');
+        await driver.findElement(webdriver.By.id('postalCode')).sendKeys('BT9');
+        await driver.findElement(webdriver.By.id('country')).sendKeys('Norn Iron');
+        await driver.findElement(webdriver.By.id('phoneNo')).sendKeys('01234567890');
+        await driver.findElement(webdriver.By.id('bankNo')).sendKeys('12345678');
+        await driver.findElement(webdriver.By.id('nin')).sendKeys('AA111111A');
+        await driver.findElement(webdriver.By.id('salary')).sendKeys('10000');
+        await driver.findElement(webdriver.By.id('submit')).click();
+   
+        const error = await driver.findElement(webdriver.By.id('create-employee-error')).getText();
+
+        await driver.quit();
+
+        expect(error).to.equal('Salary must be at least £20,000');        
+    });
 
     /*
     UI Test Exercise 2
