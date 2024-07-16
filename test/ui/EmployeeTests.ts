@@ -36,7 +36,7 @@ describe('Employee test', async () => {
 
         expect(name).to.equal('UI Tests');        
     });
-    
+
     /*
     UI Test Exercise 1
 
@@ -89,7 +89,28 @@ describe('Employee test', async () => {
 
     Expect the name on the view employee page to match the name from the link you've clicked
     */
+    it('Should display selected employee', async () => {
+        const driver = new webdriver.Builder().
+            withCapabilities(webdriver.Capabilities.chrome()).
+            build();
 
+        const url: string = process.env.UI_TEST_URL || 'http://localhost:3000/'
+        await driver.get(url);
+
+        // View all employees
+        await driver.findElement(webdriver.By.id('view-employees-button')).click();
+
+        // Then select a specific employee
+        await driver.findElement(webdriver.By.linkText("UI Tests")).click()
+
+        // Find the name on the resultant page
+        const empName = await driver.findElement(webdriver.By.id('name')).getText();
+
+        await driver.quit();
+        
+        // Verify it matches the selected name
+        expect(empName).to.equal('UI Tests');        
+    });
     /*
     UI Test Exercise 3
 
