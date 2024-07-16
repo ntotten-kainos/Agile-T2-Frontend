@@ -54,6 +54,9 @@ describe('EmployeeContoller', function () {
         expect(res.render.calledWith('list-employees')).to.be.true;
         expect(res.locals.errormessage).to.equal(errorMessage);
       });
+    });
+
+    describe('getEmployee', function () {
 
     /*
     Additional Exercise 1
@@ -66,6 +69,16 @@ describe('EmployeeContoller', function () {
 
     This should pass without code changes
      */
+      it('should render view with the employee object returned', async () => {
+        sinon.stub(EmployeeService, 'getSingleEmployee').resolves(employeeResponse);
+        const req = { params:{id:'1'} };  // As this is used in getEmployee method for req.params.id, we need to assign this to something or it falls over!
+        const res = { render: sinon.spy() };
+
+        await EmployeeController.getEmployee(req as any, res as any);
+
+        expect(res.render.calledOnce).to.be.true;
+        expect(res.render.calledWith('list-employee', { employee: employeeResponse })).to.be.true;
+      });
 
     /*
     Additional Exercise 2
@@ -78,6 +91,38 @@ describe('EmployeeContoller', function () {
 
     This should pass without code changes
      */
+    it.only('should render view with the employee object returned', async () => {
+      // Create our error message
+      const errorMessage: string = "Error Message";
+      // Have the service reject the request and throw our error
+      sinon.stub(EmployeeService, 'getSingleEmployee').rejects(new Error(errorMessage));
+
+      const req = { params: { id: '1' } };
+      // Ensure 'locals' object here has an errormessage object in its JSON that is NOT NULL or Undefined.
+      const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+      await EmployeeController.getEmployee(req as any, res as any);
+
+      expect(res.render.calledOnce).to.be.true;
+      expect(res.render.calledWith('list-employee')).to.be.true;
+      console.log(res.locals.errormessage);
+      expect(res.locals.errormessage).to.equal(errorMessage);
+    });
+
+    /*
+    Additional Exercise 6
+
+    Write a unit test for the getEmployeeForm method
+
+    Expect a employee form view to be rendered
+
+    This should pass without code changes
+     */
+    });
+
+    
+
+    describe('postEmployee', function () {
 
     /*
     Additional Exercise 3
@@ -102,6 +147,9 @@ describe('EmployeeContoller', function () {
 
     This should pass without code changes
      */
+    });
+    
+    describe('getIndex', function () {
 
     /*
     Additional Exercise 5
@@ -109,16 +157,6 @@ describe('EmployeeContoller', function () {
     Write a unit test for the getIndex method
 
     Expect a employee home view to be rendered
-
-    This should pass without code changes
-     */
-
-    /*
-    Additional Exercise 6
-
-    Write a unit test for the getEmployeeForm method
-
-    Expect a employee form view to be rendered
 
     This should pass without code changes
      */
