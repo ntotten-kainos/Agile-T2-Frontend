@@ -151,7 +151,6 @@ describe('EmployeeContoller', function () {
         // When service returns employee ID
         sinon.stub(EmployeeService, 'createEmployee').resolves(empID);
 
-
         const req = {  };
         // Need to mock/spy anything that might be called such as redirect in this case!
         const res = { redirect: sinon.spy(), render: sinon.spy(), locals: { errormessage: '' } };
