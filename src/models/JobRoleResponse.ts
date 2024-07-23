@@ -1,8 +1,8 @@
 export type JobRoleResponse = {
-    jobRoleId: Number,
-    roleName: String,
-    location: String, //enum as string? String or string?
-    band: String,
+    jobRoleId: number,
+    roleName: string,
+    location: string, //enum as string? String or string?
+    band: string,
     capability: String,
     closingDate: Date
 }
