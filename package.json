@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "tsc && node dist/app.js",
+    "linter": "npx eslint .",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
   },
@@ -26,6 +27,7 @@
     "selenium-webdriver": "^4.9.0",
     "sinon": "^17.0.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "eslint": "^8.57.0"
   }
 }
