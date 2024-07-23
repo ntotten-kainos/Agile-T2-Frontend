@@ -13,7 +13,6 @@ const jobRoleResponse: JobRoleResponse = {
     closingDate: new Date('2024-12-31T23:59:59')
 }
 
-
 describe('JobRoleController', function () {
     afterEach(() => {
         sinon.restore();
@@ -22,17 +21,17 @@ describe('JobRoleController', function () {
 
     describe('getAllJobRoles', function () {
         it('should render view with Job Roles when Job Roles returned', async () => {
-          const jobRoleList = [jobRoleResponse];
-  
-          sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
-  
-          const req = { };
-          const res = { render: sinon.spy() };
-  
-          await JobRoleController.getAllJobRoles(req as any, res as any);
-  
-          expect(res.render.calledOnce).to.be.true;
-          expect(res.render.calledWith('jobRoles', { jobRoles:jobRoleList })).to.be.true;
+            const jobRoleList = [jobRoleResponse];
+
+            sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
+
+            const req = {};
+            const res = { render: sinon.spy() };
+
+            await JobRoleController.getAllJobRoles(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList })).to.be.true;
         });
 
     });

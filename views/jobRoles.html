@@ -15,17 +15,22 @@
     <h1>Job Roles</h1>
     <table>
         <tr>
-            <th>Job Role ID</th>
-            <th>Job Role Date</th>
+            <th>Job Role</th>
+            <th>Location</th>
+            <th>Band</th>
+            <th>Capability</th>
+            <th>Closing Date</th>
 
         </tr>
 
         {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
         <tr>
-            <td>{{jobRole.jobRoleId}}</td>
+            <td>{{jobRole.roleName}}</td>
+            <td>{{jobRole.location}}</td>
+            <td>{{jobRole.band}}</td>
+            <td>{{jobRole.capability}}</td>
             <td>{{jobRole.closingDate}}</td>
-
-
+            
         </tr>
 
         {% endfor %}
