@@ -3,7 +3,8 @@
     "start": "tsc && node dist/app.js",
     "dev": "nodemon src/app.ts",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
-    "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
+    "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts",
+    "coverage": "nyc mocha --require ts-node/register test/unit/**/*.ts"
   },
   "dependencies": {
     "axios": "^1.7.2",
@@ -25,6 +26,7 @@
     "chromedriver": "^125.0.2",
     "mocha": "^10.2.0",
     "nodemon": "^3.1.4",
+    "nyc": "^17.0.0",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
     "sinon": "^17.0.1",

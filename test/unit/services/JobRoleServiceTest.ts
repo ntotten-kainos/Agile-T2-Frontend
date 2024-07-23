@@ -31,5 +31,22 @@ describe('JobRoleService', function () {
             expect(results[0].capability).to.equal(jobRoleResponse.capability);
             expect(new Date(results[0].closingDate).getTime()).to.equal(jobRoleResponse.closingDate.getTime());
         });
+
+        
+        it('should throw an error when the request fails', async () => {
+            mock.onGet("http://localhost:8080/api/job-roles").reply(500);
+
+            try {
+                await getJobRoles();
+                throw new Error('Test failed - error was not thrown');
+            } catch (e) {
+                expect(e.message).to.equal('Failed to get Job Roles');
+            }
+        });
+
+
+
+
+
     });
 });
