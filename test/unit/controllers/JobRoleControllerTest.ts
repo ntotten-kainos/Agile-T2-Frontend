@@ -35,4 +35,24 @@ describe('JobRoleController', function () {
         });
 
     });
+
+    
+    it('should render view with error message when error thrown', async () => {
+        const errorMessage: string = 'Error message';
+        sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
+
+        const req = { };
+        const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+        await JobRoleController.getAllJobRoles(req as any, res as any);
+
+        expect(res.render.calledOnce).to.be.true;
+        expect(res.render.calledWith('jobRoles')).to.be.true;
+        expect(res.locals.errormessage).to.equal(errorMessage);
+      });
+
+
+
+
+
 });
