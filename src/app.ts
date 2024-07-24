@@ -2,6 +2,7 @@ import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import session from "express-session";
+import { getLoginForm, postLoginForm } from "./controllers/AuthController";
 const app = express();
 
 nunjucks.configure('views', {
@@ -24,6 +25,9 @@ declare module "express-session" {
     token: string;
   }
 }
+
+app.get('/loginForm', getLoginForm);
+app.post('/loginForm', postLoginForm);
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

@@ -9,7 +9,7 @@ export const postLoginForm = async (req:express.Request, res:express.Response): 
     try {
         req.session.token = await getAuthToken(req.body);
         // Don't have a decided page to direct to after login - so will do root for now.
-        res.redirect('/');
+        res.redirect('/loginForm');
     } catch (error) {
         res.locals.errormessage = error.message;
         res.render('loginForm.html', req.body);

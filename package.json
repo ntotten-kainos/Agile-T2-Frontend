@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "tsc && node dist/app.js",
+    "dev": "nodemon src/app.ts",
     "linter": "npx eslint .",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
@@ -28,6 +29,7 @@
     "eslint": "^8.57.0",
     "globals": "^15.8.0",
     "mocha": "^10.2.0",
+    "nodemon": "^3.1.4",
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
     "sinon": "^17.0.1",
