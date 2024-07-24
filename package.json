@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "tsc && node dist/app.js",
-     "linter": "npx eslint .",
+     "linter": "npx eslint src/ ",
     "dev": "nodemon src/app.ts",
 
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
