@@ -3,6 +3,6 @@ export type JobRoleResponse = {
     roleName: string,
     location: string, //enum as string? String or string?
     band: string,
-    capability: String,
+    capability: string,
     formattedClosingDate: Date;
 }
