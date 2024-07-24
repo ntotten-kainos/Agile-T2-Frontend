@@ -1,17 +1,16 @@
-# nodejs-express-govuk-mysql
+# Agile - Team 2 - Frontend
 
 REST API
 ---
-This application provides a frontend for the REST API: https://github.com/shaunganley/java-dropwizard-swagger-jdbc
+This application provides a frontend for the REST API: https://github.com/ntotten-kainos/Agile-T2-Java
 1. Follow the steps in the above link to run the REST API
 
 
-How to start the nodejs-express-govuk-axios application
+How to start the Agile-T2-Frontend application
 ---
 
 1. Run `npm install` to build your application
 1. Start application with `API_URL=http://localhost:8080/ && npm start`
-1. To check that your application is running enter url `http://localhost:3000/employees`
 
 Tests
 ---
@@ -29,7 +28,7 @@ Build and run the service through docker
 
 You can build in a number of ways using docker and integrate it with a database, these are listed below:
 pre-requisite = docker and docker compose are installed in your local system.
-                your docker image for https://github.com/shaunganley/java-dropwizard-swagger-jdbc is 
+                your docker image for https://github.com/ntotten-kainos/Agile-T2-Java is 
                 available locally (the web ui has a dependency on this) and running.
 
 1.  Ensure the environment variables are correct for your api or enter these as 
