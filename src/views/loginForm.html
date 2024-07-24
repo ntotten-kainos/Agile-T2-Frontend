@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>
+        Login
+    </h1>
+    {% if errormessage %}
+    <h2>
+        {{ errormessage }}
+    </h2>
+    {% endif %}
+
+    <form class="login-form" action="/loginForm" method="post">
+        <h3>
+            <label for="email">
+                Email:
+            </label>
+        </h3>
+        <input type="email" name="email" id="email" value="{{email}}">
+        <h3>
+            <label for="password">
+                Password
+            </label>
+        </h3>
+        <input type="password" name="password" id="password" value="{{password}}">
+        <br><br>
+        <button id="submit">Submit</button>
+    </form>
+</body>
+</html>
