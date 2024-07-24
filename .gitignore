@@ -11,3 +11,6 @@ node_modules/
 .tmuxp.*
 dist/
 .idea/
+
+# Ignore nyc output
+.nyc_output
