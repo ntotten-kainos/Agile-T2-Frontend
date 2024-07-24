@@ -1,13 +1,8 @@
 name: pa11y
  
 on:
-  pull_request:
-    branches:
-      - main
   schedule:
     - cron: "0 1 * * *"
-
-
  
 jobs:
   pa11y:
