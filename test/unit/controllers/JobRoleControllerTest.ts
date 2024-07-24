@@ -10,7 +10,7 @@ const jobRoleResponse: JobRoleResponse = {
     location: "Belfast",
     band: "1",
     capability: "healthcare",
-    closingDate: new Date('2024-12-31T23:59:59')
+    formattedClosingDate: new Date('2024-12-31T23:59:59')
 }
 
 describe('JobRoleController', function () {
@@ -34,9 +34,6 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList })).to.be.true;
         });
 
-    });
-
-    
     it('should render view with error message when error thrown', async () => {
         const errorMessage: string = 'Error message';
         sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
@@ -50,9 +47,5 @@ describe('JobRoleController', function () {
         expect(res.render.calledWith('jobRoles')).to.be.true;
         expect(res.locals.errormessage).to.equal(errorMessage);
       });
-
-
-
-
-
+    });
 });

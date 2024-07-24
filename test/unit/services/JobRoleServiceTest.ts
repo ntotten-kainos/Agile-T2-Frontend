@@ -10,7 +10,7 @@ const jobRoleResponse: JobRoleResponse = {
     location: "Belfast",
     band: "1",
     capability: "healthcare",
-    closingDate: new Date('2024-12-31T23:59:59.000Z') 
+    formattedClosingDate: new Date('2024-12-31T23:59:59.000Z') 
 }
 
 const mock = new MockAdapter(axios);
@@ -29,7 +29,7 @@ describe('JobRoleService', function () {
             expect(results[0].location).to.equal(jobRoleResponse.location);
             expect(results[0].band).to.equal(jobRoleResponse.band);
             expect(results[0].capability).to.equal(jobRoleResponse.capability);
-            expect(new Date(results[0].closingDate).getTime()).to.equal(jobRoleResponse.closingDate.getTime());
+            expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
         });
 
         
