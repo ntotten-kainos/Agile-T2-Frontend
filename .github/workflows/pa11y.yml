@@ -26,7 +26,7 @@ jobs:
         run: npm ci
  
       - name: Install pa11y
-        run: npm install pa11y-ci
+        run: npm install -g pa11y-ci
  
       - name: Run pa11y
-        run: npm pa11y-ci
+        run: pa11y-ci
