@@ -3,7 +3,7 @@ import { JobRoleResponse } from "../models/JobRoleResponse";
 
 export const getJobRoles = async (): Promise<JobRoleResponse[]> => {
     try {
-        const response: AxiosResponse = await axios.get("http://localhost:8080/api/job-roles"); // will need amended
+        const response: AxiosResponse = await axios.get("http://localhost:8080/api/job-roles"); 
         return response.data;
     } catch (e) {
         console.log(e);

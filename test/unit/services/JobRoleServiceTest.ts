@@ -10,7 +10,7 @@ const jobRoleResponse: JobRoleResponse = {
     location: "Belfast",
     band: "1",
     capability: "healthcare",
-    formattedClosingDate: new Date('2024-12-31T23:59:59.000Z') 
+    formattedClosingDate: new Date('2024-12-31T23:59:59.000Z')
 }
 
 const mock = new MockAdapter(axios);
@@ -32,7 +32,7 @@ describe('JobRoleService', function () {
             expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
         });
 
-        
+
         it('should throw an error when the request fails', async () => {
             mock.onGet("http://localhost:8080/api/job-roles").reply(500);
 
@@ -43,10 +43,6 @@ describe('JobRoleService', function () {
                 expect(e.message).to.equal('Failed to get Job Roles');
             }
         });
-
-
-
-
 
     });
 });
