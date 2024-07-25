@@ -1,4 +1,3 @@
-import { getIndex, getEmployees, getEmployee, getEmployeeForm, postEmployeeForm } from "./controllers/EmployeeController";
 import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
@@ -21,8 +20,9 @@ app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
 
-app.get('/', getIndex);
-app.get('/employees', getEmployees);
-app.get('/employees/:id', getEmployee);
-app.get('/insert-employee', getEmployeeForm);
-app.post('/insert-employee', postEmployeeForm);
+app.get('/', async (req: express.Request, res: express.Response) => {
+  res.render("home.html");
+});
+
+
+
