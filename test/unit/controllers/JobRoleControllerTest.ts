@@ -8,8 +8,8 @@ const jobRoleResponse: JobRoleResponse = {
     jobRoleId: 1,
     roleName: "Test Engineer",
     location: "Belfast",
-    band: "1",
-    capability: "healthcare",
+    bandValue: "BAND1",
+    capabilityName: "healthcare",
     formattedClosingDate: new Date('2024-12-31T23:59:59')
 }
 
