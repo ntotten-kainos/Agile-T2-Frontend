@@ -7,7 +7,7 @@ import { getAuthToken } from '../../../src/services/AuthService';
 import e from 'express';
 
 
-describe('AuthController', function () {
+describe('AuthController Tests', function () {
 
     afterEach(() => {
         sinon.restore();
