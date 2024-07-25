@@ -1,7 +1,8 @@
+import e from 'express';
 import { LoginRequest } from './../models/LoginRequest';
 
 
-export const validateEmployeeRequest = function (loginReq: LoginRequest): void {
+export const validateLoginRequest = function (loginReq: LoginRequest): void {
     if (!validateEmail(loginReq.email)) {
         throw new Error("Invalid Email Format!");
     }
@@ -9,7 +10,7 @@ export const validateEmployeeRequest = function (loginReq: LoginRequest): void {
     const passwordValidationResult = validatePassword(loginReq.password);
 
     if (!passwordValidationResult.isValid) {
-        throw new Error("Invalid Password!" + passwordValidationResult.errors)
+        throw new Error("Invalid Password! " + passwordValidationResult.errors);
     }
 }
 

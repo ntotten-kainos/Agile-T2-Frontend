@@ -6,7 +6,7 @@ import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-describe('AuthService Tests', function () {
+describe('AuthService', function () {
 
     afterEach(() => {
         sinon.restore();
