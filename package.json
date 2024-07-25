@@ -4,8 +4,6 @@
  
      "linter": "npx eslint src/ ",
     "dev": "nodemon src/app.ts",
- 
- 
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts",
     "coverage": "nyc mocha --require ts-node/register test/unit/**/*.ts"
