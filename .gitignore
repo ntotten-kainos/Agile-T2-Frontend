@@ -11,6 +11,7 @@ node_modules/
 .tmuxp.*
 dist/
 .idea/
-
+# Ignore Coverage
+coverage
 # Ignore nyc output
 .nyc_output
