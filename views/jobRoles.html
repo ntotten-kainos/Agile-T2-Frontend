@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Role List</title>
+
+    <!-- This is just a basic html page to get ticket working,
+
+     will need to update with Ashnas templates etc
+      
+     -->
+</head>
+
+<body>
+    <h1>Job Roles</h1>
+    <table>
+        <tr>
+            <th>Job Role</th>
+            <th>Location</th>
+            <th>Band</th>
+            <th>Capability</th>
+            <th>Closing Date</th>
+
+        </tr>
+
+        {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
+        <tr>
+            <td>{{jobRole.roleName}}</td>
+            <td>{{jobRole.location}}</td>
+            <td>{{jobRole.band}}</td>
+            <td>{{jobRole.capability}}</td>
+            <td>{{jobRole.formattedClosingDate}}</td>
+
+        </tr>
+
+        {% endfor %}
+
+
+
+    </table>
+
+</body>
+
+</html>

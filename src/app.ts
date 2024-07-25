@@ -1,21 +1,25 @@
 import express from "express";
 import nunjucks from "nunjucks";
-import bodyParser from "body-parser";
+
+import { getAllJobRoles } from "./controllers/JobRoleController";
+
 const app = express();
+
+app.use(express.static('public'));
+app.set('view engine', 'html')
 
 nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
 
-app.use(express.static('public'));
-app.set('view engine', 'html')
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');
+
 });
+
+app.get('/job-roles', getAllJobRoles);
+
+
