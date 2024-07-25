@@ -16,7 +16,8 @@
     "express": "^4.19.2",
     "govuk-frontend": "^5.3.1",
     "nunjucks": "^3.2.4",
-    "axios": "^1.7.2"
+    "axios": "^1.7.2",
+    "pa11y-ci": "^3.1.0"
   },
   "devDependencies": {
 

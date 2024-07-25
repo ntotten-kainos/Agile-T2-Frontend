@@ -17,6 +17,7 @@ Tests
 
 1. Run `npm test` to run unit tests
 1. Run `UI_TEST_URL=http://localhost:3000 && npm run test-ui` to run UI tests locally, change the URL to run against remote (you may need to update the version of the chromedriver dependency: `npm update chromedriver`)
+1. Add URLs to .pa11y-ci file which to run the pa11y accessibility test within the CI/CD pipeline 
 
 Config
 ---
