@@ -1,4 +1,3 @@
-import e from 'express';
 import { LoginRequest } from './../models/LoginRequest';
 
 
