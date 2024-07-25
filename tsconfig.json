@@ -15,5 +15,9 @@
     "exclude": [
         "./node_modules/**/*",
         "./dist/**/*"
+    ],
+    "typeRoots": [
+        "./src/models", // This is where we define our types.
+        "./node_modules/@types" // This is where node modules containing types are located.
     ]
 }
