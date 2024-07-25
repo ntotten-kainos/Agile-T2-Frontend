@@ -7,7 +7,6 @@
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts"
   },
   "dependencies": {
-    "@types/express-session": "^1.18.0",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "govuk-frontend": "^5.3.1",
@@ -19,6 +18,7 @@
     "@types/axios": "^0.14.0",
     "@types/chai": "^4.3.14",
     "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.7",
     "@types/nunjucks": "^3.2.6",

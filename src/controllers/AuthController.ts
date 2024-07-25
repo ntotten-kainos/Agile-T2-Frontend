@@ -8,6 +8,7 @@ export const getLoginForm = async (req:express.Request, res:express.Response): P
 export const postLoginForm = async (req:express.Request, res:express.Response): Promise<void> => {
     try {
         req.session.token = await getAuthToken(req.body);
+
         // Don't have a decided page to direct to after login - so will do root for now.
         res.redirect('/loginForm');
     } catch (error) {
