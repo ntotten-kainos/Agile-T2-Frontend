@@ -1,7 +1,7 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { expect } from 'chai';
-import { getJobRoles } from '../../../src/services/JobRoleService';
+import { getJobRoles, URL } from '../../../src/services/JobRoleService';
 import { JobRoleResponse } from "../../../src/models/JobRoleResponse";
 
 const jobRoleResponse: JobRoleResponse = {
@@ -20,7 +20,7 @@ describe('JobRoleService', function () {
         it('should return Job Roles from response', async () => {
             const data = [jobRoleResponse];
 
-            mock.onGet("http://localhost:8080/api/job-roles").reply(200, data);
+            mock.onGet(URL).reply(200, data);
 
             const results = await getJobRoles();
 
@@ -34,7 +34,7 @@ describe('JobRoleService', function () {
 
 
         it('should throw an error when the request fails', async () => {
-            mock.onGet("http://localhost:8080/api/job-roles").reply(500);
+            mock.onGet(URL).reply(500);
 
             try {
                 await getJobRoles();
