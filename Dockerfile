@@ -8,7 +8,7 @@ ARG API_URL
 
 ENV API_URL ${API_URL}
 
-RUN RUN npm install
+RUN npm install
 
 COPY . .
 
