@@ -8,7 +8,7 @@ ARG API_URL
 
 ENV API_URL ${API_URL}
 
-RUN npm ci --omit=dev
+RUN RUN npm install
 
 COPY . .
 
