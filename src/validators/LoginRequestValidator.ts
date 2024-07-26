@@ -9,7 +9,7 @@ export const validateLoginRequest = function (loginReq: LoginRequest): void {
     const passwordValidationResult = validatePassword(loginReq.password);
 
     if (!passwordValidationResult.isValid) {
-        throw new Error("Invalid Password!");
+        throw new Error("Invalid Password! " + passwordValidationResult.errors);
     }
 }
 
