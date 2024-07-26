@@ -26,6 +26,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+      env:
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
     - run:
         npm install
 

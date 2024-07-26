@@ -1,4 +1,5 @@
 import { getAuthToken } from './../services/AuthService';
+import session from 'express-session';
 import express from "express";
 
 export const getLoginForm = async (req:express.Request, res:express.Response): Promise<void> => {
