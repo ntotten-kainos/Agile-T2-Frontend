@@ -53,12 +53,6 @@ footer {
     width:80px
     
 }
-
-
-
-
-
-
 /*for the image*/
 
 /* Bottom right text */
@@ -89,12 +83,13 @@ color: white;
 position: absolute;
 top: 2vw;
 right: 4vw;
-/* background-color: #252D4F; */
 }
 
 p1{
     color: #ffffff;
-    padding-right: 1vw;
+    background-color: #252D4F;
+    font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf" ;
+    font-size: medium;
 }
 
 /*to make the image the same as the kainos website*/
@@ -151,10 +146,6 @@ background-color: #EDF3FF;
 color: white;
 border-radius: 40%;
 height: 40px;
-
-
-
-
 }
 
 .button2 {
@@ -163,11 +154,15 @@ color: #1B2DB5;
 border: 2px solid #1B2DB5;
 width: 120px;
 height: 50px;
+font-family:"./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+font-size: medium;
 }
 
 .button2:hover {
 background-color: #1B2DB5;
 color: white;
+font-family:"./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+font-size: medium;
 }
 
 .getintouch{
