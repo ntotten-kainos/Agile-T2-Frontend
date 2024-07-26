@@ -8,8 +8,8 @@ const jobRoleResponse: JobRoleResponse = {
     jobRoleId: 1,
     roleName: "Test Engineer",
     location: "Belfast",
-    band: "1",
-    capability: "healthcare",
+    bandValue: "BAND1",
+    capabilityName: "healthcare",
     formattedClosingDate: new Date('2024-12-31T23:59:59.000Z')
 }
 
@@ -27,8 +27,8 @@ describe('JobRoleService', function () {
             expect(results[0].jobRoleId).to.equal(jobRoleResponse.jobRoleId);
             expect(results[0].roleName).to.equal(jobRoleResponse.roleName);
             expect(results[0].location).to.equal(jobRoleResponse.location);
-            expect(results[0].band).to.equal(jobRoleResponse.band);
-            expect(results[0].capability).to.equal(jobRoleResponse.capability);
+            expect(results[0].bandValue).to.equal(jobRoleResponse.bandValue);
+            expect(results[0].capabilityName).to.equal(jobRoleResponse.capabilityName);
             expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
         });
 

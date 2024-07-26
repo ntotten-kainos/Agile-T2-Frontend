@@ -1,23 +1,40 @@
 # Agile - Team 2 - Frontend
-
-REST API
 ---
 This application provides a frontend for the REST API: https://github.com/ntotten-kainos/Agile-T2-Java
-1. Follow the steps in the above link to run the REST API
-
-
-How to start the Agile-T2-Frontend application
+How to start the Agile-T2-Java application (BACKEND)
 ---
+1. Follow the steps listed to run the backend of this application, go to url https://github.com/ntotten-kainos/Agile-T2-Java
 
-1. Run `npm install` to build your application
-1. Start application with `API_URL=http://localhost:8080/ && npm start`
+
+
+How to start the Agile-T2-Frontend application (FRONTEND)
+---
+1. Clone the repo - run `git clone git@github.com:ntotten-kainos/Agile-T2-Frontend.git` on terminal
+1. Open the file and run `npm install` to build your application
+1. Start application with `npm start`
+1. To check application is running, go to url http://localhost:3000/
+
+
 
 Tests
 ---
 
+Unit Tests
+---
 1. Run `npm test` to run unit tests
 1. Run `UI_TEST_URL=http://localhost:3000 && npm run test-ui` to run UI tests locally, change the URL to run against remote (you may need to update the version of the chromedriver dependency: `npm update chromedriver`)
-1. Add URLs to .pa11y-ci file which to run the pa11y accessibility test within the CI/CD pipeline 
+
+Pa11y
+---
+1. Add the page URL to the .pa11yci file
+1. Once a pull request is made it will automatically check the files
+1. Or you can run the test runner using 
+```
+pa11y
+https://example.com
+```
+1. For any other problems see the following
+https://github.com/pa11y/pa11y
 
 Config
 ---
@@ -55,3 +72,26 @@ pre-requisite = docker and docker compose are installed in your local system.
     
     Done....the service should be able to operate as expected.      
     
+
+
+Technology Stack
+---
+
+- **Frontend:** HTML, Bootstrap
+- **Testing:** Selenium, WAVE, Pa11y
+
+
+
+Project Credits
+---
+- Mark Mcilroy
+- Rackie Pascua
+- Ashna Abraham
+- Jack Knowles
+- Nathan Totten
+- Selina Mc Garry
+- Jamie Mcconnell
+
+
+
+ 
