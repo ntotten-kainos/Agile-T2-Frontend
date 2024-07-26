@@ -32,5 +32,10 @@ app.listen(3000, () => {
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 
+
+app.get('/', async (req: express.Request, res: express.Response) => {
+  res.render("home.html");
+});
+
 // Job Roles
 app.get('/job-roles', getAllJobRoles);
