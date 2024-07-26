@@ -12,16 +12,16 @@
 </head>
 <body>
     {% include "header.html" %}
+    {% if errormessage %}
+    <h2>
+        {{ errormessage }}
+    </h2>
+    {% endif %}
     <div class="form-container-wrapper">
         <div class="form-container">
             <h1>
                 Login
             </h1>
-            {% if errormessage %}
-            <h2>
-                {{ errormessage }}
-            </h2>
-            {% endif %}
         
             <form action="/loginForm" method="post">
                 <h3>
