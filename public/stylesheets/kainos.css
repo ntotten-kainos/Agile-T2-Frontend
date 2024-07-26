@@ -1,0 +1,238 @@
+.navbar {
+    height: 80px;
+    text-align: center;
+}
+
+
+.headerformat{
+    background-color: #ffffff;
+    height: 80px;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #ffffff;
+    color: #252D4F;
+    text-align: right;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav li {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+
+
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
+}
+
+
+.middle {
+    width:80px
+    
+}
+
+
+
+
+
+
+/*for the image*/
+
+/* Bottom right text */
+.text-block {
+position: left;
+bottom: 20px;
+right: 20px;
+color: white;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+/* Container holding the image and the text */
+.container {
+position: relative;
+text-align: center;
+color: white;
+}
+
+.container2{
+    position: relative;
+    text-align: center;
+    }
+
+
+/* Bottom left text */
+.contactdets {
+position: absolute;
+top: 2vw;
+right: 4vw;
+/* background-color: #252D4F; */
+}
+
+p1{
+    color: #ffffff;
+    padding-right: 1vw;
+}
+
+/*to make the image the same as the kainos website*/
+.imagepositioning {
+position: relative;
+left: 12vw;
+top:25px;
+}
+.homepositioning{
+position:relative;
+left: 16vw;
+top:25px;
+font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+font-size: large;
+
+}
+
+.twopositioning{
+position:relative;
+left: 19vw;
+top:25px;
+font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+
+font-size: large;
+
+}
+.threepositioning{
+position:relative;
+left: 21vw;
+top:25px;
+font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+font-size: large;
+
+}
+.fourpositioning{
+position:relative;
+left: 24vw;
+top:25px;
+font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+font-size: large;
+
+}
+
+.sharebutton {
+position:absolute;
+right: 22vw;
+top:30px; 
+border-radius: 40%;
+color:#252D4F
+}
+
+.sharebutton:hover {
+background-color: #EDF3FF;
+color: white;
+border-radius: 40%;
+height: 40px;
+
+
+
+
+}
+
+.button2 {
+background-color: white; 
+color: #1B2DB5; 
+border: 2px solid #1B2DB5;
+width: 120px;
+height: 50px;
+}
+
+.button2:hover {
+background-color: #1B2DB5;
+color: white;
+}
+
+.getintouch{
+position:absolute;
+right: 12vw;
+top:17px;
+}
+
+
+
+.search {
+position:absolute;
+right: 8vw;
+top:30px;
+border-radius: 40%;
+
+}
+
+.search:hover {
+background-color: #EDF3FF;
+color: white;
+border-radius: 40%;
+height: 40px;
+
+}
+
+
+
+video{
+    width: 100%;
+    height: 850px;
+}
+
+
+.images_section{
+    display: flex;
+}
+
+heading{
+    font-size: xx-large;
+
+}
+
+
+.information{
+    padding: 3vw;
+    padding-top: 7vw;
+    font-family: "./assets/fonts/GalanoGrotesque-ExtraLight.ttf";
+    color: #252D4F;
+}
+
+p {
+    font-size: large;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
