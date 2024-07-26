@@ -29,6 +29,13 @@ jobs:
       env:
         VALID_TEST_EMAIL: ${{ secrets.VALID_TEST_EMAIL }}
         VALID_TEST_PASSWORD: ${{ secrets.VALID_TEST_PASSWORD }}
-    - run: |
+    - run:
         npm install
+
+
+    - name: Run tests 
+      env:
+        VALID_TEST_EMAIL: ${{ secrets.VALID_TEST_EMAIL }}
+        VALID_TEST_PASSWORD: ${{ secrets.VALID_TEST_PASSWORD }}
+      run:
         npm test
