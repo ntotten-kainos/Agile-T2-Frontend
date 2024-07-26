@@ -50,7 +50,7 @@ describe('AuthController', function () {
             await AuthController.postLoginForm(req as any, res as any);
 
             expect("token").to.equal(req.session.token);
-            expect(res.redirect.calledWith('/loginForm')).to.be.true;
+            expect(res.redirect.calledWith('/')).to.be.true;
         })
 
         // Fails if email is invalid
