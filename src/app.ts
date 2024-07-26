@@ -20,6 +20,10 @@ app.listen(3000, () => {
 
 });
 
+app.get('/', async (req: express.Request, res: express.Response) => {
+  res.render("home.html");
+});
+
 app.get('/job-roles', getAllJobRoles);
 
 
