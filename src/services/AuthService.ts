@@ -1,5 +1,5 @@
 import { LoginRequest } from "../models/LoginRequest";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { validateLoginRequest } from "../validators/LoginRequestValidator";
 import { requestInstance } from "../models";
 

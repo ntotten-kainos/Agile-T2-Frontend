@@ -1,4 +1,3 @@
-import { Session } from "express-session";
 import axios from "axios";
 
 declare module 'express-session' {

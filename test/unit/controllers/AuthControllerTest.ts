@@ -1,11 +1,7 @@
-import { getLoginForm } from './../../../src/controllers/AuthController';
 import * as AuthController from '../../../src/controllers/AuthController'
 import * as AuthService from '../../../src/services/AuthService';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { getAuthToken } from '../../../src/services/AuthService';
-import e from 'express';
-
 
 describe('AuthController', function () {
 

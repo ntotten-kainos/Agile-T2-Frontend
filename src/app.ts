@@ -1,7 +1,6 @@
 import express from "express";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
-import session from "express-session";
 import { getLoginForm, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles } from "./controllers/JobRoleController";
 
