@@ -26,6 +26,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: |
+      env:
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+    - run:
         npm install
+
+    - name: Run tests 
+      env:
+        VALID_TEST_EMAIL: ${{ secrets.VALID_TEST_EMAIL }}
+        VALID_TEST_PASSWORD: ${{ secrets.VALID_TEST_PASSWORD }}
+      run:
         npm test
