@@ -11,13 +11,12 @@ const jobRoleResponse: JobRoleResponse = {
     bandValue: "BAND1",
     capabilityName: "healthcare",
     formattedClosingDate: new Date('2024-12-31T23:59:59')
-}
+};
 
 describe('JobRoleController', function () {
     afterEach(() => {
         sinon.restore();
     });
-
 
     describe('getAllJobRoles', function () {
         it('should render view with Job Roles when Job Roles returned', async () => {
@@ -25,8 +24,8 @@ describe('JobRoleController', function () {
 
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
-            const req = {};
-            const res = { render: sinon.spy() };
+            const req = { session: { token: 'test-token' } };
+            const res = { render: sinon.spy(), locals: {} };
 
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
@@ -34,18 +33,18 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList })).to.be.true;
         });
 
-    it('should render view with error message when error thrown', async () => {
-        const errorMessage: string = 'Error message';
-        sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
+        it('should render view with error message when error thrown', async () => {
+            const errorMessage: string = 'Error message';
+            sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
-        const req = { };
-        const res = { render: sinon.spy(), locals: { errormessage: '' } };
+            const req = { session: { token: 'test-token' } };
+            const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
-        await JobRoleController.getAllJobRoles(req as any, res as any);
+            await JobRoleController.getAllJobRoles(req as any, res as any);
 
-        expect(res.render.calledOnce).to.be.true;
-        expect(res.render.calledWith('jobRoles')).to.be.true;
-        expect(res.locals.errormessage).to.equal(errorMessage);
-      });
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('jobRoles')).to.be.true;
+            expect(res.locals.errormessage).to.equal(errorMessage);
+        });
     });
 });
