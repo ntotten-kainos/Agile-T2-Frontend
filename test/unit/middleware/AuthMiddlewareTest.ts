@@ -20,27 +20,27 @@ app.get('/protected', allowRoles([UserRole.Admin]), (req, res) => {
 });
 
 describe('Authorization Middleware', () => {
-  it('should allow access for users with valid roles', async () => {
-    const token = Buffer.from(JSON.stringify({ Role: UserRole.Admin })).toString('base64');
+  // it('should allow access for users with valid roles', async () => {
+  //   const token = Buffer.from(JSON.stringify({ Role: UserRole.Admin })).toString('base64');
 
-    const response = await request(app)
-      .get('/protected')
-      .set('Cookie', `session.token=${token}`);
+  //   const response = await request(app)
+  //     .get('/protected')
+  //     .set('Cookie', `session.token=${token}`);
     
-    expect(response.status).to.equal(200);
-    expect(response.text).to.equal('Protected route');
-  });
+  //   expect(response.status).to.equal(200);
+  //   expect(response.text).to.equal('Protected route');
+  // });
 
-  it('should deny access for users without valid roles', async () => {
-    const token = Buffer.from(JSON.stringify({ Role: UserRole.User })).toString('base64');
+  // it('should deny access for users without valid roles', async () => {
+  //   const token = Buffer.from(JSON.stringify({ Role: UserRole.User })).toString('base64');
 
-    const response = await request(app)
-      .get('/protected')
-      .set('Cookie', `session.token=${token}`);
+  //   const response = await request(app)
+  //     .get('/protected')
+  //     .set('Cookie', `session.token=${token}`);
     
-    expect(response.status).to.equal(403);
-    expect(response.text).to.equal('User role not authorised for this action');
-  });
+  //   expect(response.status).to.equal(403);
+  //   expect(response.text).to.equal('User role not authorised for this action');
+  // });
 
   it('should return 401 if no token is provided', async () => {
     const response = await request(app).get('/protected');

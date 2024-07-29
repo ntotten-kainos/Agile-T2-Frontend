@@ -21,13 +21,13 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/axios": "^0.14.0",
-    "@types/chai": "^4.3.14",
+    "@types/chai": "^4.3.16",
     "@types/cookie-parser": "^1.4.7",
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.17.0",
     "@types/jest": "^29.5.12",
     "@types/jwt-decode": "^3.1.0",
-    "@types/mocha": "^10.0.6",
+    "@types/mocha": "^10.0.7",
     "@types/node": "^20.12.7",
     "@types/nunjucks": "^3.2.6",
     "@types/selenium-webdriver": "^4.1.22",
@@ -45,9 +45,10 @@
     "sass": "^1.75.0",
     "selenium-webdriver": "^4.9.0",
     "sinon": "^17.0.1",
+    "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5",
+    "typescript": "^5.5.4",
     "typescript-eslint": "^7.6.0"
   }
 }
