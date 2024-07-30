@@ -4,6 +4,7 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import { getLoginForm, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles } from "./controllers/JobRoleController";
+import { getApplicationForm, postApplicationForm } from "./controllers/ApplicationController";
 
 const app = express();
 
@@ -38,3 +39,7 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 
 // Job Roles
 app.get('/job-roles', getAllJobRoles);
+
+// Application Form
+app.get('/applicationForm', getApplicationForm)
+app.post('/applicationForm', postApplicationForm)
