@@ -16,3 +16,4 @@ export const allowRoles = (allowedRoles: UserRole[]) => {
         next();
     }
 }
+

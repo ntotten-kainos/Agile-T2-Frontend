@@ -46,5 +46,27 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('jobRoles')).to.be.true;
             expect(res.locals.errormessage).to.equal(errorMessage);
         });
+
+        it('should view Job Roles when Job Roles returned, and user is logged in', async () => {
+            const expected = jobRoleResponse;
+            const jobRole = [expected];
+
+            const req = {
+                session: { token: 'test-token' }
+            };
+
+            const res = {
+                render: sinon.spy(),
+                redirect: sinon.spy(),
+            };
+
+            sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRole);
+
+            await JobRoleController.getAllJobRoles(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRole })).to.be.true;
+        });
+        
     });
 });

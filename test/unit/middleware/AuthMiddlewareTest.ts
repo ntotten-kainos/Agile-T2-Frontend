@@ -2,45 +2,52 @@ import request from 'supertest';
 import express from 'express';
 import session from 'express-session';
 import { allowRoles } from '../../../src/middleware/AuthMiddleware';
-import { UserRole } from '../../../src/models/JwtToken';
+import { UserRole, JwtToken } from '../../../src/models/JwtToken';
 import { expect } from 'chai';
-import cookieParser from 'cookie-parser';
+import sinon from 'sinon';
+import jwtDecode from 'jwt-decode';
+
 
 const app = express();
 app.use(express.json());
-app.use(cookieParser());
 app.use(session({
   secret: 'test_secret',
   resave: false,
   saveUninitialized: true,
+  cookie: { secure: false }
 }));
 
-app.get('/protected', allowRoles([UserRole.Admin]), (req, res) => {
+app.get('/protected', allowRoles([UserRole.Admin, UserRole.User]), (req, res) => {
   res.status(200).send('Protected route');
 });
 
 describe('Authorization Middleware', () => {
-  // it('should allow access for users with valid roles', async () => {
-  //   const token = Buffer.from(JSON.stringify({ Role: UserRole.Admin })).toString('base64');
+  afterEach(() => {
+    sinon.restore();
+  });
 
-  //   const response = await request(app)
-  //     .get('/protected')
-  //     .set('Cookie', `session.token=${token}`);
-    
-  //   expect(response.status).to.equal(200);
-  //   expect(response.text).to.equal('Protected route');
-  // });
+  it('should render not logged in view and return 401 status, when user is NOT logged in', async () => {
+    const req = {
+      session: { token: '' }, 
+    } as any; 
 
-  // it('should deny access for users without valid roles', async () => {
-  //   const token = Buffer.from(JSON.stringify({ Role: UserRole.User })).toString('base64');
+    const res = {
+      status: sinon.stub().returnsThis(),
+      send: sinon.stub().returnsThis(),
+      redirect: sinon.stub().returnsThis()
+    } as any; 
 
-  //   const response = await request(app)
-  //     .get('/protected')
-  //     .set('Cookie', `session.token=${token}`);
-    
-  //   expect(response.status).to.equal(403);
-  //   expect(response.text).to.equal('User role not authorised for this action');
-  // });
+    const next = sinon.stub();
+
+    const middleware = allowRoles([UserRole.Admin, UserRole.User]);
+
+    await middleware(req, res, next);
+
+    expect((res.status as sinon.SinonStub).calledWith(401)).to.be.true;
+    expect(req.session.token).to.equal('');
+    expect(res.send.calledOnce).to.be.true;
+    expect(res.send.calledWith('Not logged in')).to.be.true;
+  });
 
   it('should return 401 if no token is provided', async () => {
     const response = await request(app).get('/protected');
