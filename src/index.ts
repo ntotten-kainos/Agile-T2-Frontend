@@ -1,7 +1,7 @@
 import axios from "axios";
 
 declare module 'express-session' {
-    interface Session {
+    interface SessionData {
         token: string;
     }
 }

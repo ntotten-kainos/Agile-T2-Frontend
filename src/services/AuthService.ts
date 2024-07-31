@@ -1,7 +1,7 @@
 import { LoginRequest } from "../models/LoginRequest";
 import { AxiosResponse } from "axios";
 import { validateLoginRequest } from "../validators/LoginRequestValidator";
-import { requestInstance } from "../models";
+import { requestInstance } from "..";
 
 export const URL: string = "/api/auth/login";
 
@@ -15,4 +15,9 @@ export const getAuthToken = async (loginRequest: LoginRequest): Promise<string> 
     } catch (error) {
         throw new Error(error.response.data);
     }
+}
+
+export const checkIfLoggedIn = async (): Promise<boolean> => {
+    
+    return false;
 }
