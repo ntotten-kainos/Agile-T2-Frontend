@@ -37,6 +37,7 @@ app.get('/logout', logout)
 
 // Home
 app.get('/', async (req: express.Request, res: express.Response) => {
+  res.locals.loggedin = true;
   res.render("home.html");
 });
 

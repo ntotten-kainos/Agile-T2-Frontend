@@ -18,7 +18,7 @@
                 <li class="active"><a style ="color:#252D4F" href="views/home.html">Home</a></li>
             </div>
             <div class="twopositioning">
-                <li><a style ="color:#252D4F"href="#">Jobs</a></li>
+                <li><a style ="color:#252D4F"href="/job-roles">Jobs</a></li>
             </div>
             <div class="threepositioning">
                 <li><a style ="color:#252D4F" href="#">Projects</a></li>
@@ -32,6 +32,11 @@
           <div class="getintouch">
             <button class="button2"><b>Get in touch</b></button>
         </div>
+        {% if loggedin %}
+        <div class="logout">
+            <button class="button2" id="logout-button" onclick="logout()"><b>Log out</b></button>
+        </div>
+        {% endif %}
         <div class="search">
           <li><img src="./assets/images/m2i8K9b1G6K9m2N4.jpg-removebg-preview.png" alt="Logo" width="25" height="20"></li>
       </div>
@@ -39,4 +44,9 @@
           </div>
         </div>
     </div>
+    <script>
+      function logout() {
+        window.location.href = '/logout';
+      }
+    </script>
     </nav>
