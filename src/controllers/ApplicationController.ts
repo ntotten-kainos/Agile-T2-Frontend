@@ -1,6 +1,7 @@
 import express from "express";
 
 export const getApplicationForm = async (req:express.Request, res:express.Response) => {
+    res.locals.jobRoleTitle = "Test Job Role";
     res.render('applicationForm');
 }
 
@@ -13,6 +14,7 @@ export const postApplicationForm = async (req:express.Request, res:express.Respo
         
     } catch (error) {
         res.locals.errormessage = error.message;
+        res.locals.jobRoleTitle = "Test Job Role";
         res.render('applicationForm', req.body);
     }
 }
