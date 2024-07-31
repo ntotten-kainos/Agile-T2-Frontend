@@ -22,7 +22,6 @@ Tests
 Unit Tests
 ---
 1. Run `npm test` to run unit tests
-1. Run `UI_TEST_URL=http://localhost:3000 && npm run test-ui` to run UI tests locally, change the URL to run against remote (you may need to update the version of the chromedriver dependency: `npm update chromedriver`)
 
 Pa11y
 ---
@@ -35,6 +34,15 @@ https://example.com
 ```
 1. For any other problems see the following
 https://github.com/pa11y/pa11y
+
+UI Tests
+---
+UI tests have been written utilising Selenium
+https://www.selenium.dev/documentation/ 
+
+1. Run `npm run test-ui` to run UI tests locally
+1. Ensure the frontend server is running for local tests but running `npm start`
+1. The backend API must be running locally in order to access information from the database
 
 Config
 ---
