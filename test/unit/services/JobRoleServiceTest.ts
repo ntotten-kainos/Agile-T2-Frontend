@@ -45,4 +45,37 @@ describe('JobRoleService', function () {
         });
 
     });
+
+    // describe('getJobRoleByID', function () {
+    //     it('should return single Job Role detail page from response', async () => {
+    //         const data = [jobRoleResponse];
+
+    //         mock.onGet(URL).reply(200, data);
+
+    //         const results = await getJobRoles();
+
+    //         expect(results[0].jobRoleId).to.equal(jobRoleResponse.jobRoleId);
+    //         expect(results[0].roleName).to.equal(jobRoleResponse.roleName);
+    //         expect(results[0].location).to.equal(jobRoleResponse.location);
+    //         expect(results[0].bandValue).to.equal(jobRoleResponse.bandValue);
+    //         expect(results[0].capabilityName).to.equal(jobRoleResponse.capabilityName);
+    //         expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
+    //     });
+
+
+    //     it('should throw an error when the request fails', async () => {
+    //         mock.onGet(URL).reply(500);
+
+    //         try {
+    //             await getJobRoles();
+    //             throw new Error('Test failed - error was not thrown');
+    //         } catch (e) {
+    //             expect(e.message).to.equal('Failed to get Job Roles');
+    //         }
+    //     });
+
+    // });
+
+
+
 });
