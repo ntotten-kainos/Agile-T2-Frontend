@@ -34,18 +34,18 @@ describe('JobRoleController', function () {
             expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList })).to.be.true;
         });
 
-    it('should render view with error message when error thrown', async () => {
-        const errorMessage: string = 'Error message';
-        sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
+        it('should render view with error message when error thrown', async () => {
+            const errorMessage: string = 'Error message';
+            sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
-        const req = { };
-        const res = { render: sinon.spy(), locals: { errormessage: '' } };
+            const req = {};
+            const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
-        await JobRoleController.getAllJobRoles(req as any, res as any);
+            await JobRoleController.getAllJobRoles(req as any, res as any);
 
-        expect(res.render.calledOnce).to.be.true;
-        expect(res.render.calledWith('jobRoles')).to.be.true;
-        expect(res.locals.errormessage).to.equal(errorMessage);
-      });
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('jobRoles')).to.be.true;
+            expect(res.locals.errormessage).to.equal(errorMessage);
+        });
     });
 });

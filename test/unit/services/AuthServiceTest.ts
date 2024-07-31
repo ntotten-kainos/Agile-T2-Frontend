@@ -18,7 +18,7 @@ describe('AuthService', function () {
         email: String(VALID_EMAIL),
         password: String(VALID_PASSWORD)
     };
-    const INVALID_LOGIN_REQUEST: LoginRequest = { 
+    const INVALID_LOGIN_REQUEST: LoginRequest = {
         email: 'invalid',
         password: 'invalid'
     };

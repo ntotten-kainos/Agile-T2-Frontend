@@ -1,12 +1,13 @@
 import { getAuthToken } from './../services/AuthService';
 import express from "express";
 
-export const getLoginForm = async (req:express.Request, res:express.Response): Promise<void> => {
+export const getLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     res.render('loginForm');
 }
 
-export const postLoginForm = async (req:express.Request, res:express.Response): Promise<void> => {
+export const postLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     try {
+
         req.session.token = await getAuthToken(req.body);
         res.redirect('/');
     } catch (error) {
