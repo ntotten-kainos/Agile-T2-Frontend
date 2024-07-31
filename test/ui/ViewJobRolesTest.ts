@@ -7,11 +7,7 @@ describe("Job Roles Page Tests", () => {
   let jobRolesPage: JobRolesPage;
 
   //These are specifically for the tests, so I think these are better suited to remain in the test class, rather than going in the page class
-  const validLocations = [
-    "BELFAST", 
-    "DERRY", 
-    "LONDON"
-  ]; // This can be adatped as reuired
+  const validLocations = ["BELFAST", "DERRY", "LONDON"]; // This can be adatped as reuired
   const validRoleNames = [
     "Software Engineer",
     "Data Scientist",
@@ -108,5 +104,4 @@ describe("Job Roles Page Tests", () => {
     expect(currentUrl).to.include("facebook");
     await jobRolesPage.driver.navigate().back();
   });
-
 });

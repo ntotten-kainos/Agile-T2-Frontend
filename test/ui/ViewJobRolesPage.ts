@@ -9,8 +9,7 @@ interface JobRole {
   closingDate: string;
 }
 
-export class JobRolesPage extends BasePage{
-
+export class JobRolesPage extends BasePage {
   //private url: string = 'https://5chmbvngab.eu-west-1.awsapprunner.com/job-roles';
   private url: string = "http://localhost:3000/job-roles";
 
@@ -25,7 +24,7 @@ export class JobRolesPage extends BasePage{
   }
 
   async waitForTable() {
-    await this.waitForElementById("table", 10000)
+    await this.waitForElementById("table", 10000);
   }
 
   async getHeaderRow() {
@@ -58,7 +57,7 @@ export class JobRolesPage extends BasePage{
   }
 
   async clickInstagramButton() {
-    await this.clickById('instagramlinkbutton');
+    await this.clickById("instagramlinkbutton");
   }
 
   async getFacebookButton() {
@@ -66,7 +65,6 @@ export class JobRolesPage extends BasePage{
   }
 
   async clickFacebookButton() {
-    await this.clickById('facebooklinkbutton');
+    await this.clickById("facebooklinkbutton");
   }
-
 }

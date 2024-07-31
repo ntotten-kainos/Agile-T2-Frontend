@@ -34,18 +34,6 @@ export default class BasePage {
     await this.driver.wait(until.elementLocated(By.id(id)), timeout);
   }
 
-  // async email(): Promise<WebElement> {
-  //   return await this.driver.findElement(By.id("email"));
-  // }
-
-  // async password(): Promise<WebElement> {
-  //   return await this.driver.findElement(By.id("password"));
-  // }
-
-  // async submit(): Promise<WebElement> {
-  //   return await this.driver.findElement(By.id("submit"));
-  // }
-
   async findElementById(id: string) {
     return await this.driver.findElement(By.id(id));
   }
