@@ -69,33 +69,31 @@ describe('JobRoleController', function () {
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('jobRoles', { jobRoles: jobRole })).to.be.true;
         });
-        it('should render not logged in view and return 401 status, when user is NOT logged in', async () => {
+        it('should redirect to loginForm.html page when user is NOT logged in', async () => {
             const expected = jobRoleResponse;
             const jobRole = [expected];
-     
+        
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRole);
-     
             sinon.stub(JobRoleController, 'getAllJobRoles');
-     
+        
             const req = {
-                session: { token: '' }, 
-              } as any; 
-     
-              const res = {
-                status: sinon.stub().returnsThis(),
-                send: sinon.stub().returnsThis(),
-                redirect: sinon.stub().returnsThis()
-              } as any; 
+              session: { token: '' }, 
+            } as any; 
+        
+            const res = {
+              status: sinon.stub().returnsThis(),
+              send: sinon.stub().returnsThis(),
+              redirect: sinon.stub().returnsThis()
+            } as any; 
+        
             const next = sinon.stub();
-     
+        
             const middleware = allowRoles([UserRole.Admin, UserRole.User]);
-
-            await middleware(req, res, next);        
-     
-            expect((res.status as sinon.SinonStub).calledWith(401)).to.be.true;
-            expect(req.session.token).to.equal('');
-            expect(res.send.calledOnce).to.be.true;
-            expect(res.send.calledWith('Not logged in')).to.be.true;
-        });
+        
+            await middleware(req, res, next);
+        
+            expect((res.redirect as sinon.SinonStub).calledOnce).to.be.true;
+            expect((res.redirect as sinon.SinonStub).calledWith('/loginForm.html')).to.be.true;
+          });
     });
 });
