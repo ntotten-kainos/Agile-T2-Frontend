@@ -32,11 +32,18 @@ console.log(sessionSecret);
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
 
+declare module "express-session" {
+  interface SessionData {
+    token: string;
+  }
+}
+
+
+
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 
 });
-
 
 
 // Login
