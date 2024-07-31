@@ -26,7 +26,7 @@ describe('JobRoleController', function () {
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
             const req = {};
-            const res = { render: sinon.spy() };
+            const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
             await JobRoleController.getAllJobRoles(req as any, res as any);
 

@@ -1,6 +1,6 @@
 import { LoginRequest } from './../../../src/models/LoginRequest';
 import { getAuthToken, URL } from './../../../src/services/AuthService';
-import { requestInstance } from '../../../src/models';
+import { requestInstance } from '../../../src/index';
 import MockAdapter from "axios-mock-adapter";
 import { assert, expect } from 'chai';
 import sinon from 'sinon';
