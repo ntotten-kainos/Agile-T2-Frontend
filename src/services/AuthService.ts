@@ -16,8 +16,3 @@ export const getAuthToken = async (loginRequest: LoginRequest): Promise<string> 
         throw new Error(error.response.data);
     }
 }
-
-export const checkIfLoggedIn = async (): Promise<boolean> => {
-    
-    return false;
-}

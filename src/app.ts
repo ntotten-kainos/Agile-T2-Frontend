@@ -2,7 +2,7 @@ import express from "express";
 import session from "express-session";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
-import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles } from "./controllers/JobRoleController";
 
 const app = express();
@@ -32,6 +32,10 @@ app.listen(3000, () => {
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 
+// Log out
+app.get('/logout', logout)
+
+// Home
 app.get('/', async (req: express.Request, res: express.Response) => {
   res.render("home.html");
 });
