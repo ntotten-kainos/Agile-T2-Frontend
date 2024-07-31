@@ -28,7 +28,7 @@ if (!sessionSecret) {
 
 }
 
-console.log(sessionSecret);
+
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
 
