@@ -2,18 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Role List</title>
+    <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/kainos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <!-- This is just a basic html page to get ticket working,
-
-     will need to update with Ashnas templates etc
-      
-     -->
 </head>
 
 <body>
+    {% include "header.html" %}
+
     <h1>Job Roles</h1>
     <table>
         <tr>
@@ -22,25 +24,19 @@
             <th>Band</th>
             <th>Capability</th>
             <th>Closing Date</th>
-
         </tr>
 
         {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
         <tr>
-            <td>{{jobRole.roleName}}</td>
-            <td>{{jobRole.location}}</td>
-            <td>{{jobRole.bandValue}}</td>
-            <td>{{jobRole.capabilityName}}</td>
-            <td>{{jobRole.formattedClosingDate}}</td>
-
+            <td>{{ jobRole.roleName }}</td>
+            <td>{{ jobRole.location }}</td>
+            <td>{{ jobRole.bandValue }}</td>
+            <td>{{ jobRole.capabilityName }}</td>
+            <td>{{ jobRole.formattedClosingDate }}</td>
         </tr>
-
         {% endfor %}
-
-
-
     </table>
-
+    {% include "footer.html" %}
 </body>
 
 </html>
