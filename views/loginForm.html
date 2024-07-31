@@ -24,18 +24,29 @@
             </h1>
         
             <form action="/loginForm" method="post">
-                <h3>
+                <h4>
                     <label for="email">
                         Email
                     </label>
-                </h3>
-                <input type="email" name="email" id="email" value="{{email}}">
-                <h3>
+                </h4>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="{{email}}" 
+                    placeholder="email">
+                    
+                <h4>
                     <label for="password">
                         Password
                     </label>
-                </h3>
-                <input type="password" name="password" id="password" value="{{password}}">
+                </h4>
+                <input 
+                    type="password"
+                    name="password" 
+                    id="password" 
+                    value="{{password}}" 
+                    placeholder="password">
                 <br><br>
                 <button class="login-button" id="submit">Submit</button>
             </form>
