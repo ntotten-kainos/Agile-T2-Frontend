@@ -21,14 +21,11 @@ app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// troubleshooting AWS frontend issue
 const sessionSecret = process.env.SESSION_SECRET;
 if (!sessionSecret) {
   throw new Error('SESSION_SECRET environment variable is not defined.');
 
 }
-
-
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
 
@@ -38,13 +35,10 @@ declare module "express-session" {
   }
 }
 
-
-
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 
 });
-
 
 // Login
 app.get('/loginForm', getLoginForm);
