@@ -28,13 +28,13 @@ export class JobRolesPage extends BasePage {
   }
 
   async getHeaderRow() {
-    return this.driver.findElement(By.css("table tr"));
+    return this.findElementByCss("table tr");
   }
 
   async getJobRoles(): Promise<JobRole[]> {
     this.waitForTable;
 
-    const rows = await this.driver.findElements(By.css("table tr"));
+    const rows = await this.findElementsByCss("table tr");
     const jobRoles: JobRole[] = [];
 
     for (let i = 1; i < rows.length; i++) {

@@ -6,28 +6,35 @@ import { By } from "selenium-webdriver";
 describe("Job Roles Page Tests", () => {
   let jobRolesPage: JobRolesPage;
 
-  //These are specifically for the tests, so I think these are better suited to remain in the test class, rather than going in the page class
-  const validLocations = ["BELFAST", "DERRY", "LONDON"]; // This can be adatped as reuired
+  // These are specifically for the tests, so I think these are better
+  // suited to remain in the test class, rather than going in the page class
+  const validLocations = [
+    "BELFAST", 
+    "DERRY", 
+    "LONDON"
+  ]; // This can be adatped as reuired
   const validRoleNames = [
     "Software Engineer",
     "Data Scientist",
     "Cyber Security Analyst",
   ]; // This can be adapted as reuired
 
-  const dateRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/; //this should remain as is, this is the date regex
+  // This should remain as is, this is the date regex
+  const dateRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
 
-  //before the test runs
-  //probably need to remove the driver from this and include it in a new base class
+  // Before the test runs, only called at the start of the test
   before(async () => {
     jobRolesPage = new JobRolesPage();
     await jobRolesPage.open();
   });
 
-  // Closing the driver, this is calling the method from the jobRolesPage class
+  // Closing the driver, this is calling the method from the BasePage class,
+  // close method not required in the jobRolesPage class
   after(async () => {
     await jobRolesPage.closeBrowser;
   });
 
+  // Tests
   it("should display a table with the correct headings", async () => {
     await jobRolesPage.waitForTable();
 
@@ -36,6 +43,8 @@ describe("Job Roles Page Tests", () => {
     const headerTexts = await Promise.all(
       headers.map((header) => header.getText())
     );
+
+    //these can be expanded to check the information returned from JobRoleInformationById
     const expectedHeaders = [
       "Job Role",
       "Location",
@@ -83,6 +92,7 @@ describe("Job Roles Page Tests", () => {
     });
   });
 
+  // Tests to check the footer buttons on the job-roles page
   it("should bring the user to the Instagram page", async () => {
     await jobRolesPage.clickInstagramButton();
 
