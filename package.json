@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "linter": "npx eslint src/ ",
+    "linter": "npx eslint src/",
     "dev": "nodemon src/app.ts",
     "test": "mocha --require ts-node/register test/unit/**/*.ts",
     "test-ui": "mocha --require ts-node/register --timeout 10000 test/ui/**/*.ts",
@@ -26,7 +26,6 @@
     "@types/cookie-parser": "^1.4.7",
     "@types/express": "^4.17.21",
     "@types/express-session": "^1.18.0",
-    "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/jwt-decode": "^3.1.0",
     "@types/mocha": "^10.0.7",
@@ -40,7 +39,6 @@
     "chromedriver": "^125.0.2",
     "eslint": "^8.57.0",
     "globals": "^15.8.0",
-    "jest": "^29.7.0",
     "mocha": "^10.7.0",
     "nodemon": "^3.1.4",
     "nyc": "^17.0.0",
