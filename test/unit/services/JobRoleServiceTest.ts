@@ -19,7 +19,7 @@ const jobRoleDetailResponse: JobRoleDetailResponse = {
     description: "Test description",
     responsibilities: "Test responsibilities",
     specification: "Test specificationLink",
-    location: "Test location", 
+    location: "Test location",
     capabilityName: "Test capabilityName",
     bandValue: "Test bandValue",
     formattedClosingDate: new Date('2024-12-31T23:59:59.000Z')
@@ -56,37 +56,38 @@ describe('JobRoleService', function () {
                 expect(e.message).to.equal('Failed to get Job Roles');
             }
         });
+    });
 
-        
+    describe('getJobRoleByID', function () {
         it('should return Job Role Detail from response', async () => {
             const data = jobRoleDetailResponse;
-          
+
             const jobRoleId = "1";
-          
+
             mock.onGet(URL + jobRoleId).reply(200, data);
             const role = await getJobRoleByID(jobRoleId, token);
-    
+
             const expectedData = {
-                 ...jobRoleDetailResponse,
+                ...jobRoleDetailResponse,
                 formattedClosingDate: new Date(jobRoleDetailResponse.formattedClosingDate).toISOString()
             };
-        
+
             expect(role).to.deep.equal(expectedData);
-            })
-        
-      
+        })
+
+
         it('should throw exception when 500 error returned from axios', async () => {
-       
+
             const jobRoleId = "123";
             mock.onGet(URL + jobRoleId).reply(500);
-       
-             try {
-               await getJobRoleByID(jobRoleId, token);
-             } catch (e) {
-               expect(e.message).to.equal('Failed to get Job Role');
-               return;
-             }
-          });
+
+            try {
+                await getJobRoleByID(jobRoleId, token);
+            } catch (e) {
+                expect(e.message).to.equal('Failed to get Job Role');
+                return;
+            }
+        });
 
     });
 
