@@ -13,32 +13,35 @@
 </head>
 <body>
     {% include "header.html" %}
-    <h1>Job Roles</h1>
-    <table id="table"> 
-        <tr>
-            <th>Job Role</th>
-            <th>Location</th>
-            <th>Band</th>
-            <th>Capability</th>
-            <th>Closing Date</th>
-
-        </tr>
-
-        {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
-        <tr>
-            <td>{{jobRole.roleName}}</td>
-            <td>{{jobRole.location}}</td>
-            <td>{{jobRole.bandValue}}</td>
-            <td>{{jobRole.capabilityName}}</td>
-            <td>{{jobRole.formattedClosingDate}}</td>
-
-        </tr>
-
-        {% endfor %}
-
-
-
-    </table>
+    <div class="form-jobroles-wrapper">
+        <div class="jobrole-container">
+            <h1 class="text-center" style="color:#252D4F; margin-top: 20px;">Job Roles</h1>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="color: black;">Job Role</th>
+                            <th class="text-center" style="color: black;">Location</th>
+                            <th class="text-center" style="color: black;">Band</th>
+                            <th class="text-center" style="color: black;">Capability</th>
+                            <th class="text-center" style="color: black;">Closing Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
+                        <tr>
+                            <td class="text-center" style="color: black;">{{ jobRole.roleName }}</td>
+                            <td class="text-center" style="color: black;">{{ jobRole.location }}</td>
+                            <td class="text-center" style="color: black;">{{ jobRole.bandValue }}</td>
+                            <td class="text-center" style="color: black;">{{ jobRole.capabilityName }}</td>
+                            <td class="text-center" style="color: black;">{{ jobRole.formattedClosingDate }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+  </div>
     {% include "footer.html" %}
 </body>
 
