@@ -61,8 +61,6 @@ describe('JobRoleService', function () {
 });
 
 
-//////////////////////////////////// TESTS IVE ADDED THIS BRANCH. DELETE THIS
-///////////////////////////////////    COMMENT BEFORE PUSH
 
 describe('getJobRoleByID', function () {
     it('should return Job Role Detail from response', async () => {

@@ -14,8 +14,6 @@ const jobRoleResponse: JobRoleResponse = {
     formattedClosingDate: new Date('2024-12-31T23:59:59')
 }
 
-//////////////////////////////////////////////////////////////
-
 const jobRoleDetailResponse: JobRoleDetailResponse = {
     roleName: "Test Engineer",
     description: "Test description",
@@ -27,7 +25,7 @@ const jobRoleDetailResponse: JobRoleDetailResponse = {
     formattedClosingDate: new Date('2024-12-31T23:59:59.000Z')
 }
 
-//////////////////////////////////////////////////////////////      ^^^^
+
 
 describe('JobRoleController', function () {
     afterEach(() => {
