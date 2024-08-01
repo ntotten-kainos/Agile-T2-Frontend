@@ -31,7 +31,7 @@ export class JobRolesPage extends BasePage {
     return this.findElementByCss("table tr");
   }
 
-  async getJobRoles(): Promise<JobRole[]> {
+  async getJobRoles() {
     this.waitForTable;
 
     const rows = await this.findElementsByCss("table tr");
@@ -52,16 +52,8 @@ export class JobRolesPage extends BasePage {
     return jobRoles;
   }
 
-  async getInstagramButton() {
-    return await this.findElementById("instagramlinkbutton");
-  }
-
   async clickInstagramButton() {
     await this.clickById("instagramlinkbutton");
-  }
-
-  async getFacebookButton() {
-    return await this.findElementById("facebooklinkbutton");
   }
 
   async clickFacebookButton() {
