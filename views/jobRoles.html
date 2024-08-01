@@ -27,7 +27,7 @@
 
         {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
         <tr>
-            <td><a href="/job-roles/{{jobRole.roleName}}" target="_blank">{{ jobRole.roleName }}</a></td>
+            <td><a href="/job-roles/{{jobRole.jobRoleId}}" target="_blank">{{ jobRole.roleName }}</a></td>
             <td>{{jobRole.location}}</td>
             <td>{{jobRole.bandValue}}</td>
             <td>{{jobRole.capabilityName}}</td>
