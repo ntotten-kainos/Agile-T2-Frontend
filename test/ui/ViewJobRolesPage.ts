@@ -61,11 +61,5 @@ export class JobRolesPage extends BasePage {
     return jobRoles;
   }
   
-  async clickInstagramButton() {
-    await this.clickById("instagramlinkbutton");
-  }
 
-  async clickFacebookButton() {
-    await this.clickById("facebooklinkbutton");
-  }
 }

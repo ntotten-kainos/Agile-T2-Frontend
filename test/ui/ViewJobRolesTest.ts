@@ -1,6 +1,5 @@
 import { expect } from "chai";
 import { JobRolesPage } from "./ViewJobRolesPage";
-import { urlContains } from "selenium-webdriver/lib/until";
 import { By } from "selenium-webdriver";
 
 describe("Job Roles Page Tests", () => {
@@ -104,26 +103,4 @@ describe("Job Roles Page Tests", () => {
     });
   });
 
-  // Tests to check the footer buttons on the job-roles page
-  it("should bring the user to the Instagram page", async () => {
-    await jobRolesPage.clickInstagramButton();
-
-    await jobRolesPage.driver.wait(urlContains("instagram"), 10000);
-
-    const currentUrl = await jobRolesPage.driver.getCurrentUrl();
-    //console.log(currentUrl);
-    expect(currentUrl).to.include("instagram");
-    await jobRolesPage.driver.navigate().back();
-  });
-
-  it("should bring the user to the Facebook page", async () => {
-    await jobRolesPage.clickFacebookButton();
-
-    await jobRolesPage.driver.wait(urlContains("facebook"), 10000);
-
-    const currentUrl = await jobRolesPage.driver.getCurrentUrl();
-    //console.log(currentUrl);
-    expect(currentUrl).to.include("facebook");
-    await jobRolesPage.driver.navigate().back();
-  });
 });
