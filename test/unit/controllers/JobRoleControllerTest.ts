@@ -27,7 +27,7 @@ describe('JobRoleController', function () {
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
             const req = { session: { token: 'test-token' } };
-            const res = { render: sinon.spy(), locals: {} };
+            const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
@@ -72,28 +72,28 @@ describe('JobRoleController', function () {
         it('should redirect to loginForm.html page when user is NOT logged in', async () => {
             const expected = jobRoleResponse;
             const jobRole = [expected];
-        
+
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRole);
             sinon.stub(JobRoleController, 'getAllJobRoles');
-        
+
             const req = {
-              session: { token: '' }, 
-            } as any; 
-        
+                session: { token: '' },
+            } as any;
+
             const res = {
-              status: sinon.stub().returnsThis(),
-              send: sinon.stub().returnsThis(),
-              redirect: sinon.stub().returnsThis()
-            } as any; 
-        
+                status: sinon.stub().returnsThis(),
+                send: sinon.stub().returnsThis(),
+                redirect: sinon.stub().returnsThis()
+            } as any;
+
             const next = sinon.stub();
-        
+
             const middleware = allowRoles([UserRole.Admin, UserRole.User]);
-        
+
             await middleware(req, res, next);
-        
+
             expect((res.redirect as sinon.SinonStub).calledOnce).to.be.true;
             expect((res.redirect as sinon.SinonStub).calledWith('/loginForm')).to.be.true;
-          });
+        });
     });
 });
