@@ -5,7 +5,7 @@ import express from "express";
 export const allowRoles = (allowedRoles: UserRole[]) => {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
         if (!req.session.token) {
-            return res.redirect('/loginForm.html');
+            return res.redirect('/loginForm');
         }
 
         try {
@@ -16,7 +16,7 @@ export const allowRoles = (allowedRoles: UserRole[]) => {
 
             next();
         } catch (err) {
-            return res.redirect('/loginForm.html');
+            return res.redirect('/loginForm');
         }
     }
 }

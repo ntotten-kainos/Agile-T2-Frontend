@@ -31,7 +31,7 @@ describe('Authorization Middleware', function () {
       await middleware(req as unknown as express.Request, res as unknown as express.Response, next);
 
       expect(res.redirect.calledOnce).to.be.true;
-      expect(res.redirect.calledWith('/loginForm.html')).to.be.true;
+      expect(res.redirect.calledWith('/loginForm')).to.be.true;
   });
 
   it('should render notAuthorised view and return 403 status, when a user is logged in with User permission, but they try to access admin permission content', async () => {
@@ -80,7 +80,7 @@ describe('Authorization Middleware', function () {
     await middleware(req as unknown as express.Request, res as unknown as express.Response, next);
 
     expect(res.redirect.calledOnce).to.be.true;
-    expect(res.redirect.calledWith('/loginForm.html')).to.be.true;
+    expect(res.redirect.calledWith('/loginForm')).to.be.true;
 });
 
 it('should render not authorised view and return 403 status, when user is logged in with a valid token but has an unauthorized role', async () => {

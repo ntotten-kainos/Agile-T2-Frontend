@@ -93,7 +93,7 @@ describe('JobRoleController', function () {
             await middleware(req, res, next);
         
             expect((res.redirect as sinon.SinonStub).calledOnce).to.be.true;
-            expect((res.redirect as sinon.SinonStub).calledWith('/loginForm.html')).to.be.true;
+            expect((res.redirect as sinon.SinonStub).calledWith('/loginForm')).to.be.true;
           });
     });
 });
