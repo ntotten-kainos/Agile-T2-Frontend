@@ -42,6 +42,10 @@ export default class BasePage {
     return await this.driver.findElement(By.css(css));
   }
 
+  async findElementsByCss(css: string) {
+    return await this.driver.findElements(By.css(css));
+  }
+
   async closeBrowser() {
     await this.driver.quit();
   }
