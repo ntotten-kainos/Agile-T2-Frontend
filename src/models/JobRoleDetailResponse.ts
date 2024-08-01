@@ -3,7 +3,7 @@ export type JobRoleDetailResponse = {
     roleName: string,
     description: string,
     responsibilities: string,
-    specificationLink: string,
+    specification: string,
     location: string, 
     capabilityName: string,
     bandValue: string,

@@ -18,7 +18,7 @@ const jobRoleDetailResponse: JobRoleDetailResponse = {
     roleName: "Test Engineer",
     description: "Test description",
     responsibilities: "Test responsibilities",
-    specificationLink: "Test specificationLink",
+    specification: "Test specificationLink",
     location: "Test location", 
     capabilityName: "Test capabilityName",
     bandValue: "Test bandValue",
