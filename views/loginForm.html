@@ -29,13 +29,25 @@
                         Email
                     </label>
                 </h3>
-                <input type="email" name="email" id="loginemail" value="{{email}}">
+                <input
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value="{{email}}" 
+                    placeholder="email"
+                    title="Email should match the format <your_name>@<mail_server>.<domain>">
                 <h3>
                     <label for="password">
                         Password
                     </label>
                 </h3>
-                <input type="password" name="password" id="loginpassword" value="{{password}}">
+                <input 
+                    type="password"
+                    name="password" 
+                    id="password" 
+                    value="{{password}}" 
+                    placeholder="password"
+                    title="Password must contain 1 or more uppercase, lowercase, special characters, and digits. Password must also be 8 or more characters in length.">
                 <br><br>
                 <button class="login-button" id="submit">Submit</button>
             </form>
