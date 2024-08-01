@@ -4,6 +4,8 @@ import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles } from "./controllers/JobRoleController";
+import { UserRole } from "./models/JwtToken";
+import { allowRoles } from "./middleware/AuthMiddleware";
 
 const app = express();
 
@@ -54,4 +56,4 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 });
 
 // Job Roles
-app.get('/job-roles', getAllJobRoles);
+app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
