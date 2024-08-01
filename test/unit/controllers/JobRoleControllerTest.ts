@@ -60,6 +60,7 @@ describe('JobRoleController', function () {
             const res = {
                 render: sinon.spy(),
                 redirect: sinon.spy(),
+                locals: { errormessage: '' }
             };
 
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRole);
@@ -69,6 +70,7 @@ describe('JobRoleController', function () {
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('jobRoles', { jobRoles: jobRole })).to.be.true;
         });
+        
         it('should redirect to loginForm.html page when user is NOT logged in', async () => {
             const expected = jobRoleResponse;
             const jobRole = [expected];
