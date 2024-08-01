@@ -20,12 +20,14 @@
             <div class="twopositioning" id="viewjobsbutton">
                 <li><a style ="color:#252D4F"href="/job-roles">Jobs</a></li>
             </div>
-          <div class="loginbutton" id="loginbutton">
-            <a class="button2" href="/loginForm"><b>Log In</b></a>
-        </div>
+          
         {% if loggedin %}
         <div class="logout">
             <button class="button2" id="logout-button" onclick="logout()"><b>Log out</b></button>
+        </div>
+        {% else %}
+        <div class="loginbutton" id="loginbutton">
+          <a class="button2" href="/loginForm"><b>Log In</b></a>
         </div>
         {% endif %}
         <div class="search">
