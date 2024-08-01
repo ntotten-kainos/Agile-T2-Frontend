@@ -14,7 +14,7 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Email Format!");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
@@ -30,7 +30,7 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Password! Password must be at least 8 characters long.");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
@@ -46,7 +46,7 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Password! Password must contain at least one lowercase letter.");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
@@ -62,7 +62,7 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Password! Password must contain at least one uppercase letter.");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
@@ -78,7 +78,7 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Password! Password must contain at least one digit.");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
@@ -94,15 +94,15 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                expect(e.message).to.equal("Invalid Password! Password must contain at least one special character.");
+                expect(e.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
 
             assert.fail("Expected error message");
         })
 
-        it('should return list of errors when password has multiple formatting issues', () => {
-            const errorString: string = "Invalid Password! Password must contain at least one digit.,Password must contain at least one special character.";
+        it('should return error when password has multiple formatting issues', () => {
+            const errorString: string = "Invalid email or password - hover over input field for more info!";
 
             const loginReq: LoginRequest = {
                 email: "valid@gmail.com",
@@ -131,6 +131,60 @@ describe('LoginRequestValidator', function () {
             } catch (e) {
                 assert.fail("Expected no error message");
             }
+        })
+
+        it('should return error when password field is empty', () => {
+            const errorString: string = "Please enter password";
+
+            const loginReq: LoginRequest = {
+                email: "valid@gmail.com",
+                password: ""
+            }
+
+            try {
+                validateLoginRequest(loginReq);
+            } catch (e) {
+                expect(e.message).to.equal(errorString);
+                return;
+            }
+
+            assert.fail("Expected error message");
+        })
+
+        it('should return error when email field is empty', () => {
+            const errorString: string = "Please enter email";
+
+            const loginReq: LoginRequest = {
+                email: "",
+                password: "Pa$$word!123"
+            }
+
+            try {
+                validateLoginRequest(loginReq);
+            } catch (e) {
+                expect(e.message).to.equal(errorString);
+                return;
+            }
+
+            assert.fail("Expected error message");
+        })
+
+        it('should return error when both fields are empty', () => {
+            const errorString: string = "Please enter email and password";
+
+            const loginReq: LoginRequest = {
+                email: "",
+                password: ""
+            }
+
+            try {
+                validateLoginRequest(loginReq);
+            } catch (e) {
+                expect(e.message).to.equal(errorString);
+                return;
+            }
+
+            assert.fail("Expected error message");
         })
     })
 })

@@ -13,9 +13,9 @@
 <body>
     {% include "header.html" %}
     {% if errormessage %}
-    <h2 id="error-message">
-        {{ errormessage }}
-    </h2>
+        <h2 id="error-message">
+            {{ errormessage }}
+        </h2>
     {% endif %}
     <div class="form-container-wrapper">
         <div class="form-container">
@@ -36,7 +36,6 @@
                     value="{{email}}" 
                     placeholder="email"
                     title="Email should match the format <your_name>@<mail_server>.<domain>">
-                    
                 <h4>
                     <label for="password">
                         Password

@@ -49,7 +49,7 @@ describe('AuthService', function () {
                 await getAuthToken(INVALID_LOGIN_REQUEST);
                 assert.fail("Expected to catch error")
             } catch (error) {
-                expect(error.message).to.equal("Invalid Email Format!");
+                expect(error.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
         })

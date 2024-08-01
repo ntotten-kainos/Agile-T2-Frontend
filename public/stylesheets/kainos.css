@@ -108,6 +108,10 @@ input {
     }
 
 
+#error-message {
+    display: flex;
+    justify-content: center;
+}
 
 /*for job roles*/
 .form-jobroles-wrapper {
@@ -132,10 +136,6 @@ input {
     height: auto;
     text-align: center;
 }
-
-
-
-
 
 /*for the image*/
 

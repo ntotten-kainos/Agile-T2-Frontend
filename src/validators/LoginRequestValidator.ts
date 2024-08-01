@@ -2,14 +2,23 @@ import { LoginRequest } from './../models/LoginRequest';
 
 
 export const validateLoginRequest = function (loginReq: LoginRequest): void {
-    if (!validateEmail(loginReq.email)) {
-        throw new Error("Invalid Email Format!");
+
+    if (loginReq.email == '' && loginReq.password == '') {
+        throw new Error("Please enter email and password")
+    }
+
+    if (loginReq.email == '') {
+        throw new Error("Please enter email")
+    }
+
+    if (loginReq.password == '') {
+        throw new Error("Please enter password")
     }
 
     const passwordValidationResult = validatePassword(loginReq.password);
 
-    if (!passwordValidationResult.isValid) {
-        throw new Error("Invalid Password! " + passwordValidationResult.errors);
+    if (!passwordValidationResult.isValid || !validateEmail(loginReq.email)) {
+        throw new Error("Invalid email or password - hover over input field for more info!");
     }
 }
 
@@ -21,7 +30,6 @@ export const validateEmail = function (email: string): boolean {
 
 interface PasswordValidationResult {
     isValid: boolean;
-    errors: string[];
 }
 
 export const validatePassword = function (password: string): PasswordValidationResult {
@@ -29,7 +37,7 @@ export const validatePassword = function (password: string): PasswordValidationR
 
     // Check length
     if (password.length < 8) {
-        errors.push("Password must be at least 8 characters long.");
+        errors.push("Password must be at least 8 characters.");
     }
 
     // Check for uppercase letter
@@ -54,6 +62,5 @@ export const validatePassword = function (password: string): PasswordValidationR
 
     return {
         isValid: errors.length === 0,
-        errors
     };
 }
