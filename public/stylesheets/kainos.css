@@ -104,6 +104,12 @@ input {
     color: white;
     }
 
+
+#error-message {
+    display: flex;
+    justify-content: center;
+}
+
 /*for the image*/
 
 /* Bottom right text */

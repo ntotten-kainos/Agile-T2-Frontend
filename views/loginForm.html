@@ -13,9 +13,7 @@
 <body>
     {% include "header.html" %}
     {% if errormessage %}
-    <h2>
-        {{ errormessage }}
-    </h2>
+        <p id="error-message">{{ errormessage }}</p>
     {% endif %}
     <div class="form-container-wrapper">
         <div class="form-container">
