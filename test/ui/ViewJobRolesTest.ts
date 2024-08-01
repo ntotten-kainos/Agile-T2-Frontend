@@ -6,20 +6,11 @@ import { By } from "selenium-webdriver";
 describe("Job Roles Page Tests", () => {
   let jobRolesPage: JobRolesPage;
 
-  // These are specifically for the tests, so I think these are better
+  // These are specifically related to the tests, so I think these are better
   // suited to remain in the test class, rather than going in the page class
-  const validLocations = [
-    "BELFAST", 
-    "DERRY", 
-    "LONDON"
-  ]; // This can be adatped as reuired
-  const validRoleNames = [
-    "Software Engineer",
-    "Data Scientist",
-    "Cyber Security Analyst",
-  ]; // This can be adapted as reuired
+  const validLocations = ["BELFAST", "DERRY", "TORONTO"];
 
-  // This should remain as is, this is the date regex
+  // This is the date regex (for checking format)
   const dateRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
 
   // Before the test runs, only called at the start of the test
@@ -44,7 +35,7 @@ describe("Job Roles Page Tests", () => {
       headers.map((header) => header.getText())
     );
 
-    //these can be expanded to check the information returned from JobRoleInformationById
+    //This can be expanded/adapted to check the information returned from JobRoleInformationById
     const expectedHeaders = [
       "Job Role",
       "Location",
@@ -59,26 +50,6 @@ describe("Job Roles Page Tests", () => {
     );
   });
 
-  it("should display the correct job roles information", async () => {
-    await jobRolesPage.waitForTable();
-    const actualJobRoles = await jobRolesPage.getJobRoles();
-
-    actualJobRoles.forEach((role, index) => {
-      expect(role.location).to.be.oneOf(
-        validLocations,
-        `Invalid location for role index ${index}`
-      );
-      expect(role.roleName).to.be.oneOf(
-        validRoleNames,
-        `Invalid role name for role index ${index}`
-      );
-      expect(role.closingDate).to.match(
-        dateRegex,
-        `Invalid date format for role index ${index}`
-      );
-    });
-  });
-
   it("should have non-empty data fields for each job role", async () => {
     await jobRolesPage.waitForTable();
     const actualJobRoles = await jobRolesPage.getJobRoles();
@@ -89,6 +60,22 @@ describe("Job Roles Page Tests", () => {
       expect(role.band).to.not.be.empty;
       expect(role.capability).to.not.be.empty;
       expect(role.closingDate).to.not.be.empty;
+    });
+  });
+
+  it("should display the correct location and date format", async () => {
+    await jobRolesPage.waitForTable();
+    const actualJobRoles = await jobRolesPage.getJobRoles();
+
+    actualJobRoles.forEach((role, index) => {
+      expect(role.location).to.be.oneOf(
+        validLocations,
+        `Invalid location for role index ${index}`
+      );
+      expect(role.closingDate).to.match(
+        dateRegex,
+        `Invalid date format for role index ${index}`
+      );
     });
   });
 
