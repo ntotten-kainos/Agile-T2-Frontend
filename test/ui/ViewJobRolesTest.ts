@@ -17,12 +17,17 @@ describe("Job Roles Page Tests", () => {
   before(async () => {
     jobRolesPage = new JobRolesPage();
     await jobRolesPage.open();
+
+    await jobRolesPage.enterTextById("email", "valid.admin@email.com");
+    await jobRolesPage.enterTextById("password", "admin!Pa$$word123");
+    await jobRolesPage.clickById("submit");
+    await jobRolesPage.open();
   });
 
   // Closing the driver, this is calling the method from the BasePage class,
   // close method not required in the jobRolesPage class
   after(async () => {
-    await jobRolesPage.closeBrowser;
+    await jobRolesPage.closeBrowser();
   });
 
   // Tests
@@ -30,12 +35,31 @@ describe("Job Roles Page Tests", () => {
     await jobRolesPage.waitForTable();
 
     const headerRow = await jobRolesPage.getHeaderRow();
-    const headers = await headerRow.findElements(By.css("th"));
-    const headerTexts = await Promise.all(
-      headers.map((header) => header.getText())
-    );
 
-    //This can be expanded/adapted to check the information returned from JobRoleInformationById
+    const jobRoleHeader = await headerRow
+      .findElement(By.id("header-jobrole"))
+      .getText();
+    const locationHeader = await headerRow
+      .findElement(By.id("header-location"))
+      .getText();
+    const bandHeader = await headerRow
+      .findElement(By.id("header-band"))
+      .getText();
+    const capabilityHeader = await headerRow
+      .findElement(By.id("header-capability"))
+      .getText();
+    const closingDateHeader = await headerRow
+      .findElement(By.id("header-closingdate"))
+      .getText();
+
+    const headerTexts = [
+      jobRoleHeader,
+      locationHeader,
+      bandHeader,
+      capabilityHeader,
+      closingDateHeader,
+    ];
+
     const expectedHeaders = [
       "Job Role",
       "Location",
@@ -53,6 +77,7 @@ describe("Job Roles Page Tests", () => {
   it("should have non-empty data fields for each job role", async () => {
     await jobRolesPage.waitForTable();
     const actualJobRoles = await jobRolesPage.getJobRoles();
+    //console.log(actualJobRoles);
 
     actualJobRoles.forEach((role) => {
       expect(role.roleName).to.not.be.empty;

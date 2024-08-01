@@ -28,30 +28,39 @@ export class JobRolesPage extends BasePage {
   }
 
   async getHeaderRow() {
-    return this.findElementByCss("table tr");
+    return this.findElementById("table-header");
   }
 
   async getJobRoles() {
-    this.waitForTable;
+    await this.waitForTable();
 
-    const rows = await this.findElementsByCss("table tr");
+    // Find the table body element by ID
+    const tableBody = await this.findElementById("table-body");
+
+    const tableRows = await tableBody.findElements(By.id("table-rows"));
+
     const jobRoles: JobRole[] = [];
 
-    for (let i = 1; i < rows.length; i++) {
-      const cols = await rows[i].findElements(By.css("td"));
+    for (const row of tableRows) {
+      const roleName = await (await row.findElement(By.id("row-name"))).getText();
+      const location = await (await row.findElement(By.id("row-location"))).getText();
+      const band = await (await row.findElement(By.id("row-band"))).getText();
+      const capability = await (await row.findElement(By.id("row-capability"))).getText();
+      const closingDate = await (await row.findElement(By.id("row-closingdate"))).getText();
+
       const role: JobRole = {
-        roleName: await cols[0].getText(),
-        location: await cols[1].getText(),
-        band: await cols[2].getText(),
-        capability: await cols[3].getText(),
-        closingDate: await cols[4].getText(),
+        roleName,
+        location,
+        band,
+        capability,
+        closingDate,
       };
       jobRoles.push(role);
     }
 
     return jobRoles;
   }
-
+  
   async clickInstagramButton() {
     await this.clickById("instagramlinkbutton");
   }
