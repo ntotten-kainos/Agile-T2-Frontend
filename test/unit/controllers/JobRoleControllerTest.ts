@@ -119,13 +119,13 @@ describe('JobRoleController', function () {
 
             sinon.stub(JobRoleService, 'getJobRoleByID').resolves(singleJobRoleDetails);
 
-            const req = { params: { id: '1' } };
+            const req = { params: { id: '1' } , session: { token: 'test-token' }};
             const res = { render: sinon.spy() };
 
             await JobRoleController.getSingleJobRole(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoleDetail.html', { jobRole: singleJobRoleDetails })).to.be.true;
+            expect(res.render.calledWith('jobRoleDetail', { jobRole: singleJobRoleDetails })).to.be.true;
         });
 
     });
@@ -134,13 +134,13 @@ describe('JobRoleController', function () {
         const errorMessage: string = 'Error message';
         sinon.stub(JobRoleService, 'getJobRoleByID').rejects(new Error(errorMessage));
 
-        const req = { params: { id: '1' } };
+        const req = { params: { id: '1' }, session: { token: 'test-token' }};
         const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
         await JobRoleController.getSingleJobRole(req as any, res as any);
 
         expect(res.render.calledOnce).to.be.true;
-        expect(res.render.calledWith('jobRoleDetail.html')).to.be.true;
+        expect(res.render.calledWith('jobRoleDetail')).to.be.true;
         expect(res.locals.errormessage).to.equal(errorMessage);
       });
 
