@@ -3,7 +3,11 @@ import session from "express-session";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+
 import { getAllJobRoles, getSingleJobRole } from "./controllers/JobRoleController";
+import { UserRole } from "./models/JwtToken";
+import { allowRoles } from "./middleware/AuthMiddleware";
+
 
 const app = express();
 
@@ -49,7 +53,7 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 });
 
 // Job Roles
-app.get('/job-roles', getAllJobRoles);
 
-// Single job role by ID
+app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
 app.get('/job-roles/:id', getSingleJobRole);
+

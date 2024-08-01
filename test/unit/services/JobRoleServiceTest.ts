@@ -28,13 +28,14 @@ const jobRoleDetailResponse: JobRoleDetailResponse = {
 const mock = new MockAdapter(axios);
 
 describe('JobRoleService', function () {
+    const token = 'test-token';
     describe('getJobRoles', function () {
         it('should return Job Roles from response', async () => {
             const data = [jobRoleResponse];
 
             mock.onGet(URL).reply(200, data);
 
-            const results = await getJobRoles();
+            const results = await getJobRoles(token);
 
             expect(results[0].jobRoleId).to.equal(jobRoleResponse.jobRoleId);
             expect(results[0].roleName).to.equal(jobRoleResponse.roleName);
@@ -49,7 +50,7 @@ describe('JobRoleService', function () {
             mock.onGet(URL).reply(500);
 
             try {
-                await getJobRoles();
+                await getJobRoles(token);
                 throw new Error('Test failed - error was not thrown');
             } catch (e) {
                 expect(e.message).to.equal('Failed to get Job Roles');
