@@ -20,9 +20,7 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
 
 export const logout = async(req: express.Request, res: express.Response): Promise<void> => {
     // Wipe out the token from session storage.
-    console.log(req.session.token);
     req.session.token = undefined;
-    console.log(req.session.token);
     // Send the user to the login page.
     res.redirect('/loginForm');
 }
