@@ -30,7 +30,9 @@
                     <tbody>
                         {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
                         <tr>
+
                             <td class="text-center" style="color: black;"><a href="/job-roles/{{jobRole.jobRoleId}}" target="_blank">{{ jobRole.roleName }}</a></td>
+
                             <td class="text-center" style="color: black;">{{ jobRole.location }}</td>
                             <td class="text-center" style="color: black;">{{ jobRole.bandValue }}</td>
                             <td class="text-center" style="color: black;">{{ jobRole.capabilityName }}</td>
