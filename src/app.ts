@@ -22,7 +22,19 @@ app.set('view engine', 'html');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({ secret: process.env.SESSION_SECRET, cookie: { maxAge: 28800000 } }));
+const sessionSecret = process.env.SESSION_SECRET;
+if (!sessionSecret) {
+  throw new Error('SESSION_SECRET environment variable is not defined.');
+
+}
+
+app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
+
+declare module "express-session" {
+  interface SessionData {
+    token: string;
+  }
+}
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

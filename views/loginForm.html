@@ -13,7 +13,7 @@
 <body>
     {% include "header.html" %}
     {% if errormessage %}
-    <h2>
+    <h2 id="error-message">
         {{ errormessage }}
     </h2>
     {% endif %}
@@ -26,10 +26,10 @@
             <form action="/loginForm" method="post">
                 <h3>
                     <label for="email">
-                        Email:
+                        Email
                     </label>
                 </h3>
-                <input type="email" name="email" id="email" value="{{email}}">
+                <input type="email" name="email" id="loginemail" value="{{email}}">
                 <h3>
                     <label for="password">
                         Password
