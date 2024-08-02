@@ -12,11 +12,23 @@ describe('AuthController', function () {
     const VALID_EMAIL = process.env.VALID_TEST_EMAIL;
     const VALID_PASSWORD = process.env.VALID_TEST_PASSWORD;
 
+    describe('logout', function () {
+        it('should set token to undefined and redirect to login page', async () => {
+            const req = { session: {token: '' } };
+            const res = { redirect: sinon.spy(), locals: { } };
+
+            await AuthController.logout(req as any, res as any);
+
+            expect(res.redirect.calledWith('/loginForm')).to.be.true;
+            expect(req.session.token).to.be.undefined;
+        })
+    })
+
     describe('getLoginForm', function () {
 
         it('should render loginForm', async () => {
             const req = {};
-            const res = { render: sinon.spy() };
+            const res = { render: sinon.spy(), locals: { loggedin: false } };
 
             await AuthController.getLoginForm(req as any, res as any);
 
@@ -41,7 +53,7 @@ describe('AuthController', function () {
                 }
             };
 
-            const res = { redirect: sinon.spy(), render: sinon.spy() };
+            const res = { redirect: sinon.spy(), render: sinon.spy(), locals: { errormessage: '' }};
 
             await AuthController.postLoginForm(req as any, res as any);
 
