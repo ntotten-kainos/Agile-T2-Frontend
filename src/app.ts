@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { UserRole } from "./models/JwtToken";
-import { allowRoles } from "./middleware/AuthMiddleware";
+import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
 
 const app = express();
 
@@ -30,6 +30,8 @@ if (!sessionSecret) {
 }
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
+
+app.use(setLoggedInStatus);
 
 declare module "express-session" {
   interface SessionData {
