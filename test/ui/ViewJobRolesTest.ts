@@ -76,7 +76,6 @@ describe("Job Roles Page Tests", () => {
   it("should have non-empty data fields for each job role", async () => {
     await jobRolesPage.waitForTable();
     const actualJobRoles = await jobRolesPage.getJobRoles();
-    //console.log(actualJobRoles);
 
     actualJobRoles.forEach((role) => {
       expect(role.roleName).to.not.be.empty;

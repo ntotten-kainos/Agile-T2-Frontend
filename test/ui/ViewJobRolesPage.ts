@@ -10,8 +10,7 @@ interface JobRole {
 }
 
 export class JobRolesPage extends BasePage {
-  //private url: string = 'https://5chmbvngab.eu-west-1.awsapprunner.com/job-roles';
-  private url: string = "http://localhost:3000/job-roles";
+  private url: string = 'https://5chmbvngab.eu-west-1.awsapprunner.com/job-roles';
 
   constructor() {
     super();

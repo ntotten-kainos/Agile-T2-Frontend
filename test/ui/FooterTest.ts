@@ -23,7 +23,6 @@ describe("Footer Page Tests", () => {
     await footerPage.driver.wait(urlContains("instagram"), 10000);
 
     const currentUrl = await footerPage.driver.getCurrentUrl();
-    //console.log(currentUrl);
     expect(currentUrl).to.include("instagram");
     await footerPage.driver.navigate().back();
   });
@@ -34,7 +33,6 @@ describe("Footer Page Tests", () => {
     await footerPage.driver.wait(urlContains("facebook"), 10000);
 
     const currentUrl = await footerPage.driver.getCurrentUrl();
-    //console.log(currentUrl);
     expect(currentUrl).to.include("facebook");
     await footerPage.driver.navigate().back();
   });
