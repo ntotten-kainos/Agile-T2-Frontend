@@ -22,25 +22,25 @@
             <h1>
                 Login
             </h1>
-        
+            <br>
             <form action="/loginForm" method="post">
-                <h3>
+                <h4>
                     <label for="email">
                         Email
                     </label>
-                </h3>
-                <input
+                </h4>
+                <input 
                     type="email" 
                     name="email" 
                     id="email" 
                     value="{{email}}" 
                     placeholder="email"
                     title="Email should match the format <your_name>@<mail_server>.<domain>">
-                <h3>
+                <h4>
                     <label for="password">
                         Password
                     </label>
-                </h3>
+                </h4>
                 <input 
                     type="password"
                     name="password" 
@@ -48,7 +48,7 @@
                     value="{{password}}" 
                     placeholder="password"
                     title="Password must contain 1 or more uppercase, lowercase, special characters, and digits. Password must also be 8 or more characters in length.">
-                <br><br>
+                <br>
                 <button class="login-button" id="submit">Submit</button>
             </form>
         </div>

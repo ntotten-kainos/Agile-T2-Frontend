@@ -112,7 +112,6 @@ describe('LoginRequestValidator', function () {
             try {
                 validateLoginRequest(loginReq);
             } catch (e) {
-                console.log(e);
                 console.log(e.message);
                 expect(e.message).to.equal(errorString);
                 return;
