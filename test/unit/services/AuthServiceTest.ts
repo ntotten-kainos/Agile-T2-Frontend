@@ -1,6 +1,6 @@
 import { LoginRequest } from './../../../src/models/LoginRequest';
 import { getAuthToken, URL } from './../../../src/services/AuthService';
-import { requestInstance } from '../../../src/models';
+import { requestInstance } from '../../../src/index';
 import MockAdapter from "axios-mock-adapter";
 import { assert, expect } from 'chai';
 import sinon from 'sinon';
@@ -18,7 +18,7 @@ describe('AuthService', function () {
         email: String(VALID_EMAIL),
         password: String(VALID_PASSWORD)
     };
-    const INVALID_LOGIN_REQUEST: LoginRequest = { 
+    const INVALID_LOGIN_REQUEST: LoginRequest = {
         email: 'invalid',
         password: 'invalid'
     };
@@ -49,7 +49,7 @@ describe('AuthService', function () {
                 await getAuthToken(INVALID_LOGIN_REQUEST);
                 assert.fail("Expected to catch error")
             } catch (error) {
-                expect(error.message).to.equal("Invalid Email Format!");
+                expect(error.message).to.equal("Invalid email or password - hover over input field for more info!");
                 return;
             }
         })

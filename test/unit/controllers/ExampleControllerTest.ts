@@ -1,6 +1,6 @@
 import { assert } from "console"
 
-describe('Example', function() {
+describe('Example', function () {
     it('should pass', async () => {
         assert(true)
     })

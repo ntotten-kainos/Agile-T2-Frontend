@@ -1,7 +1,7 @@
 import axios from "axios";
 
 declare module 'express-session' {
-    interface Session {
+    interface SessionData {
         token: string;
     }
 }
@@ -12,4 +12,4 @@ export const requestInstance = axios.create({
     baseURL: SERVER_URL,
     timeout: 20000,
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
-  })
+})

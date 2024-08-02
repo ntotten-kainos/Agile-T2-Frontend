@@ -58,7 +58,7 @@ footer {
 
 .form-container-wrapper {
     height: 100%;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,9 +81,12 @@ form {
     flex-direction: column;
 }
 
+form label {
+    padding: 5px;
+}
+
 input {
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -105,6 +108,10 @@ input {
     }
 
 
+#error-message {
+    display: flex;
+    justify-content: center;
+}
 
 /*for job roles*/
 .form-jobroles-wrapper {
@@ -129,10 +136,6 @@ input {
     height: auto;
     text-align: center;
 }
-
-
-
-
 
 /*for the image*/
 
@@ -212,7 +215,7 @@ font-size: large;
 
 .sharebutton {
 position:absolute;
-right: 22vw;
+right: 25vw;
 top:30px; 
 border-radius: 40%;
 color:#252D4F
@@ -253,15 +256,30 @@ top:17px;
 
 .loginbutton{
 position:absolute;
-right: 12vw;
+right: 15vw;
 top:17px;
 }
 
+.logout {
+    position: absolute;
+    right: 2vw;
+    top: 17px;
+}
 
+#logout-button {
+    color: #C05746;
+    border: 2px solid #C05746;
+}
+
+#logout-button:hover {
+    background-color: #C05746;
+    color: white;
+    font-size: medium;
+}
 
 .search {
 position:absolute;
-right: 8vw;
+right: 10vw;
 top:30px;
 border-radius: 40%;
 

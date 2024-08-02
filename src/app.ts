@@ -2,11 +2,11 @@ import express from "express";
 import session from "express-session";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
-import { getLoginForm, postLoginForm } from "./controllers/AuthController";
+import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
 
 import { getAllJobRoles, getSingleJobRole } from "./controllers/JobRoleController";
 import { UserRole } from "./models/JwtToken";
-import { allowRoles } from "./middleware/AuthMiddleware";
+import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
 
 
 const app = express();
@@ -33,6 +33,8 @@ if (!sessionSecret) {
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
 
+app.use(setLoggedInStatus);
+
 declare module "express-session" {
   interface SessionData {
     token: string;
@@ -48,6 +50,10 @@ app.listen(3000, () => {
 app.get('/loginForm', getLoginForm);
 app.post('/loginForm', postLoginForm);
 
+// Log out
+app.get('/logout', logout)
+
+// Home
 app.get('/', async (req: express.Request, res: express.Response) => {
   res.render("home.html");
 });
