@@ -1,6 +1,6 @@
 export enum UserRole {
     Admin = 1,
-    User = 2
+    User = 3
 }
 
 export type JwtToken = {
