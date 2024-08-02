@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Job Role {{ jobRole.roleName }}</title>
-    </head>
-    <body>  
-        <h1>Role Name: {{ jobRole.roleName }}</h1>
-        <h3>Description: {{ jobRole.description }}</h3>
-        <h3>Responsibilities: {{ jobRole.responsibilities }}</h3>
-        <h3>Specification Link: <a href="{{ jobRole.specification }}" target="_blank">{{ jobRole.specification }}</a></h3>
-        <h3>Location: {{ jobRole.location }}</h3>
-        <h3>Capability: {{ jobRole.capabilityName }}</h3>
-        <h3>Band: {{ jobRole.bandValue }}</h3>
-        <h3>Closing Date: {{ jobRole.formattedClosingDate }}</h3>
-    </body>
+<html lang="en">
+
+<head>
+    <title>Job Role {{ jobRole.roleName }}</title>
+    <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/kainos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    {% include "header.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1 class="text-center" style="color:#252D4F; margin-top: 20px;">Role Name: {{ jobRole.roleName }}</h1>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3><strong>Description:</strong></h3>
+                        <p>{{ jobRole.description }}</p>
+                        <h3><strong>Responsibilities:</strong></h3>
+                        <p>{{ jobRole.responsibilities }}</p>
+                        <h3><strong>Specification Link:</strong></h3>
+                        <p><a href="{{ jobRole.specification }}" target="_blank">{{ jobRole.specification }}</a></p>
+                        <h3><strong>Location:</strong></h3>
+                        <p>{{ jobRole.location }}</p>
+                        <h3><strong>Capability:</strong></h3>
+                        <p>{{ jobRole.capabilityName }}</p>
+                        <h3><strong>Band:</strong></h3>
+                        <p>{{ jobRole.bandValue }}</p>
+                        <h3><strong>Closing Date:</strong></h3>
+                        <p>{{ jobRole.formattedClosingDate }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+
 </html>
