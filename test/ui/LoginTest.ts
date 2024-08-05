@@ -1,9 +1,6 @@
-import { Builder, By, WebDriver } from "selenium-webdriver";
 import { expect } from "chai";
 import { LoginPage } from "./LoginPage";
-import { urlContains } from "selenium-webdriver/lib/until";
-import webdriver from "selenium-webdriver";
-import { log } from "console";
+
 
 describe("LoginPage Tests", () => {
   let loginPage: LoginPage;
