@@ -137,6 +137,18 @@ input {
     text-align: center;
 }
 
+.jobroledetail-container {
+    background: white;
+    padding: 20px;
+    border-radius: 0px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    max-width: 85vw;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    background-color: #f0f0f0;
+}
+
 /*for the image*/
 
 /* Bottom right text */
@@ -321,6 +333,13 @@ heading{
 p {
     font-size: large;
 }
+
+.text-left{
+    text-align: left;
+
+}
+
+
 
 
 
