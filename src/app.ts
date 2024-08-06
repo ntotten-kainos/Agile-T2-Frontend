@@ -57,10 +57,3 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 // Job Roles
 app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
 app.get('/job-roles/:id', allowRoles([UserRole.Admin, UserRole.User]), getSingleJobRole);
-
-
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error(err.stack);
-  res.status(500).render('errorPage', { errormessage: err.message || 'An unexpected error occurred.' });
-});
-
