@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>Job Roles by Id</title>
+  <title>Role Details</title>
   <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,27 +17,26 @@
 <body>
   {% include "header.html" %}
 <div class="form-jobroles-wrapper">
-    <div class="jobrole-container">
-        <h1 class="text-left" style="color:#252D4F; margin-top: 20px;">Job Roles</h1>
+    <div class="jobroledetail-container">
         <div class="table-responsive">
             <table class="table table-striped table-hover" id="table">
                 <thead>
 
-                    <h3><strong>{{ jobRole.roleName }}</strong></h3>
+                    <h2><strong>{{ jobRole.roleName }}</strong></h2>
                     <h3><strong>Description:</strong></h3>
-                        <p>{{ jobRole.description }}</p>
+                        <p4 class="leftalign"> {{ jobRole.description }}</p4>
                         <h3><strong>Responsibilities:</strong></h3>
-                        <p>{{ jobRole.responsibilities }}</p>
+                        <p4>{{ jobRole.responsibilities }}</p4>
                         <h3><strong>Specification Link:</strong></h3>
-                        <p><a href="{{ jobRole.specification }}" target="_blank">{{ jobRole.specification }}</a></p>
+                        <p4><a href="{{ jobRole.specification }}" target="_blank">{{ jobRole.specification }}</a></p4>
                         <h3><strong>Location:</strong></h3>
-                        <p>{{ jobRole.location }}</p>
+                        <p4>{{ jobRole.location }}</p4>
                         <h3><strong>Capability:</strong></h3>
-                        <p>{{ jobRole.capabilityName }}</p>
+                        <p4>{{ jobRole.capabilityName }}</p4>
                         <h3><strong>Band:</strong></h3>
-                        <p>{{ jobRole.bandValue }}</p>
+                        <p4>{{ jobRole.bandValue }}</p4>
                         <h3><strong>Closing Date:</strong></h3>
-                        <p>{{ jobRole.formattedClosingDate }}</p>
+                        <p4>{{ jobRole.formattedClosingDate }}</p4>
                 </tbody>
             </table>
         </div>

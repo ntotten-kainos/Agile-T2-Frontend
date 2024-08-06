@@ -334,11 +334,17 @@ p {
     font-size: large;
 }
 
-.text-left{
-    text-align: left;
 
+h3 {
+    font-size: large;
+    text-align: left;
 }
 
+
+p4{
+    font-size: large;
+    text-align: left;
+}
 
 
 
