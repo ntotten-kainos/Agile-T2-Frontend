@@ -74,7 +74,7 @@ interface InterviewSession {
 
 const sessions: Record<string, InterviewSession> = {};
 
-app.post('/start-interview', async (req, res) => {
+app.post('/start-interview', allowRoles([UserRole.User, UserRole.Admin]), async (req, res) => {
   const jobDescription = req.body.jobDescription;
 
   if (!jobDescription) {
@@ -105,7 +105,7 @@ app.post('/start-interview', async (req, res) => {
   }
 });
 
-app.post('/answer', async (req, res) => {
+app.post('/answer', allowRoles([UserRole.User, UserRole.Admin]), async (req, res) => {
   const sessionId = req.body.sessionId;
   const answer = req.body.answer;
 
