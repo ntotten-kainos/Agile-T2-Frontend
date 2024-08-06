@@ -8,6 +8,7 @@
     "coverage": "nyc mocha --require ts-node/register test/unit/**/*.ts"
   },
   "dependencies": {
+    "@types/uuid": "^10.0.0",
     "axios": "^1.7.2",
     "cookie-parser": "^1.4.6",
     "core-js": "^3.37.1",
@@ -17,7 +18,8 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "nunjucks": "^3.2.4",
-    "pa11y-ci": "^3.1.0"
+    "pa11y-ci": "^3.1.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",

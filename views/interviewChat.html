@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Interview Assistant</title>
+  <style>
+    /* Your CSS styling here */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+    .chat-container {
+      width: 400px;
+      max-width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-header {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    .chat-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: white;
+    }
+    .chat-message {
+      margin-bottom: 10px;
+    }
+    .chat-message.user {
+      text-align: right;
+    }
+    .chat-footer {
+      display: flex;
+      padding: 10px;
+      background-color: #f1f1f1;
+    }
+    .chat-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .chat-button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .chat-button:disabled {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Mock Interview Assistant</div>
+    <div class="chat-body" id="chat-body"></div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Type a message">
+      <button id="chat-button" class="chat-button">Send</button>
+    </div>
+  </div>
+  <script src="../dist/index.js"></script>
+</body>
+</html>
