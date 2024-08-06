@@ -48,7 +48,7 @@ JMeter Test (performance test)
 ---
 1. Install JMeter https://jmeter.apache.org/usermanual/index.html
 1. In Terminal, run command: jmeter
-1. Open the .jmx file in JMeter
+1. Open the file LOGIN--VIEW-JOB-ROLES.jmx file in JMeter
 1. Press Start button to run tests
 
 Config
