@@ -22,12 +22,17 @@ export const getJobRoles = async (token: string): Promise<JobRoleResponse[]> => 
 }
 
 export const getJobRoleByID = async (id: string, token: string): Promise<JobRoleDetailResponse> =>{
+    if(id == null || id == '')
+        throw new Error ('Invalid Job ID')
     try {
         const response: AxiosResponse = await axios.get(URL + id, getHeader(token));
-
         return response.data;
     } catch (e) {
-        console.log(e);
-        throw new Error('Failed to get Job Role');
+        if (e.response?.status == 400)
+            throw new Error('Role does not exist')
+        else if (e.response?.status == 500)
+        throw new Error ('Failed to get Job Role Details');
+        else 
+        throw new Error ('Role does not exist');
     }
 }

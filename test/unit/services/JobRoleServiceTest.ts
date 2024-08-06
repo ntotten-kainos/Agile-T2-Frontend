@@ -84,10 +84,25 @@ describe('JobRoleService', function () {
             try {
                 await getJobRoleByID(jobRoleId, token);
             } catch (e) {
-                expect(e.message).to.equal('Failed to get Job Role');
+                expect(e.message).to.equal('Failed to get Job Role Details');
                 return;
             }
         });
+
+        it('should throw exception when 400 error returned from axios', async () => {
+
+            const data = jobRoleDetailResponse;
+            const jobRoleId = "999";
+            mock.onGet(URL + jobRoleId).reply(400, data);
+      
+            try {
+              await getJobRoleByID(jobRoleId, token);
+            } catch (e) {
+              expect(e.message).to.equal('Role does not exist');
+              return;
+            }
+        })
+
 
     });
 
