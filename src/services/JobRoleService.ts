@@ -6,9 +6,14 @@ axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
 export const URL: string = "/api/job-roles/";
 
+interface Params {
+    orderBy?: string;
+    direction?: string;
+}
+
 export const getJobRoles = async (token: string, orderBy?: string, direction?: string): Promise<JobRoleResponse[]> => {
     try {
-        const params: any = {};
+        const params: Params = {};
         if (orderBy) params.orderBy = orderBy;
         if (direction) params.direction = direction;
 
