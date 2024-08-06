@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getChatGPTResponse = async (prompt: string, OPENAI_API_KEY: string): Promise<string> {
+export const getChatGPTResponse = async (prompt: string, OPENAI_API_KEY: string): Promise<string> => {
     try {
       const response = await axios.post(
         'https://api.openai.com/v1/engines/davinci-codex/completions',
