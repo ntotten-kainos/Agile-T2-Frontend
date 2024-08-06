@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { LoginPage } from "./LoginPage";
 
-
 describe("LoginPage Tests", () => {
   let loginPage: LoginPage;
 
@@ -21,7 +20,6 @@ describe("LoginPage Tests", () => {
   let applicantValidPassword: string = "regularU$er123";
   let invalidEmail: string = "invalid@gmail.com";
   let invalidPassword: string = "123";
-
 
   it("should find the email input field", async () => {
     const emailField = await loginPage.email();
@@ -43,11 +41,8 @@ describe("LoginPage Tests", () => {
 
   // invalid email and invalid password
   it("should display error message when wrong email and password entered", async () => {
-
-    await loginPage.enterTextById('email', invalidEmail);
-
-    await loginPage.enterTextById('password', invalidPassword);
-
+    await loginPage.enterTextById("email", invalidEmail);
+    await loginPage.enterTextById("password", invalidPassword);
     await loginPage.clickSubmit();
 
     const errorMessage = await loginPage.findElementById("error-message");
@@ -56,26 +51,22 @@ describe("LoginPage Tests", () => {
     );
   });
 
-    // invalid email and valid password
-    it("should display error message when wrong email and valid password entered", async () => {
-      await loginPage.enterTextById('email', invalidEmail);
-  
-      await loginPage.enterTextById('password', adminValidPassword);
-  
-      await loginPage.clickSubmit();
-  
-      const errorMessage = await loginPage.findElementById("error-message");
-      expect(await errorMessage.getText()).to.include(
-        "Login Request: Invalid Login Credentials!"
-      );
-    });
+  // invalid email and valid password
+  it("should display error message when wrong email and valid password entered", async () => {
+    await loginPage.enterTextById("email", invalidEmail);
+    await loginPage.enterTextById("password", adminValidPassword);
+    await loginPage.clickSubmit();
+
+    const errorMessage = await loginPage.findElementById("error-message");
+    expect(await errorMessage.getText()).to.include(
+      "Login Request: Invalid Login Credentials!"
+    );
+  });
 
   // no login details entered; click Submit button
   it("should display error message when no email or password entered", async () => {
-    await loginPage.enterTextById('email', '');
-
-    await loginPage.enterTextById('password', '');
-
+    await loginPage.enterTextById("email", "");
+    await loginPage.enterTextById("password", "");
     await loginPage.clickSubmit();
 
     const errorMessage = await loginPage.findElementById("error-message");
@@ -86,14 +77,11 @@ describe("LoginPage Tests", () => {
 
   // password length < 8 "Password must be at least 8 characters long"
   it("should display error message if password invalid", async () => {
-    await loginPage.enterTextById('email', adminValidEmail);
-
-    await loginPage.enterTextById('password', invalidPassword);
-
+    await loginPage.enterTextById("email", adminValidEmail);
+    await loginPage.enterTextById("password", invalidPassword);
     await loginPage.clickSubmit();
 
     const errorMessage = await loginPage.findElementById("error-message");
-
     expect(await errorMessage.getText()).to.include(
       "Invalid email or password - hover over input field for more info!"
     );
@@ -101,13 +89,10 @@ describe("LoginPage Tests", () => {
 
   // successful login - Recruitment Administratior
   it("admin user should enter email and password, then click submit", async () => {
-    await loginPage.enterTextById('email', adminValidEmail);
-
-    await loginPage.enterTextById('password', adminValidPassword);
-
+    await loginPage.enterTextById("email", adminValidEmail);
+    await loginPage.enterTextById("password", adminValidPassword);
     await loginPage.clickSubmit();
-
-    await loginPage.clickById("viewjobsbutton")
+    await loginPage.clickById("viewjobsbutton");
     const currentUrl = await loginPage.driver.getCurrentUrl();
 
     expect(currentUrl).to.include("job-roles");
@@ -115,27 +100,23 @@ describe("LoginPage Tests", () => {
   });
 
   // successful logout
-it("should click logout and log the user out", async () => {
-  await loginPage.clickLogout();
+  it("should click logout and log the user out", async () => {
+    await loginPage.clickLogout();
 
-  const loginButton = await loginPage.findElementById("loginbutton");
-  const loginButtonText = await loginButton.getText();
-  expect(loginButtonText).to.equal("Log In");
-});
+    const loginButton = await loginPage.findElementById("loginbutton");
+    const loginButtonText = await loginButton.getText();
+    expect(loginButtonText).to.equal("Log In");
+  });
 
   // successful login - Applicant User
   it("applicant user should enter email and password, then click submit", async () => {
-    await loginPage.enterTextById('email', applicantValidEmail );
-    
-    await loginPage.enterTextById('password', applicantValidPassword);
-
+    await loginPage.enterTextById("email", applicantValidEmail);
+    await loginPage.enterTextById("password", applicantValidPassword);
     await loginPage.clickSubmit();
-
-    await loginPage.clickById("viewjobsbutton")
+    await loginPage.clickById("viewjobsbutton");
     const currentUrl = await loginPage.driver.getCurrentUrl();
 
     expect(currentUrl).to.include("job-roles");
     await loginPage.driver.navigate().back();
   });
-
 });
