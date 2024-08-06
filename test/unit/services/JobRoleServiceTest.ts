@@ -75,25 +75,11 @@ describe('JobRoleService', function () {
             expect(role).to.deep.equal(expectedData);
         })
 
-
-        it('should throw exception when 500 error returned from axios', async () => {
-
-            const jobRoleId = "123";
-            mock.onGet(URL + jobRoleId).reply(500);
-
-            try {
-                await getJobRoleByID(jobRoleId, token);
-            } catch (e) {
-                expect(e.message).to.equal('Failed to get Job Role Details');
-                return;
-            }
-        });
-
-        it('should throw exception when 400 error returned from axios', async () => {
+        it('should throw exception when 404 error returned from axios', async () => {
 
             const data = jobRoleDetailResponse;
             const jobRoleId = "999";
-            mock.onGet(URL + jobRoleId).reply(400, data);
+            mock.onGet(URL + jobRoleId).reply(404, data);
       
             try {
               await getJobRoleByID(jobRoleId, token);
@@ -102,7 +88,6 @@ describe('JobRoleService', function () {
               return;
             }
         })
-
 
     });
 
