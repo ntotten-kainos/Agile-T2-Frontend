@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="./stylesheets/kainos.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const practiceInterviewButton = document.getElementById('practice-interview-button');
+    
+            practiceInterviewButton.addEventListener('click', function() {
+                // Open the mock interview assistant in a new window
+                window.open('interviewChat.html', '_blank', 'width=600,height=700');
+            });
+        });
+    </script>
 </head>
 <body>
     {% include "header.html" %}
@@ -32,6 +42,11 @@
                 <button class="submit-button" id="submit">Submit Application</button>
             </form>
         </div>
+    </div>
+    <br>
+    <div class="interview-practice-container">
+        <h4>Want to practice an interview for this role? Click below</h4>
+        <button class="btn btn-primary" id="practice-interview-button">Practice Interview</button>
     </div>
     {% include "footer.html" %}
 </body>
