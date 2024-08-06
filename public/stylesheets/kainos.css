@@ -36,9 +36,6 @@ footer {
   height: 100%;
 }
 
-
-
-
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
   .sidenav {
@@ -47,7 +44,6 @@ footer {
   }
   .row.content {height:auto;} 
 }
-
 
 .middle {
     width:80px
