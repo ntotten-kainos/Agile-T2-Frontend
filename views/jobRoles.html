@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Job Role List</title>
     <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
@@ -20,15 +19,25 @@
                 <table class="table table-striped table-hover" id="table">
                     <thead>
                         <tr id="table-header">
-                            <th class="text-center" style="color: black;" id="header-jobrole">Job Role</th>
-                            <th class="text-center" style="color: black;" id="header-location">Location</th>
-                            <th class="text-center" style="color: black;" id="header-band">Band</th>
-                            <th class="text-center" style="color: black;" id="header-capability">Capability</th>
-                            <th class="text-center" style="color: black;" id="header-closingdate">Closing Date</th>
+                            <th class="text-center">
+                                <a href="?orderBy=roleName&direction={% if orderBy == 'roleName' and direction == 'ASC' %}DESC{% else %}ASC{% endif %}" style="color: black;">Job Role</a>
+                            </th>
+                            <th class="text-center">
+                                <a href="?orderBy=location&direction={% if orderBy == 'location' and direction == 'ASC' %}DESC{% else %}ASC{% endif %}" style="color: black;">Location</a>
+                            </th>
+                            <th class="text-center">
+                                <a href="?orderBy=band&direction={% if orderBy == 'band' and direction == 'ASC' %}DESC{% else %}ASC{% endif %}" style="color: black;">Band</a>
+                            </th>
+                            <th class="text-center">
+                                <a href="?orderBy=capability&direction={% if orderBy == 'capability' and direction == 'ASC' %}DESC{% else %}ASC{% endif %}" style="color: black;">Capability</a>
+                            </th>
+                            <th class="text-center">
+                                <a href="?orderBy=closingDate&direction={% if orderBy == 'closingDate' and direction == 'ASC' %}DESC{% else %}ASC{% endif %}" style="color: black;">Closing Date</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        {% for jobRole in jobRoles | sort(attribute='jobRoleId') %}
+                        {% for jobRole in jobRoles %}
                         <tr id="table-rows">
                             <td class="text-center" style="color: black;" id="row-name">{{ jobRole.roleName }}</td>
                             <td class="text-center" style="color: black;" id="row-location">{{ jobRole.location }}</td>
@@ -41,8 +50,7 @@
                 </table>
             </div>
         </div>
-  </div>
+    </div>
     {% include "footer.html" %}
 </body>
-
 </html>
