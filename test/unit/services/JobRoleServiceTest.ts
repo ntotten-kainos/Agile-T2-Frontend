@@ -18,7 +18,7 @@ const mock = new MockAdapter(axios);
 describe('JobRoleService', function () {
     const token = 'test-token';
     describe('getJobRoles', function () {
-        it('should return Job Roles from response', async () => {
+        it('should return Job Roles from response without ordering', async () => {
             const data = [jobRoleResponse];
 
             mock.onGet(URL).reply(200, data);
@@ -33,6 +33,21 @@ describe('JobRoleService', function () {
             expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
         });
 
+        it('should return Job Roles from response with ordering', async () => {
+            const data = [jobRoleResponse];
+            const params = { orderBy: 'roleName', direction: 'ASC' };
+
+            mock.onGet(URL, { params }).reply(200, data);
+
+            const results = await getJobRoles(token, 'roleName', 'ASC');
+
+            expect(results[0].jobRoleId).to.equal(jobRoleResponse.jobRoleId);
+            expect(results[0].roleName).to.equal(jobRoleResponse.roleName);
+            expect(results[0].location).to.equal(jobRoleResponse.location);
+            expect(results[0].bandValue).to.equal(jobRoleResponse.bandValue);
+            expect(results[0].capabilityName).to.equal(jobRoleResponse.capabilityName);
+            expect(new Date(results[0].formattedClosingDate).getTime()).to.equal(jobRoleResponse.formattedClosingDate.getTime());
+        });
 
         it('should throw an error when the request fails', async () => {
             mock.onGet(URL).reply(500);

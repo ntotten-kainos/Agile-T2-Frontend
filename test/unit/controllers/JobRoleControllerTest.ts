@@ -32,7 +32,7 @@ describe('JobRoleController', function () {
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList, orderBy: "default", direction: "default" })).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList, orderBy: undefined, direction: undefined })).to.be.true;
         });
 
         it('should render view with error message when error thrown', async () => {
@@ -45,7 +45,7 @@ describe('JobRoleController', function () {
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles', { orderBy: "default", direction: "default" })).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: [], orderBy: undefined, direction: undefined })).to.be.true;
             expect(res.locals.errormessage).to.equal(errorMessage);
         });
 
@@ -69,7 +69,7 @@ describe('JobRoleController', function () {
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles', { jobRoles: jobRole, orderBy: "default", direction: "default" })).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRole, orderBy: undefined, direction: undefined })).to.be.true;
         });
 
         it('should redirect to loginForm.html page when user is NOT logged in', async () => {

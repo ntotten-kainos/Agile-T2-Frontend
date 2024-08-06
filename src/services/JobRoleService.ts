@@ -2,9 +2,9 @@ import axios, { AxiosResponse } from "axios";
 import { JobRoleResponse } from "../models/JobRoleResponse";
 import { getHeader } from "./AuthUtil";
 
-axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
+const URL: string = "/api/job-roles/";
 
-export const URL: string = "/api/job-roles/";
+axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
 
 interface Params {
     orderBy?: string;
@@ -27,4 +27,6 @@ export const getJobRoles = async (token: string, orderBy?: string, direction?: s
         console.log(e);
         throw new Error('Failed to get Job Roles');
     }
-}
+};
+
+export { URL };
