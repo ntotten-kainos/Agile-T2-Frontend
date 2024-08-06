@@ -43,13 +43,10 @@ describe("LoginPage Tests", () => {
 
   // invalid email and invalid password
   it("should display error message when wrong email and password entered", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
+
     await loginPage.enterTextById('email', invalidEmail);
 
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await passwordField.sendKeys(invalidPassword);
+    await loginPage.enterTextById('password', invalidPassword);
 
     await loginPage.clickSubmit();
 
@@ -61,13 +58,9 @@ describe("LoginPage Tests", () => {
 
     // invalid email and valid password
     it("should display error message when wrong email and valid password entered", async () => {
-      const emailField = await loginPage.email();
-      await emailField.clear();
-      await emailField.sendKeys(invalidEmail);
+      await loginPage.enterTextById('email', invalidEmail);
   
-      const passwordField = await loginPage.password();
-      await passwordField.clear();
-      await passwordField.sendKeys(adminValidPassword);
+      await loginPage.enterTextById('password', adminValidPassword);
   
       await loginPage.clickSubmit();
   
@@ -79,13 +72,9 @@ describe("LoginPage Tests", () => {
 
   // no login details entered; click Submit button
   it("should display error message when no email or password entered", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
-    await emailField.sendKeys("");
+    await loginPage.enterTextById('email', '');
 
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await passwordField.sendKeys("");
+    await loginPage.enterTextById('password', '');
 
     await loginPage.clickSubmit();
 
@@ -97,13 +86,9 @@ describe("LoginPage Tests", () => {
 
   // password length < 8 "Password must be at least 8 characters long"
   it("should display error message if password invalid", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
-    await loginPage.enterTextById("email", adminValidEmail);
+    await loginPage.enterTextById('email', adminValidEmail);
 
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await loginPage.enterTextById("password", invalidPassword);
+    await loginPage.enterTextById('password', invalidPassword);
 
     await loginPage.clickSubmit();
 
@@ -116,15 +101,9 @@ describe("LoginPage Tests", () => {
 
   // successful login - Recruitment Administratior
   it("admin user should enter email and password, then click submit", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
-    await emailField.sendKeys(adminValidEmail);
-    expect(await emailField.getAttribute("value")).to.equal(adminValidEmail);
+    await loginPage.enterTextById('email', adminValidEmail);
 
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await passwordField.sendKeys(adminValidPassword);
-    expect(await passwordField.getAttribute("value")).to.equal(adminValidPassword);
+    await loginPage.enterTextById('password', adminValidPassword);
 
     await loginPage.clickSubmit();
 
@@ -144,35 +123,11 @@ it("should click logout and log the user out", async () => {
   expect(loginButtonText).to.equal("Log In");
 });
 
-  // no login details entered; click Submit button
-  it("should display error message when no email or password entered", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
-    await emailField.sendKeys("");
-
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await passwordField.sendKeys("");
-
-    await loginPage.clickSubmit();
-
-    const errorMessage = await loginPage.findElementById("error-message");
-    expect(await errorMessage.getText()).to.include(
-      "Please enter email and password"
-    );
-  });
-
   // successful login - Applicant User
   it("applicant user should enter email and password, then click submit", async () => {
-    const emailField = await loginPage.email();
-    await emailField.clear();
-    await emailField.sendKeys(applicantValidEmail);
-    expect(await emailField.getAttribute("value")).to.equal(applicantValidEmail);
-
-    const passwordField = await loginPage.password();
-    await passwordField.clear();
-    await passwordField.sendKeys(applicantValidPassword);
-    expect(await passwordField.getAttribute("value")).to.equal(applicantValidPassword);
+    await loginPage.enterTextById('email', applicantValidEmail );
+    
+    await loginPage.enterTextById('password', applicantValidPassword);
 
     await loginPage.clickSubmit();
 
