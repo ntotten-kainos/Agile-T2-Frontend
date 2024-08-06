@@ -8,6 +8,7 @@ import { UserRole } from "./models/JwtToken";
 import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
 import { v4 as uuidv4 } from 'uuid';
 import { getChatGPTResponse } from "../src/utils/interviewBot";
+import { getApplicationForm, postApplicationForm } from "./controllers/ApplicationController";
 
 const app = express();
 
@@ -65,8 +66,7 @@ app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles
 app.get('/applicationForm', getApplicationForm)
 app.post('/applicationForm', postApplicationForm)
 
-// AI Mock Interview Assistant
-
+// AI Mock Interview Assistan
 const OPENAI_API_KEY = process.env.INTERVIEW_AI_API_KEY;
 
 interface InterviewSession {
