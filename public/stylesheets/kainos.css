@@ -3,7 +3,6 @@
     text-align: center;
 }
 
-
 .headerformat{
     background-color: #ffffff;
     height: 80px;
@@ -47,7 +46,6 @@ footer {
 
 .middle {
     width:80px
-    
 }
 
 /* Form Styling */
@@ -103,7 +101,6 @@ input {
     color: white;
     }
 
-
 #error-message {
     display: flex;
     justify-content: center;
@@ -137,7 +134,6 @@ input {
     background: white;
     padding: 20px;
     border-radius: 0px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     max-width: 85vw;
     width: 100%;
     height: auto;
@@ -189,20 +185,18 @@ position: relative;
 left: 12vw;
 top:25px;
 }
+
 .homepositioning{
 position:relative;
 left: 16vw;
 top:25px;
 font-size: large;
-
 }
 
 .twopositioning{
 position:relative;
 left: 19vw;
 top:25px;
-
-
 font-size: large;
 
 }
@@ -298,7 +292,6 @@ background-color: #EDF3FF;
 color: white;
 border-radius: 40%;
 height: 40px;
-
 }
 
 
@@ -315,10 +308,7 @@ video{
 
 heading{
     font-size: xx-large;
-
-
 }
-
 
 .information{
     padding: 3vw;
@@ -330,29 +320,12 @@ p {
     font-size: large;
 }
 
-
 h3 {
     font-size: large;
     text-align: left;
 }
 
-
 p4{
     font-size: large;
     text-align: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

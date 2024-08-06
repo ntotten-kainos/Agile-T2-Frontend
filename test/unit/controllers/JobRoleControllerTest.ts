@@ -7,7 +7,6 @@ import { JobRoleDetailResponse } from "../../../src/models/JobRoleDetailResponse
 import { UserRole } from '../../../src/models/JwtToken';
 import { allowRoles } from '../../../src/middleware/AuthMiddleware';
 
-
 const jobRoleResponse: JobRoleResponse = {
     jobRoleId: 1,
     roleName: "Test Engineer",
@@ -16,7 +15,6 @@ const jobRoleResponse: JobRoleResponse = {
     capabilityName: "healthcare",
     formattedClosingDate: new Date('2024-12-31T23:59:59')
 };
-
 
 const jobRoleDetailResponse: JobRoleDetailResponse = {
     roleName: "Test Engineer",
@@ -28,8 +26,6 @@ const jobRoleDetailResponse: JobRoleDetailResponse = {
     bandValue: "Test bandValue",
     formattedClosingDate: new Date('2024-12-31T23:59:59.000Z')
 }
-
-
 describe('JobRoleController', function () {
     afterEach(() => {
         sinon.restore();
@@ -96,16 +92,13 @@ describe('JobRoleController', function () {
 
     describe('getSingleJobRole', function () {
         it('should render view with single Job Role Detail page when Job Role Details returned', async () => {
-            const singleJobRoleDetails = jobRoleDetailResponse;
-            sinon.stub(JobRoleService, 'getJobRoleByID').resolves(singleJobRoleDetails);
+            sinon.stub(JobRoleService, 'getJobRoleByID').resolves(jobRoleDetailResponse);
             const req = { params: { id: '1' }, session: { token: 'test-token' } };
             const res = { render: sinon.spy() };
             await JobRoleController.getSingleJobRole(req as any, res as any);
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoleDetail', { jobRole: singleJobRoleDetails })).to.be.true;
+            expect(res.render.calledWith('jobRoleDetail', { jobRole: jobRoleDetailResponse })).to.be.true;
         });
-
-
 
         it('should render view with error message when error thrown', async () => {
             const errorMessage: string = 'Error message';
