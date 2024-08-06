@@ -28,14 +28,15 @@ jobs:
         cache: 'npm'
       env:
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        INTERVIEW_AI_API_KEY: ${{secrets.INTERVIEW_AI_API_KEY}}
     - run:
         npm install
 
     - name: Run tests 
       env:
-        
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         VALID_TEST_EMAIL: ${{ secrets.VALID_TEST_EMAIL }}
         VALID_TEST_PASSWORD: ${{ secrets.VALID_TEST_PASSWORD }}
+        INTERVIEW_AI_API_KEY: ${{secrets.INTERVIEW_AI_API_KEY}}
       run:
         npm test
