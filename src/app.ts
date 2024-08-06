@@ -61,6 +61,10 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 // Job Roles
 app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
 
+// Application Form
+app.get('/applicationForm', getApplicationForm)
+app.post('/applicationForm', postApplicationForm)
+
 // AI Mock Interview Assistant
 
 const OPENAI_API_KEY = process.env.INTERVIEW_AI_API_KEY;
