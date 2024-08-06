@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Application Form</title>
+    <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/kainos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="form-container-wrapper">
+        <div class="form-container">
+            <h1 class="application-form-title">
+                Application for: {{ jobRoleTitle }}
+            </h1>
+            <br>
+            <form action="/applicationForm" method="post">
+                <h3>
+                    <label for="file-upload">Please Upload Your CV</label>
+                </h3>
+                <input
+                    class="input"
+                    type="file"
+                    name="file-upload"
+                    id="file-upload"
+                    accept=".pdf, .doc, .docx, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                <br>
+                <button class="submit-button" id="submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>
