@@ -4,7 +4,9 @@ import BasePage from './BasePage';
 
 export class LoginPage extends BasePage{
   
-  private url: string = "https://5chmbvngab.eu-west-1.awsapprunner.com/loginform";
+private baseUrl: string = process.env.UI_TEST_URL || 'https://5chmbvngab.eu-west-1.awsapprunner.com';
+private urlPath: string = '/loginForm';
+private url: string = this.baseUrl+this.urlPath;
   
   constructor() {
    super();
