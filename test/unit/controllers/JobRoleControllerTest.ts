@@ -26,26 +26,26 @@ describe('JobRoleController', function () {
 
             sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
 
-            const req = { session: { token: 'test-token' } };
+            const req = { session: { token: 'test-token' }, query: {} };
             const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList })).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList, orderBy: "default", direction: "default" })).to.be.true;
         });
 
         it('should render view with error message when error thrown', async () => {
             const errorMessage: string = 'Error message';
             sinon.stub(JobRoleService, 'getJobRoles').rejects(new Error(errorMessage));
 
-            const req = { session: { token: 'test-token' } };
+            const req = { session: { token: 'test-token' }, query: {} };
             const res = { render: sinon.spy(), locals: { errormessage: '' } };
 
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles')).to.be.true;
+            expect(res.render.calledWith('jobRoles', { orderBy: "default", direction: "default" })).to.be.true;
             expect(res.locals.errormessage).to.equal(errorMessage);
         });
 
@@ -54,7 +54,8 @@ describe('JobRoleController', function () {
             const jobRole = [expected];
 
             const req = {
-                session: { token: 'test-token' }
+                session: { token: 'test-token' },
+                query: {}
             };
 
             const res = {
@@ -68,9 +69,9 @@ describe('JobRoleController', function () {
             await JobRoleController.getAllJobRoles(req as any, res as any);
 
             expect(res.render.calledOnce).to.be.true;
-            expect(res.render.calledWith('jobRoles', { jobRoles: jobRole })).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRole, orderBy: "default", direction: "default" })).to.be.true;
         });
-        
+
         it('should redirect to loginForm.html page when user is NOT logged in', async () => {
             const expected = jobRoleResponse;
             const jobRole = [expected];
@@ -80,6 +81,7 @@ describe('JobRoleController', function () {
 
             const req = {
                 session: { token: '' },
+                query: {}
             } as any;
 
             const res = {
@@ -96,6 +98,20 @@ describe('JobRoleController', function () {
 
             expect((res.redirect as sinon.SinonStub).calledOnce).to.be.true;
             expect((res.redirect as sinon.SinonStub).calledWith('/loginForm')).to.be.true;
+        });
+
+        it('should render view with Job Roles sorted by orderBy and direction', async () => {
+            const jobRoleList = [jobRoleResponse];
+
+            sinon.stub(JobRoleService, 'getJobRoles').resolves(jobRoleList);
+
+            const req = { session: { token: 'test-token' }, query: { orderBy: 'roleName', direction: 'asc' } };
+            const res = { render: sinon.spy(), locals: { errormessage: '' } };
+
+            await JobRoleController.getAllJobRoles(req as any, res as any);
+
+            expect(res.render.calledOnce).to.be.true;
+            expect(res.render.calledWith('jobRoles', { jobRoles: jobRoleList, orderBy: 'roleName', direction: 'asc' })).to.be.true;
         });
     });
 });
