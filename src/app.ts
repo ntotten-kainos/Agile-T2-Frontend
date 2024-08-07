@@ -3,7 +3,7 @@ import session from "express-session";
 import nunjucks from "nunjucks";
 import bodyParser from "body-parser";
 import { getLoginForm, logout, postLoginForm } from "./controllers/AuthController";
-import { getAllJobRoles } from "./controllers/JobRoleController";
+import { getAllJobRoles, getSingleJobRole } from "./controllers/JobRoleController";
 import { UserRole } from "./models/JwtToken";
 import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
 
@@ -19,7 +19,6 @@ nunjucks.configure('views', {
 
 app.use(express.static('public'));
 app.set('view engine', 'html');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -30,7 +29,6 @@ if (!sessionSecret) {
 }
 
 app.use(session({ secret: sessionSecret, cookie: { maxAge: 28800000 } }));
-
 app.use(setLoggedInStatus);
 
 declare module "express-session" {
@@ -58,3 +56,4 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 
 // Job Roles
 app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
+app.get('/job-roles/:id', allowRoles([UserRole.Admin, UserRole.User]), getSingleJobRole);
