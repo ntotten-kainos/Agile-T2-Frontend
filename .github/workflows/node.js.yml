@@ -28,12 +28,13 @@ jobs:
         cache: 'npm'
       env:
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        FRONTEND_URL: ${{secrets.FRONTEND_URL}}
     - run:
         npm install
 
     - name: Run tests 
       env:
-        
+        FRONTEND_URL: ${{secrets.FRONTEND_URL}}
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         VALID_TEST_EMAIL: ${{ secrets.VALID_TEST_EMAIL }}
         VALID_TEST_PASSWORD: ${{ secrets.VALID_TEST_PASSWORD }}
