@@ -3,6 +3,8 @@ import { JobRoleResponse } from "../models/JobRoleResponse";
 import { JobRoleDetailResponse } from "../models/JobRoleDetailResponse";
 import { getHeader } from "./AuthUtil";
 
+export { URL };
+
 const URL: string = "/api/job-roles/";
 
 axios.defaults.baseURL = process.env.API_URL || 'http://localhost:8080/';
@@ -45,5 +47,3 @@ export const getJobRoleByID = async (id: string, token: string): Promise<JobRole
         }
     }
 };;
-
-export { URL };
