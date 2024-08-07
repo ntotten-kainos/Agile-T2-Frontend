@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Interview Bot</title>
     <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="./stylesheets/kainos.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .chat-container { width: 50%; margin: 0 auto; }
+    .chat-box { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+    .input-box { margin-top: 10px; }
+  </style>
 </head>
 <body>
     {% include "header.html" %}
@@ -17,11 +23,64 @@
             {{ errormessage }}
         </h2>
     {% endif %}
-    <div class="form-container-wrapper">
-        <div class="form-container">
-           
-        </div>
+  <div class="chat-container">
+    <h1>Mock Interview</h1>
+    <div id="chat-box" class="chat-box"></div>
+    <div class="input-box">
+      <input type="text" id="user-input" placeholder="Type your answer here..." />
+      <button onclick="sendAnswer()">Send</button>
+      <button onclick="requestFeedback()">Request Feedback</button>
     </div>
-    {% include "footer.html" %}
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+
+    async function sendAnswer() {
+      const answer = userInput.value;
+      if (answer.trim() === '') return;
+
+      appendToChatBox('User', answer);
+      userInput.value = '';
+
+      const response = await fetch('/recordAnswer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer })
+      });
+      const data = await response.json();
+      appendToChatBox('Interviewer', data.question);
+    }
+
+    async function requestFeedback() {
+      const answer = userInput.value;
+      if (answer.trim() === '') return;
+
+      appendToChatBox('User', answer);
+      userInput.value = '';
+
+      const response = await fetch('/getFeedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer })
+      });
+      const data = await response.json();
+      appendToChatBox('Feedback', data.feedback);
+    }
+
+    function appendToChatBox(sender, message) {
+      const div = document.createElement('div');
+      div.textContent = `${sender}: ${message}`;
+      chatBox.appendChild(div);
+    }
+
+    window.onload = async () => {
+      const response = await fetch('/askQuestion', { method: 'POST' });
+      const data = await response.json();
+      appendToChatBox('Interviewer', data.question);
+    };
+  </script>
+  {% include "footer.html" %}
 </body>
 </html>

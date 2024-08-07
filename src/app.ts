@@ -6,6 +6,7 @@ import { getLoginForm, logout, postLoginForm } from "./controllers/AuthControlle
 import { getAllJobRoles } from "./controllers/JobRoleController";
 import { UserRole } from "./models/JwtToken";
 import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
+import { askQuestion, getFeedback, recordAnswer } from "./client/InterviewBot";
 
 const app = express();
 
@@ -58,3 +59,36 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 
 // Job Roles
 app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
+
+// AI Mock Interview
+app.post('/askQuestion', async (req, res) => {
+  try {
+    const question = await askQuestion();
+    res.json({ question });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.post('/recordAnswer', async (req, res) => {
+  try {
+    await recordAnswer(req.body.answer);
+    const question = await askQuestion();
+    res.json({ question });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.post('/getFeedback', async (req, res) => {
+  try {
+    const feedback = await getFeedback(req.body.answer);
+    res.json({ feedback });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.get('/mockInterview', async (req: express.Request, res: express.Response) => {
+  res.render("mockInterview.html");
+});
