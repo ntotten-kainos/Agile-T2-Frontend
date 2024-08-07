@@ -13,8 +13,7 @@ export default class BasePage {
   }
 
   async enterTextById(id: string, text: string) {
-    const element = await this.driver.findElement(By.id(id));
-    await element.clear();
+    await this.driver.findElement(By.id(id)).clear();
     await this.driver.findElement(By.id(id)).sendKeys(text);
   }
 
