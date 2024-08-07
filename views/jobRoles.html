@@ -20,19 +20,19 @@
                     <thead>
                         <tr id="table-header">
                             <th class="text-center">
-                                <a href="?orderBy=roleName&direction={% if orderBy == 'roleName' and direction == 'ASC' %}DESC{% elif orderBy == 'roleName' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Job Role</a>
+                                <a href="{% if orderBy == 'roleName' and direction == 'ASC' %}/job-roles{% else %}?orderBy=roleName&direction={% if orderBy == 'roleName' and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">Job Role</a>
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=location&direction={% if orderBy == 'location' and direction == 'ASC' %}DESC{% elif orderBy == 'location' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Location</a>
+                                <a href="{% if orderBy == 'location' and direction == 'ASC' %}/job-roles{% else %}?orderBy=location&direction={% if orderBy == 'location' and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">Location</a>
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=band&direction={% if orderBy == 'band' and direction == 'ASC' %}DESC{% elif orderBy == 'band' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Band</a>
+                                <a href="{% if orderBy == 'band' and direction == 'ASC' %}/job-roles{% else %}?orderBy=band&direction={% if orderBy == 'band' and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">Band</a>
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=capability&direction={% if orderBy == 'capability' and direction == 'ASC' %}DESC{% elif orderBy == 'capability' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Capability</a>
+                                <a href="{% if orderBy == 'capability' and direction == 'ASC' %}/job-roles{% else %}?orderBy=capability&direction={% if orderBy == 'capability' and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">Capability</a>
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=closingDate&direction={% if orderBy == 'closingDate' and direction == 'ASC' %}DESC{% elif orderBy == 'closingDate' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Closing Date</a>
+                                <a href="{% if orderBy == 'closingDate' and direction == 'ASC' %}/job-roles{% else %}?orderBy=closingDate&direction={% if orderBy == 'closingDate' and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">Closing Date</a>
                             </th>
                         </tr>
                     </thead>
