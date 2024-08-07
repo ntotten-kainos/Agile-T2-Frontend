@@ -13,7 +13,6 @@ describe("LoginPage Tests", () => {
     await loginPage.closeBrowser();
   });
 
-  // vars
   let adminValidEmail: string = "valid.admin@email.com";
   let adminValidPassword: string = "admin!Pa$$word123";
   let applicantValidEmail: string = "regular.user@email.com";
@@ -39,7 +38,6 @@ describe("LoginPage Tests", () => {
     expect(await submitButton.getAttribute("class")).to.include("login-button");
   });
 
-  // invalid email and invalid password
   it("should display error message when wrong email and password entered", async () => {
     await loginPage.enterTextById("email", invalidEmail);
     await loginPage.enterTextById("password", invalidPassword);
@@ -51,7 +49,6 @@ describe("LoginPage Tests", () => {
     );
   });
 
-  // invalid email and valid password
   it("should display error message when wrong email and valid password entered", async () => {
     await loginPage.enterTextById("email", invalidEmail);
     await loginPage.enterTextById("password", adminValidPassword);
@@ -63,7 +60,6 @@ describe("LoginPage Tests", () => {
     );
   });
 
-  // no login details entered; click Submit button
   it("should display error message when no email or password entered", async () => {
     await loginPage.enterTextById("email", "");
     await loginPage.enterTextById("password", "");
@@ -75,7 +71,6 @@ describe("LoginPage Tests", () => {
     );
   });
 
-  // password length < 8 "Password must be at least 8 characters long"
   it("should display error message if password invalid", async () => {
     await loginPage.enterTextById("email", adminValidEmail);
     await loginPage.enterTextById("password", invalidPassword);
@@ -87,7 +82,6 @@ describe("LoginPage Tests", () => {
     );
   });
 
-  // successful login - Recruitment Administratior
   it("admin user should enter email and password, then click submit", async () => {
     await loginPage.enterTextById("email", adminValidEmail);
     await loginPage.enterTextById("password", adminValidPassword);
@@ -99,7 +93,6 @@ describe("LoginPage Tests", () => {
     await loginPage.driver.navigate().back();
   });
 
-  // successful logout
   it("should click logout and log the user out", async () => {
     await loginPage.clickLogout();
 
@@ -108,7 +101,6 @@ describe("LoginPage Tests", () => {
     expect(loginButtonText).to.equal("Log In");
   });
 
-  // successful login - Applicant User
   it("applicant user should enter email and password, then click submit", async () => {
     await loginPage.enterTextById("email", applicantValidEmail);
     await loginPage.enterTextById("password", applicantValidPassword);
