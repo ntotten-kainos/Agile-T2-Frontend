@@ -26,6 +26,7 @@ jobs:
  
     - name: Build & push the Docker image
       env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
         FRONTEND_URL: ${{secrets.FRONTEND_URL}}
         API_URL: ${{ secrets.API_URL }}
