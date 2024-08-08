@@ -27,5 +27,5 @@ export const logout = async (req: express.Request, res: express.Response): Promi
     // Set a flag to indicate the user has logged out.
     req.session.loggedOut = true;
     // Send the user to the login page with a query parameter.
-    res.redirect('/loginForm?loggedOut=true');
+    res.redirect('/loginForm');
 }
