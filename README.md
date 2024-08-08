@@ -44,6 +44,13 @@ https://www.selenium.dev/documentation/
 1. Ensure the frontend server is running for local tests by running `npm start`
 1. The backend API must be running locally in order to access information from the database
 
+JMeter Test (performance test)
+---
+1. Install JMeter https://jmeter.apache.org/usermanual/index.html
+1. In Terminal, run command: jmeter
+1. Open the file LOGIN--VIEW-JOB-ROLES.jmx file in JMeter
+1. Press Start button to run tests
+
 Config
 ---
 
