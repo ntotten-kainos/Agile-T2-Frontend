@@ -141,6 +141,16 @@ input {
     background-color: #f0f0f0;
 }
 
+
+.jobroledetail-container a {
+    color: #3f487e; /* Darker color within job role detail container */
+}
+
+.jobroledetail-container a:hover {
+    color: #2b3159; /* Slightly different shade for hover, if needed */
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
+
 /*for the image*/
 
 /* Bottom right text */
@@ -269,12 +279,12 @@ top:17px;
 }
 
 #logout-button {
-    color: #C05746;
-    border: 2px solid #C05746;
+    color: #9b3a2c;
+    border: 2px solid #9b3a2c;
 }
 
 #logout-button:hover {
-    background-color: #C05746;
+    background-color: #9b3a2c;
     color: white;
     font-size: medium;
 }
