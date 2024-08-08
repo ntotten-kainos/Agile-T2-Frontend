@@ -19,12 +19,11 @@ describe('AuthController', function () {
 
             await AuthController.logout(req as any, res as any);
 
-            expect(res.redirect.calledWith('/loginForm?loggedOut=true')).to.be.true;
+            expect(res.redirect.calledWith('/loginForm')).to.be.true;
             expect(req.session.token).to.be.undefined;
             expect(req.session.loggedOut).to.be.true;
         });
     });
-
     describe('getLoginForm', function () {
         it('should render loginForm', async () => {
             const req = {};
