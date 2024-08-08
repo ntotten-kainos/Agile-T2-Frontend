@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./stylesheets/kainos.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
     {% include "header.html" %}
@@ -55,4 +56,14 @@
     </div>
     {% include "footer.html" %}
 </body>
+<script type="text/javascript">
+    function noBack()
+     {
+         window.history.forward()
+     }
+    noBack();
+    window.onload = noBack;
+    window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+    window.onunload = function() { void (0) }
+</script>
 </html>

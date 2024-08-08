@@ -1,5 +1,12 @@
 import { getAuthToken } from './../services/AuthService';
 import express from "express";
+import { SessionData } from "express-session";
+
+declare module "express-session" {
+    interface SessionData {
+        loggedOut: boolean;
+    }
+}
 
 export const getLoginForm = async (req: express.Request, res: express.Response): Promise<void> => {
     res.render('loginForm');
@@ -15,9 +22,11 @@ export const postLoginForm = async (req: express.Request, res: express.Response)
     }
 }
 
-export const logout = async(req: express.Request, res: express.Response): Promise<void> => {
+export const logout = async (req: express.Request, res: express.Response): Promise<void> => {
     // Wipe out the token from session storage.
     req.session.token = undefined;
-    // Send the user to the login page.
-    res.redirect('/loginForm');
+    // Set a flag to indicate the user has logged out.
+    req.session.loggedOut = true;
+    // Send the user to the login page with a query parameter.
+    res.redirect('/loginForm?loggedOut=true');
 }

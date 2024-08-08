@@ -55,4 +55,21 @@
     </div>
     {% include "footer.html" %}
 </body>
+<script type="text/javascript">
+    function noBack() {
+        window.history.forward()
+    }
+    
+    function checkLoggedOut() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('loggedOut')) {
+            noBack();
+            window.onload = noBack;
+            window.onpageshow = function(evt) { if (evt.persisted) noBack() }
+            window.onunload = function() { void (0) }
+        }
+    }
+
+    checkLoggedOut();
+</script>
 </html>
