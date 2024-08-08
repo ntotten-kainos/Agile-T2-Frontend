@@ -19,7 +19,11 @@ export const getSingleJobRole = async (req: express.Request, res: express.Respon
         const jobRole = await getJobRoleByID(req.params.id, req.session.token);
         res.render('jobRoleDetail', { jobRole });
     } catch (error) {
-        res.locals.errormessage = error.message;
-        res.render('jobRoleDetail');
+        if (error.message === 'Role does not exist') {
+            res.status(404).render('404error');
+        } else {
+            res.locals.errormessage = error.message;
+            res.render('jobRoleDetail');
+        }
     }
 };
