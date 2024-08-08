@@ -12,7 +12,7 @@
     },
     "include": [
         "src/**/*"
-, "views/scripts/BotScript.js"    ],
+, "public/javascripts/BotScript.js"    ],
     "exclude": [
         "./node_modules/**/*",
         "./dist/**/*"
