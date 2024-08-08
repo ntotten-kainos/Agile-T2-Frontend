@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interview Bot</title>
+    <link rel="icon" type="image/x-icon" href="https://companieslogo.com/img/orig/KNOS.L-8a0d29cc.png?t=1720244492">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/kainos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .chat-box { 
+        text-align: left;
+        width: 100%;
+        border: 1px solid #ccc;
+        padding: 10px; margin-top: 10px;
+        height: 200px; /* set a fixed height for the div */
+        overflow-y: scroll; /* enable vertical scrollbar */ 
+    }
+    .input-box { 
+      margin: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+    {% include "header.html" %}
+    {% if errormessage %}
+        <h2 id="error-message">
+            {{ errormessage }}
+        </h2>
+    {% endif %}
+    <div class="chat-container-wrapper">
+        <div class="chat-container">
+            <h1>Mock Interview</h1>
+            <h4>This Mock Interview is in beta: Feel free to ask the bot for feedback at any time!</h4>
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-box">
+              <input type="text" id="user-input" placeholder="Type your answer here..." />
+              <button class="button2" onclick="sendAnswer()">Send</button>
+            </div>
+          </div>
+    </div>
+  <script src="../public/javascripts/BotScript.js"></script>
+  {% include "footer.html" %}
+</body>
+</html>

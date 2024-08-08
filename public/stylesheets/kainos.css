@@ -48,6 +48,28 @@ footer {
     width:80px
 }
 
+/* Chat Styling */
+.chat-container-wrapper {
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    min-width: auto;
+    width: 100%;
+    text-align: center;
+}
+
 /* Form Styling */
 
 .form-container-wrapper {

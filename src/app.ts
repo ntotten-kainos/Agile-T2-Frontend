@@ -6,6 +6,7 @@ import { getLoginForm, logout, postLoginForm } from "./controllers/AuthControlle
 import { getAllJobRoles, getSingleJobRole } from "./controllers/JobRoleController";
 import { UserRole } from "./models/JwtToken";
 import { allowRoles, setLoggedInStatus } from "./middleware/AuthMiddleware";
+import { askQuestion, getFeedback, recordAnswer } from "./client/InterviewBot";
 
 const app = express();
 
@@ -38,7 +39,7 @@ declare module "express-session" {
 }
 
 app.listen(3000, () => {
-    console.log('Server started on port 3000');
+  console.log('Server started on port 3000');
 
 });
 
@@ -55,5 +56,39 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 });
 
 // Job Roles
-app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]),getAllJobRoles);
+app.get('/job-roles', allowRoles([UserRole.Admin, UserRole.User]), getAllJobRoles);
+
 app.get('/job-roles/:id', allowRoles([UserRole.Admin, UserRole.User]), getSingleJobRole);
+
+// AI Mock Interview
+app.post('/askQuestion', async (req, res) => {
+  try {
+    const question = await askQuestion();
+    res.json({ question });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.post('/recordAnswer', async (req, res) => {
+  try {
+    await recordAnswer(req.body.answer);
+    const question = await askQuestion();
+    res.json({ question });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.post('/getFeedback', async (req, res) => {
+  try {
+    const feedback = await getFeedback(req.body.answer);
+    res.json({ feedback });
+  } catch (error) {
+    res.status(500).send(error.toString());
+  }
+});
+
+app.get('/mockInterview', async (req: express.Request, res: express.Response) => {
+  res.render("mockInterview.html");
+});
