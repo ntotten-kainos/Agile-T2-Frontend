@@ -165,12 +165,22 @@ input {
 
 
 .jobroledetail-container a {
-    color: #3f487e; /* Darker color within job role detail container */
+    color: #3f487e; 
 }
 
 .jobroledetail-container a:hover {
-    color: #2b3159; /* Slightly different shade for hover, if needed */
-    text-decoration: underline; /* Optional: Add underline on hover */
+    color: #2b3159; 
+    text-decoration: underline; 
+}
+
+a {
+    color: #3f487e; 
+    text-decoration: none; 
+}
+
+a:hover {
+    color: #2b3159; 
+    text-decoration: underline; 
 }
 
 /*for the image*/

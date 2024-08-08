@@ -41,7 +41,7 @@ const Lead_Security_Engineer: string = "As a Lead Security Engineer (Consultant)
 const jobDescriptions: string[] = [Lead_Security_Engineer, DS_Trainee, TA_Partner, SE_Associate];
 
 const conversationHistory: ChatCompletionMessageParam[] = [
-  { role: "system", content: "You are an interviewer for a job in the tech sector. Interview the user for the following job description, one question at a time: " + jobDescriptions[0] }
+  { role: "system", content: "You are an interviewer for a job in the tech sector. Interview the user for the following job description, one question at a time: " + jobDescriptions[1] }
 ];
 
 async function askQuestion() {
