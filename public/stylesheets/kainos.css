@@ -269,12 +269,12 @@ top:17px;
 }
 
 #logout-button {
-    color: #C05746;
-    border: 2px solid #C05746;
+    color: #C05700;
+    border: 2px solid #C05700;
 }
 
 #logout-button:hover {
-    background-color: #C05746;
+    background-color: #C05700;
     color: white;
     font-size: medium;
 }
@@ -328,4 +328,16 @@ h3 {
 p4{
     font-size: large;
     text-align: left;
+}
+
+.accessible-link {
+    color: #2d6a9f; 
+}
+
+.accessible-link:visited {
+    color: #204f79; 
+}
+
+.accessible-link:focus, .accessible-link:hover, .accessible-link:active {
+    color: #204f79; 
 }
