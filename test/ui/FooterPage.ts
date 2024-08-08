@@ -1,8 +1,9 @@
 import BasePage from "./BasePage";
 
 export class FooterPage extends BasePage {
-private url: string = 'https://5chmbvngab.eu-west-1.awsapprunner.com/job-roles';
-
+  private baseUrl: string = process.env.UI_TEST_URL || 'https://5chmbvngab.eu-west-1.awsapprunner.com';
+  private urlPath: string = '/';
+  private url: string = this.baseUrl+this.urlPath;
   constructor() {
     super();
     this.url;
