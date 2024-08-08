@@ -20,26 +20,25 @@
                     <thead>
                         <tr id="table-header">
                             <th class="text-center">
-                                <a href="?orderBy=roleName&direction={% if orderBy == 'roleName' and direction == 'ASC' %}DESC{% elif orderBy == 'roleName' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Job Role</a>
+                                {% from "macros.njk" import sortableColumn %}
+                                {{ sortableColumn("Job Role", orderBy, direction, "roleName") }}
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=location&direction={% if orderBy == 'location' and direction == 'ASC' %}DESC{% elif orderBy == 'location' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Location</a>
+                                {{ sortableColumn("Location", orderBy, direction, "location") }}
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=band&direction={% if orderBy == 'band' and direction == 'ASC' %}DESC{% elif orderBy == 'band' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Band</a>
+                                {{ sortableColumn("Band", orderBy, direction, "band") }}
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=capability&direction={% if orderBy == 'capability' and direction == 'ASC' %}DESC{% elif orderBy == 'capability' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Capability</a>
+                                {{ sortableColumn("Capability", orderBy, direction, "capability") }}
                             </th>
                             <th class="text-center">
-                                <a href="?orderBy=closingDate&direction={% if orderBy == 'closingDate' and direction == 'ASC' %}DESC{% elif orderBy == 'closingDate' and direction == 'DESC' %}{% else %}ASC{% endif %}" style="color: black;">Closing Date</a>
+                                {{ sortableColumn("Closing Date", orderBy, direction, "closingDate") }}
                             </th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
-
                         {% for jobRole in jobRoles %}
-
                         <tr id="table-rows">
                             <td class="text-center" style="color: black;">
                                 <a href="/job-roles/{{jobRole.jobRoleId}}">{{ jobRole.roleName }}</a>
@@ -47,7 +46,6 @@
                             <td class="text-center" style="color: black;" id="row-band">{{ jobRole.bandValue }}</td>
                             <td class="text-center" style="color: black;" id="row-capability">{{ jobRole.capabilityName }}</td>
                             <td class="text-center" style="color: black;" id="row-closingdate">{{ jobRole.formattedClosingDate }}</td>
-
                         </tr>
                         {% endfor %}
                     </tbody>
