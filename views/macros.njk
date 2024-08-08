@@ -1,0 +1,14 @@
+{# views/macros.njk #}
+{% macro sortableColumn(header, orderBy, direction, column) %}
+    <a href="{% if orderBy == column and direction == 'ASC' %}/job-roles{% else %}?orderBy={{ column }}&direction={% if orderBy == column and direction == 'DESC' %}ASC{% else %}DESC{% endif %}{% endif %}" style="color: black;">
+        {{ header }}
+        {% if orderBy == column %}
+            {% if direction == 'ASC' %}
+                &#9650;
+            {% else %}
+                &#9660;
+            {% endif %}
+        {% endif %}
+    </a>
+{% endmacro %}
+
