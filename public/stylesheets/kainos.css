@@ -163,6 +163,26 @@ input {
     background-color: #f0f0f0;
 }
 
+
+.jobroledetail-container a {
+    color: #3f487e; 
+}
+
+.jobroledetail-container a:hover {
+    color: #2b3159; 
+    text-decoration: underline; 
+}
+
+a {
+    color: #3f487e; 
+    text-decoration: none; 
+}
+
+a:hover {
+    color: #2b3159; 
+    text-decoration: underline; 
+}
+
 /*for the image*/
 
 /* Bottom right text */
@@ -291,12 +311,12 @@ top:17px;
 }
 
 #logout-button {
-    color: #C05746;
-    border: 2px solid #C05746;
+    color: #9b3a2c;
+    border: 2px solid #9b3a2c;
 }
 
 #logout-button:hover {
-    background-color: #C05746;
+    background-color: #9b3a2c;
     color: white;
     font-size: medium;
 }
