@@ -19,20 +19,20 @@
                 <table class="table table-striped table-hover" id="table">
                     <thead>
                         <tr id="table-header">
-                            <th class="text-center">
+                            <th class="text-center" id="header-jobrole">
                                 {% from "macros.njk" import sortableColumn %}
                                 {{ sortableColumn("Job Role", orderBy, direction, "roleName") }}
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" id="header-location">
                                 {{ sortableColumn("Location", orderBy, direction, "location") }}
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" id="header-band">
                                 {{ sortableColumn("Band", orderBy, direction, "band") }}
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" id="header-capability">
                                 {{ sortableColumn("Capability", orderBy, direction, "capability") }}
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" id="header-closingdate">
                                 {{ sortableColumn("Closing Date", orderBy, direction, "closingDate") }}
                             </th>
                         </tr>
@@ -41,7 +41,7 @@
                         {% for jobRole in jobRoles %}
                         <tr id="table-rows">
                             <td class="text-center" style="color: black;">
-                                <a href="/job-roles/{{jobRole.jobRoleId}}">{{ jobRole.roleName }}</a>
+                                <a href="/job-roles/{{jobRole.jobRoleId}}" id="row-name">{{ jobRole.roleName }}</a>
                             <td class="text-center" style="color: black;" id="row-location">{{ jobRole.location }}</td>
                             <td class="text-center" style="color: black;" id="row-band">{{ jobRole.bandValue }}</td>
                             <td class="text-center" style="color: black;" id="row-capability">{{ jobRole.capabilityName }}</td>
