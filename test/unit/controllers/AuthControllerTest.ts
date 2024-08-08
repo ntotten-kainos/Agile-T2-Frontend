@@ -13,19 +13,19 @@ describe('AuthController', function () {
     const VALID_PASSWORD = process.env.VALID_TEST_PASSWORD;
 
     describe('logout', function () {
-        it('should set token to undefined and redirect to login page', async () => {
-            const req = { session: {token: '' } };
+        it('should set token to undefined, set loggedOut to true, and redirect to login page', async () => {
+            const req = { session: { token: '', loggedOut: false } };
             const res = { redirect: sinon.spy(), locals: { } };
 
             await AuthController.logout(req as any, res as any);
 
-            expect(res.redirect.calledWith('/loginForm')).to.be.true;
+            expect(res.redirect.calledWith('/loginForm?loggedOut=true')).to.be.true;
             expect(req.session.token).to.be.undefined;
-        })
-    })
+            expect(req.session.loggedOut).to.be.true;
+        });
+    });
 
     describe('getLoginForm', function () {
-
         it('should render loginForm', async () => {
             const req = {};
             const res = { render: sinon.spy(), locals: { loggedin: false } };
@@ -34,16 +34,13 @@ describe('AuthController', function () {
 
             expect(res.render.calledOnce).to.be.true;
             expect(res.render.calledWith('loginForm')).to.be.true;
-        })
-    })
+        });
+    });
 
     describe('postLoginForm', function () {
-
-        // Succeeds on POST loginForm.
         it('should redirect when successfully retrieves JWT Token', async () => {
             sinon.stub(AuthService, 'getAuthToken').resolves("token");
 
-            // Need to ensure request body is populated with required content.
             const req = {
                 body: {
                     "email": VALID_EMAIL,
@@ -59,9 +56,8 @@ describe('AuthController', function () {
 
             expect("token").to.equal(req.session.token);
             expect(res.redirect.calledWith('/')).to.be.true;
-        })
+        });
 
-        // Fails if email is invalid
         it('should redirect to loginForm with errormessage and form data in body when email is invalid', async () => {
             const error: string = "Error";
             sinon.stub(AuthService, 'getAuthToken').rejects(new Error(error));
@@ -81,9 +77,8 @@ describe('AuthController', function () {
             expect(res.locals.errormessage).to.equal(error);
             expect(req.body.email).to.equal('invalid');
             expect(req.body.password).to.equal(VALID_PASSWORD);
-        })
+        });
 
-        // Fails if password is invalid
         it('should redirect to loginForm with errormessage and form data in body when password is invalid', async () => {
             const error: string = "Error";
             sinon.stub(AuthService, 'getAuthToken').rejects(new Error(error));
@@ -103,6 +98,6 @@ describe('AuthController', function () {
             expect(res.locals.errormessage).to.equal(error);
             expect(req.body.password).to.equal('invalid');
             expect(req.body.email).to.equal(VALID_EMAIL);
-        })
-    })
-})
+        });
+    });
+});
