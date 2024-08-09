@@ -34,5 +34,5 @@ jobs:
         ECR_REPOSITORY: employee_demo
         IMAGE_TAG: team2-frontend
       run: |
-        docker build --build-arg API_URL=${API_URL} --build-arg SESSION_SECRET=${SESSION_SECRET} --build-arg FRONTEND_URL=${FRONTEND_URL} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build --build-arg OPENAI_API_KEY=${OPENAI_API_KEY} --build-arg API_URL=${API_URL} --build-arg SESSION_SECRET=${SESSION_SECRET} --build-arg FRONTEND_URL=${FRONTEND_URL} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
